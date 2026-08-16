@@ -5,8 +5,16 @@ the one input the repository did not carry, which made the most important variab
 unauditable; this directory closes that.
 
 Placeholders: `{LIB}` is the library sentence ("shadcn/ui", "MUI (Material UI) v9",
-"Chakra UI v3", "Mantine v9"); `{N}` is the component count named for M/L hosts; `{DIR}` is
-the arm's absolute working directory.
+"Chakra UI v3", "Mantine v9"); `{N}` is the component count named for M/L hosts (" (80
+components)", " (240 components)", empty at 20); `{DIR}` is the arm's absolute working
+directory; `{YOSEGI_BIN}` and `{SKILL_DIR}` are the CLI under test and its shipped Agent
+Skill. A paragraph marked `*(M/L hosts add:)*` or `*(L hosts add:)*` is dropped whole on the
+sizes it does not apply to, and the marker itself never reaches an arm.
+
+`E-direct.md`, `E-json.md`, `F1.md`, and `F2.md` were added in round 2 and were not what
+round 1 ran — round 1's E and F prompts were never kept. They were written from
+`docs/MEASURE.md`, the SPEC files, and round 1's committed artifacts, in the same shape as
+the arms that were recorded. `docs/RESULTS.md` says where that matters.
 
 Two disclosures a reader needs, found in the audit rather than planned:
 
