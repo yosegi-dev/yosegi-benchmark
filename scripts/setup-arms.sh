@@ -35,6 +35,10 @@ for lib in "${HOSTS[@]}"; do
 
 	for arm in A2 B; do
 		cp -R "$ROOT/hosts/$lib/src" "$ROOT/results/$lib/$arm/src"
+		# src/__screens__ holds the previous round's A1/A2/B stories, copied back into the
+		# host for visual review. Handing an arm the answer key would void the measurement,
+		# so it never travels into a working directory (setup-efg.sh drops it the same way).
+		rm -rf "$ROOT/results/$lib/$arm/src/__screens__"
 		cp "$ROOT/hosts/$lib/tsconfig.json" "$ROOT/results/$lib/$arm/tsconfig.json"
 	done
 

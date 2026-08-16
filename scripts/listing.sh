@@ -9,7 +9,9 @@ cd "$ROOT/hosts/$1"
 
 # grep exits 1 on no match, which under `set -e` with pipefail would abort the whole run
 # at the first file whose only exports are `<Name>Props`. Every stage is guarded.
-find src \( -name '*.tsx' -o -name '*.ts' \) | sort | while read -r f; do
+# src/__screens__ holds the previous round's arm outputs, kept in the host for Storybook
+# review. It is not part of the host's component surface and must not reach A1's listing.
+find src -path 'src/__screens__' -prune -o \( -name '*.tsx' -o -name '*.ts' \) -print | sort | while read -r f; do
 	names=$(
 		{ grep -oE '^export (interface|type|const|function) [A-Za-z0-9_]+' "$f" || true; } \
 			| awk '{print $3}' \
