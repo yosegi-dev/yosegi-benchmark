@@ -1,0 +1,44 @@
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(116,4): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(117,28): error TS2322: Type '{ user: { id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }; notificationCount: number; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
+  Property 'user' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(120,7): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'TrendPanelProps': heading, items
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(121,18): error TS2741: Property 'label' is missing in type '{ id: string; topic: string; category: string; postCount: number; rank: number; }' but required in type 'TrendModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(122,18): error TS2741: Property 'label' is missing in type '{ id: string; topic: string; category: string; postCount: number; rank: number; }' but required in type 'TrendModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(123,18): error TS2741: Property 'label' is missing in type '{ id: string; topic: string; category: string; postCount: number; rank: number; }' but required in type 'TrendModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(125,7): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'SuggestedUserPanelProps': heading, rows
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(126,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(127,40): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(129,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(130,40): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(132,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(133,32): error TS2322: Type '{ following: true; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(139,14): error TS2322: Type '{ value: string; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
+  Property 'value' does not exist on type 'IntrinsicAttributes & FeedTabsProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(141,5): error TS2322: Type '{ value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
+  Property 'value' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(148,5): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'PostCardProps': post, authorLine, actions
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(149,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }' but required in type 'AuthorModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(152,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: true; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(162,5): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'PostCardProps': post, authorLine, actions
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(163,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }' but required in type 'AuthorModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(165,17): error TS2739: Type '{ id: string; author: { id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }; text: string; createdAt: string; visibility: "public"; replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is missing the following properties from type 'PostModel': body, likedByViewer
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(167,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(177,5): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'PostCardProps': post, authorLine, actions
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(178,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }' but required in type 'AuthorModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(180,16): error TS2322: Type '{ id: string; src: string; alt: string; width: number; height: number; }[]' is not assignable to type '{ url: string; alt: string; }[]'.
+  Property 'url' is missing in type '{ id: string; src: string; alt: string; width: number; height: number; }' but required in type '{ url: string; alt: string; }'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(182,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(192,5): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'PostCardProps': post, authorLine, actions
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(193,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; verified: boolean; }' but required in type 'AuthorModel'.
+hosts/mantine-l/src/__score__/TimelineScreen.stories.tsx(196,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.

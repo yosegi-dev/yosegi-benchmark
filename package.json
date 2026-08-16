@@ -1,0 +1,26 @@
+{
+	"name": "yosegi-bench",
+	"private": true,
+	"type": "module",
+	"description": "Does a component registry change what an agent writes? One screen, four UI libraries, three arms.",
+	"workspaces": ["hosts/*"],
+	"scripts": {
+		"typecheck": "bun run typecheck:shadcn && bun run typecheck:mui && bun run typecheck:chakra && bun run typecheck:mantine",
+		"typecheck:shadcn": "tsc --noEmit -p hosts/shadcn",
+		"typecheck:mui": "tsc --noEmit -p hosts/mui",
+		"typecheck:chakra": "tsc --noEmit -p hosts/chakra",
+		"typecheck:mantine": "tsc --noEmit -p hosts/mantine",
+		"registry": "for h in shadcn mui chakra mantine; do ./scripts/build-registry.sh $h; done",
+		"verify-contract": "node scripts/verify-contract.mjs shadcn mui chakra mantine",
+		"sb:shadcn": "bun --filter '@bench/shadcn' storybook dev -p 6011 --no-open",
+		"sb:mui": "bun --filter '@bench/mui' storybook dev -p 6012 --no-open",
+		"sb:mantine": "bun --filter '@bench/mantine' storybook dev -p 6014 --no-open",
+		"sb:chakra": "bun --filter '@bench/chakra' storybook dev -p 6013 --no-open"
+	},
+	"devDependencies": {
+		"@storybook/react": "^9",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"typescript": "6.0.3"
+	}
+}

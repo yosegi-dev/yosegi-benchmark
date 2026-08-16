@@ -1,0 +1,350 @@
+{
+	"id": "moderation-review",
+	"name": "Moderation review",
+	"registryVersion": "src:dd868f550c3a",
+	"root": {
+		"component": "src/components/app-shell#AppShell",
+		"props": {
+			"density": "cozy"
+		},
+		"slots": {
+			"header": [
+				{
+					"component": "Heading",
+					"props": {
+						"text": "Moderation review"
+					}
+				}
+			],
+			"main": [
+				{
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-1",
+							"author": {
+								"id": "author-rin",
+								"displayName": "Rin Amano",
+								"handle": "@rin",
+								"avatarUrl": "https://i.pravatar.cc/96?img=11",
+								"verified": true
+							},
+							"body": "Reminder: the moderation queue is triaged newest first, so please leave a note when you skip an item.",
+							"createdAt": "2026-08-13T08:00:00.000Z",
+							"visibility": "public",
+							"replyCount": 4,
+							"repostCount": 2,
+							"likeCount": 18,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-rin",
+										"displayName": "Rin Amano",
+										"handle": "@rin",
+										"avatarUrl": "https://i.pravatar.cc/96?img=11",
+										"verified": true
+									},
+									"label": "2h",
+									"visibility": "public"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-rin",
+													"displayName": "Rin Amano",
+													"handle": "@rin",
+													"avatarUrl": "https://i.pravatar.cc/96?img=11",
+													"verified": true
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"component": "Box",
+								"props": {
+									"className": "report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"component": "Text",
+											"props": {
+												"text": "Reported 3 times"
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-2",
+							"author": {
+								"id": "author-kai",
+								"displayName": "Kai Doi",
+								"handle": "@kai",
+								"avatarUrl": "https://i.pravatar.cc/96?img=12"
+							},
+							"body": "Quoting this so the note stays attached to the original thread while we review it.",
+							"createdAt": "2026-08-13T05:00:00.000Z",
+							"visibility": "followers",
+							"replyCount": 1,
+							"repostCount": 0,
+							"likeCount": 6,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-kai",
+										"displayName": "Kai Doi",
+										"handle": "@kai",
+										"avatarUrl": "https://i.pravatar.cc/96?img=12"
+									},
+									"label": "5h",
+									"visibility": "followers"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-kai",
+													"displayName": "Kai Doi",
+													"handle": "@kai",
+													"avatarUrl": "https://i.pravatar.cc/96?img=12"
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"quoted": [
+							{
+								"component": "src/components/quoted-post#QuotedPost",
+								"props": {
+									"post": {
+										"id": "post-1",
+										"author": {
+											"id": "author-rin",
+											"displayName": "Rin Amano",
+											"handle": "@rin",
+											"avatarUrl": "https://i.pravatar.cc/96?img=11",
+											"verified": true
+										},
+										"body": "Reminder: the moderation queue is triaged newest first, so please leave a note when you skip an item.",
+										"createdAt": "2026-08-13T08:00:00.000Z",
+										"visibility": "public",
+										"replyCount": 4,
+										"repostCount": 2,
+										"likeCount": 18,
+										"likedByViewer": false
+									}
+								},
+								"slots": {
+									"avatar": [
+										{
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-rin",
+													"displayName": "Rin Amano",
+													"handle": "@rin",
+													"avatarUrl": "https://i.pravatar.cc/96?img=11",
+													"verified": true
+												},
+												"density": "compact"
+											}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"component": "Box",
+								"props": {
+									"className": "report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"component": "Text",
+											"props": {
+												"text": "Reported once"
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-3",
+							"author": {
+								"id": "author-mio",
+								"displayName": "Mio Sato",
+								"handle": "@mio",
+								"avatarUrl": "https://i.pravatar.cc/96?img=13"
+							},
+							"body": "Two screenshots attached from the report. Flagging both for a second pair of eyes.",
+							"createdAt": "2026-08-12T10:00:00.000Z",
+							"visibility": "unlisted",
+							"replyCount": 9,
+							"repostCount": 3,
+							"likeCount": 27,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-mio",
+										"displayName": "Mio Sato",
+										"handle": "@mio",
+										"avatarUrl": "https://i.pravatar.cc/96?img=13"
+									},
+									"label": "1d",
+									"visibility": "unlisted"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-mio",
+													"displayName": "Mio Sato",
+													"handle": "@mio",
+													"avatarUrl": "https://i.pravatar.cc/96?img=13"
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"media": [
+							{
+								"component": "src/components/post-media#PostMedia",
+								"props": {
+									"images": [
+										{
+											"url": "https://picsum.photos/seed/moderation-1/640/360",
+											"alt": "Screenshot of the reported thread"
+										},
+										{
+											"url": "https://picsum.photos/seed/moderation-2/640/360",
+											"alt": "Screenshot of the report form"
+										}
+									],
+									"density": "cozy"
+								}
+							}
+						],
+						"actions": [
+							{
+								"component": "Box",
+								"props": {
+									"className": "report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"component": "Text",
+											"props": {
+												"text": "Reported 5 times"
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			],
+			"sidebar": [
+				{
+					"component": "src/components/trend-panel#TrendPanel",
+					"props": {
+						"heading": "Review queue trends",
+						"density": "cozy"
+					},
+					"slots": {
+						"items": [
+							{
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 1,
+									"trend": {
+										"id": "trend-typescript",
+										"label": "#typescript",
+										"postCount": 8320
+									}
+								}
+							},
+							{
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 2,
+									"trend": {
+										"id": "trend-storybook",
+										"label": "#storybook",
+										"postCount": 6120
+									}
+								}
+							},
+							{
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 3,
+									"trend": {
+										"id": "trend-designsystems",
+										"label": "#designsystems",
+										"postCount": 3980
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

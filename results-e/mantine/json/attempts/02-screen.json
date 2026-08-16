@@ -1,0 +1,382 @@
+{
+	"schemaVersion": "1.0",
+	"id": "moderation-review",
+	"name": "Moderation review",
+	"componentRegistryVersion": "src:01051c921b30",
+	"revision": 1,
+	"root": {
+		"id": "app-shell",
+		"component": "src/components/app-shell#AppShell",
+		"props": {
+			"density": "cozy"
+		},
+		"slots": {
+			"header": [
+				{
+					"id": "page-heading",
+					"component": "Heading",
+					"props": {
+						"text": "Moderation review"
+					},
+					"slots": {}
+				}
+			],
+			"main": [
+				{
+					"id": "post-1",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-1",
+							"author": {
+								"id": "author-rin",
+								"displayName": "Rin Amano",
+								"handle": "rin",
+								"avatarUrl": "https://i.pravatar.cc/96?img=1",
+								"verified": true
+							},
+							"body": "Reminder: the moderation queue is triaged twice a day, not in real time. Please stop pinging the on-call about it.",
+							"createdAt": "2026-08-13T07:00:00.000Z",
+							"visibility": "public",
+							"replyCount": 12,
+							"repostCount": 4,
+							"likeCount": 38,
+							"likedByViewer": false
+						}
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-1-author-line",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-rin",
+										"displayName": "Rin Amano",
+										"handle": "rin",
+										"avatarUrl": "https://i.pravatar.cc/96?img=1",
+										"verified": true
+									},
+									"label": "2h",
+									"visibility": "public"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "post-1-avatar",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-rin",
+													"displayName": "Rin Amano",
+													"handle": "rin",
+													"avatarUrl": "https://i.pravatar.cc/96?img=1",
+													"verified": true
+												}
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-1-actions",
+								"component": "Box",
+								"props": {
+									"className": "post-report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"id": "post-1-tally",
+											"component": "Text",
+											"props": {
+												"text": "Reported 3 times"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-2",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-2",
+							"author": {
+								"id": "author-kai",
+								"displayName": "Kai Doi",
+								"handle": "kai",
+								"avatarUrl": "https://i.pravatar.cc/96?img=12"
+							},
+							"body": "This is exactly the policy I was told the opposite of last week. Which one is it?",
+							"createdAt": "2026-08-13T04:00:00.000Z",
+							"visibility": "followers",
+							"replyCount": 6,
+							"repostCount": 1,
+							"likeCount": 9,
+							"likedByViewer": false
+						}
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-2-author-line",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-kai",
+										"displayName": "Kai Doi",
+										"handle": "kai",
+										"avatarUrl": "https://i.pravatar.cc/96?img=12"
+									},
+									"label": "5h",
+									"visibility": "followers"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "post-2-avatar",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-kai",
+													"displayName": "Kai Doi",
+													"handle": "kai",
+													"avatarUrl": "https://i.pravatar.cc/96?img=12"
+												}
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-2-actions",
+								"component": "Box",
+								"props": {
+									"className": "post-report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"id": "post-2-tally",
+											"component": "Text",
+											"props": {
+												"text": "Reported once"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"quoted": [
+							{
+								"id": "post-2-quoted",
+								"component": "src/components/quoted-post#QuotedPost",
+								"props": {
+									"post": {
+										"id": "post-1",
+										"author": {
+											"id": "author-rin",
+											"displayName": "Rin Amano",
+											"handle": "rin",
+											"avatarUrl": "https://i.pravatar.cc/96?img=1",
+											"verified": true
+										},
+										"body": "Reminder: the moderation queue is triaged twice a day, not in real time. Please stop pinging the on-call about it.",
+										"createdAt": "2026-08-13T07:00:00.000Z",
+										"visibility": "public",
+										"replyCount": 12,
+										"repostCount": 4,
+										"likeCount": 38,
+										"likedByViewer": false
+									}
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "post-2-quoted-avatar",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-rin",
+													"displayName": "Rin Amano",
+													"handle": "rin",
+													"avatarUrl": "https://i.pravatar.cc/96?img=1",
+													"verified": true
+												}
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-3",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-3",
+							"author": {
+								"id": "author-mio",
+								"displayName": "Mio Sato",
+								"handle": "mio",
+								"avatarUrl": "https://i.pravatar.cc/96?img=32"
+							},
+							"body": "Screenshots of the two queue dashboards, before and after the rule change.",
+							"createdAt": "2026-08-12T09:00:00.000Z",
+							"visibility": "unlisted",
+							"replyCount": 2,
+							"repostCount": 0,
+							"likeCount": 15,
+							"likedByViewer": false
+						}
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-3-author-line",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-mio",
+										"displayName": "Mio Sato",
+										"handle": "mio",
+										"avatarUrl": "https://i.pravatar.cc/96?img=32"
+									},
+									"label": "1d",
+									"visibility": "unlisted"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "post-3-avatar",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "author-mio",
+													"displayName": "Mio Sato",
+													"handle": "mio",
+													"avatarUrl": "https://i.pravatar.cc/96?img=32"
+												}
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-3-actions",
+								"component": "Box",
+								"props": {
+									"className": "post-report-tally"
+								},
+								"slots": {
+									"children": [
+										{
+											"id": "post-3-tally",
+											"component": "Text",
+											"props": {
+												"text": "Reported 5 times"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"media": [
+							{
+								"id": "post-3-media",
+								"component": "src/components/post-media#PostMedia",
+								"props": {
+									"images": [
+										{
+											"url": "https://picsum.photos/seed/queue-before/640/360",
+											"alt": "Review queue dashboard before the rule change"
+										},
+										{
+											"url": "https://picsum.photos/seed/queue-after/640/360",
+											"alt": "Review queue dashboard after the rule change"
+										}
+									]
+								},
+								"slots": {}
+							}
+						]
+					}
+				}
+			],
+			"sidebar": [
+				{
+					"id": "trend-panel",
+					"component": "src/components/trend-panel#TrendPanel",
+					"props": {
+						"heading": "Review queue trends"
+					},
+					"slots": {
+						"items": [
+							{
+								"id": "trend-1",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 1,
+									"trend": {
+										"id": "trend-typescript",
+										"label": "#typescript",
+										"postCount": 8320,
+										"category": "Technology"
+									}
+								},
+								"slots": {}
+							},
+							{
+								"id": "trend-2",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 2,
+									"trend": {
+										"id": "trend-storybook",
+										"label": "#storybook",
+										"postCount": 6120,
+										"category": "Technology"
+									}
+								},
+								"slots": {}
+							},
+							{
+								"id": "trend-3",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 3,
+									"trend": {
+										"id": "trend-designsystems",
+										"label": "#designsystems",
+										"postCount": 3980,
+										"category": "Design"
+									}
+								},
+								"slots": {}
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

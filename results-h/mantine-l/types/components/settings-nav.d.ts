@@ -1,0 +1,13 @@
+export interface SettingsNavDestination {
+    id: string;
+    label: string;
+    /** Shown as a pill on the right of the row. */
+    badge?: number;
+}
+export interface SettingsNavProps {
+    destinations: SettingsNavDestination[];
+    /** Id of the destination currently open. */
+    activeId: string;
+    onNavigate: (id: string) => void;
+}
+export declare function SettingsNav({ destinations, activeId, onNavigate }: SettingsNavProps): import("react").JSX.Element;

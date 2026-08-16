@@ -1,0 +1,12 @@
+{
+	"name": "@bench/chakra-m",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"dependencies": {
+		"@chakra-ui/react": "^3",
+		"@emotion/react": "^11",
+		"react": "^19",
+		"react-dom": "^19"
+	}
+}

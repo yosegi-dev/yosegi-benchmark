@@ -1,0 +1,14 @@
+{
+	"name": "@bench/mui-l",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"dependencies": {
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"@mui/icons-material": "^9",
+		"@mui/material": "^9",
+		"react": "^19",
+		"react-dom": "^19"
+	}
+}

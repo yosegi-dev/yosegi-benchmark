@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
+		"strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"ignoreDeprecations": "6.0",
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
+	},
+	"include": ["src"],
+	// The three arms' stories are copied into src/__screens__ for visual review in
+	// Storybook. Vite strips types without checking them, which is the point — how A1's
+	// type errors render is what a human is being asked to look at. tsc must not see
+	// them: `typecheck` and `score.sh` both rely on the host compiling clean.
+	"exclude": ["src/__screens__"]
+}

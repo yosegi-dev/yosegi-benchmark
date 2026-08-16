@@ -1,0 +1,20 @@
+{
+	"name": "@bench/chakra",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"scripts": {
+		"storybook": "storybook"
+	},
+	"dependencies": {
+		"@chakra-ui/react": "^3",
+		"@emotion/react": "^11",
+		"react": "^19",
+		"react-dom": "^19"
+	},
+	"devDependencies": {
+		"@storybook/react-vite": "^9",
+		"storybook": "^9",
+		"vite": "^7"
+	}
+}

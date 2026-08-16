@@ -1,0 +1,353 @@
+{
+	"id": "moderation-review",
+	"name": "Moderation review",
+	"registryVersion": "src:0b2bf57b5aa7",
+	"root": {
+		"id": "shell",
+		"component": "src/components/app-shell#AppShell",
+		"props": { "density": "cozy" },
+		"slots": {
+			"header": [
+				{
+					"id": "page-heading",
+					"component": "Heading",
+					"props": { "text": "Moderation review" }
+				}
+			],
+			"main": [
+				{
+					"id": "post-card-1",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-1",
+							"author": {
+								"id": "user-rin",
+								"displayName": "Rin Amano",
+								"handle": "rin",
+								"avatarUrl": "https://i.pravatar.cc/128?img=11"
+							},
+							"body": "Reminder: design system office hours moved to Thursdays. Same room, same link.",
+							"createdAt": "2026-08-13T06:00:00.000Z",
+							"visibility": "public",
+							"replyCount": 4,
+							"repostCount": 2,
+							"likeCount": 11,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "author-line-1",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "user-rin",
+										"displayName": "Rin Amano",
+										"handle": "rin",
+										"avatarUrl": "https://i.pravatar.cc/128?img=11"
+									},
+									"label": "2h",
+									"visibility": "public"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "avatar-1",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "user-rin",
+													"displayName": "Rin Amano",
+													"handle": "rin",
+													"avatarUrl": "https://i.pravatar.cc/128?img=11"
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "actions-1",
+								"component": "Box",
+								"props": { "className": "text-sm text-muted-foreground" },
+								"slots": {
+									"children": [
+										{
+											"id": "tally-1",
+											"component": "Text",
+											"props": { "text": "Reported 3 times" }
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-2",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-2",
+							"author": {
+								"id": "user-kai",
+								"displayName": "Kai Doi",
+								"handle": "kai",
+								"avatarUrl": "https://i.pravatar.cc/128?img=12"
+							},
+							"body": "Thursdays work much better for the frontend team. Thanks for moving it.",
+							"createdAt": "2026-08-13T03:00:00.000Z",
+							"visibility": "followers",
+							"replyCount": 1,
+							"repostCount": 0,
+							"likeCount": 6,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "author-line-2",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "user-kai",
+										"displayName": "Kai Doi",
+										"handle": "kai",
+										"avatarUrl": "https://i.pravatar.cc/128?img=12"
+									},
+									"label": "5h",
+									"visibility": "followers"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "avatar-2",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "user-kai",
+													"displayName": "Kai Doi",
+													"handle": "kai",
+													"avatarUrl": "https://i.pravatar.cc/128?img=12"
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"quoted": [
+							{
+								"id": "quoted-2",
+								"component": "src/components/quoted-post#QuotedPost",
+								"props": {
+									"post": {
+										"id": "post-1",
+										"author": {
+											"id": "user-rin",
+											"displayName": "Rin Amano",
+											"handle": "rin",
+											"avatarUrl": "https://i.pravatar.cc/128?img=11"
+										},
+										"body": "Reminder: design system office hours moved to Thursdays. Same room, same link.",
+										"createdAt": "2026-08-13T06:00:00.000Z",
+										"visibility": "public",
+										"replyCount": 4,
+										"repostCount": 2,
+										"likeCount": 11,
+										"likedByViewer": false
+									}
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "quoted-avatar-2",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "user-rin",
+													"displayName": "Rin Amano",
+													"handle": "rin",
+													"avatarUrl": "https://i.pravatar.cc/128?img=11"
+												},
+												"density": "compact"
+											}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "actions-2",
+								"component": "Box",
+								"props": { "className": "text-sm text-muted-foreground" },
+								"slots": {
+									"children": [
+										{
+											"id": "tally-2",
+											"component": "Text",
+											"props": { "text": "Reported once" }
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-3",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-3",
+							"author": {
+								"id": "user-mio",
+								"displayName": "Mio Sato",
+								"handle": "mio",
+								"avatarUrl": "https://i.pravatar.cc/128?img=13"
+							},
+							"body": "Shipped the new token pipeline today. Before and after below.",
+							"createdAt": "2026-08-12T08:00:00.000Z",
+							"visibility": "unlisted",
+							"replyCount": 7,
+							"repostCount": 3,
+							"likeCount": 24,
+							"likedByViewer": false
+						},
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "author-line-3",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "user-mio",
+										"displayName": "Mio Sato",
+										"handle": "mio",
+										"avatarUrl": "https://i.pravatar.cc/128?img=13"
+									},
+									"label": "1d",
+									"visibility": "unlisted"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "avatar-3",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"author": {
+													"id": "user-mio",
+													"displayName": "Mio Sato",
+													"handle": "mio",
+													"avatarUrl": "https://i.pravatar.cc/128?img=13"
+												},
+												"density": "cozy"
+											}
+										}
+									]
+								}
+							}
+						],
+						"media": [
+							{
+								"id": "media-3",
+								"component": "src/components/post-media#PostMedia",
+								"props": {
+									"images": [
+										{
+											"url": "https://placehold.co/640x360/png?text=Before",
+											"alt": "Token pipeline before the change"
+										},
+										{
+											"url": "https://placehold.co/640x360/png?text=After",
+											"alt": "Token pipeline after the change"
+										}
+									],
+									"density": "cozy"
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "actions-3",
+								"component": "Box",
+								"props": { "className": "text-sm text-muted-foreground" },
+								"slots": {
+									"children": [
+										{
+											"id": "tally-3",
+											"component": "Text",
+											"props": { "text": "Reported 5 times" }
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			],
+			"sidebar": [
+				{
+					"id": "trend-panel",
+					"component": "src/components/trend-panel#TrendPanel",
+					"props": {
+						"heading": "Review queue trends",
+						"density": "cozy"
+					},
+					"slots": {
+						"items": [
+							{
+								"id": "trend-1",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 1,
+									"trend": {
+										"id": "trend-typescript",
+										"label": "#typescript",
+										"postCount": 8320
+									}
+								}
+							},
+							{
+								"id": "trend-2",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 2,
+									"trend": {
+										"id": "trend-storybook",
+										"label": "#storybook",
+										"postCount": 6120
+									}
+								}
+							},
+							{
+								"id": "trend-3",
+								"component": "src/components/trend-item#TrendItem",
+								"props": {
+									"rank": 3,
+									"trend": {
+										"id": "trend-designsystems",
+										"label": "#designsystems",
+										"postCount": 3980
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

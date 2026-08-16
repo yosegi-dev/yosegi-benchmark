@@ -1,0 +1,232 @@
+{
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Input file failed schema validation.",
+    "issues": [
+      {
+        "code": "invalid_value",
+        "values": [
+          "1.0"
+        ],
+        "path": [
+          "schemaVersion"
+        ],
+        "message": "Invalid input: expected \"1.0\""
+      },
+      {
+        "expected": "string",
+        "code": "invalid_type",
+        "path": [
+          "componentRegistryVersion"
+        ],
+        "message": "Invalid input: expected string, received undefined"
+      },
+      {
+        "expected": "number",
+        "code": "invalid_type",
+        "path": [
+          "revision"
+        ],
+        "message": "Invalid input: expected number, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "header",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          0,
+          "slots",
+          "authorLine",
+          0,
+          "slots",
+          "avatar",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          0,
+          "slots",
+          "actions",
+          0,
+          "slots",
+          "children",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          1,
+          "slots",
+          "authorLine",
+          0,
+          "slots",
+          "avatar",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          1,
+          "slots",
+          "quoted",
+          0,
+          "slots",
+          "avatar",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          1,
+          "slots",
+          "actions",
+          0,
+          "slots",
+          "children",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          2,
+          "slots",
+          "authorLine",
+          0,
+          "slots",
+          "avatar",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          2,
+          "slots",
+          "media",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "main",
+          2,
+          "slots",
+          "actions",
+          0,
+          "slots",
+          "children",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "sidebar",
+          0,
+          "slots",
+          "items",
+          0,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "sidebar",
+          0,
+          "slots",
+          "items",
+          1,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "root",
+          "slots",
+          "sidebar",
+          0,
+          "slots",
+          "items",
+          2,
+          "slots"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      }
+    ]
+  }
+}

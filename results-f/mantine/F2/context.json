@@ -1,0 +1,2132 @@
+{
+  "screenId": "TimelineScreen",
+  "screenName": "TimelineScreen",
+  "screen": {
+    "schemaVersion": "1.0",
+    "id": "TimelineScreen",
+    "name": "TimelineScreen",
+    "status": "draft",
+    "componentRegistryVersion": "src:01051c921b30",
+    "revision": 0,
+    "fixtures": {
+      "viewer": {
+        "id": "u-viewer",
+        "displayName": "Nao Kurata",
+        "handle": "nao",
+        "avatarUrl": "https://i.pravatar.cc/160?img=15",
+        "verified": true
+      },
+      "rin": {
+        "id": "u-rin",
+        "displayName": "Rin Amano",
+        "handle": "rin",
+        "avatarUrl": "https://i.pravatar.cc/160?img=32",
+        "verified": true
+      },
+      "kai": {
+        "id": "u-kai",
+        "displayName": "Kai Doi",
+        "handle": "kai",
+        "avatarUrl": "https://i.pravatar.cc/160?img=12"
+      },
+      "mio": {
+        "id": "u-mio",
+        "displayName": "Mio Sato",
+        "handle": "mio",
+        "avatarUrl": "https://i.pravatar.cc/160?img=45",
+        "verified": true
+      },
+      "jun": {
+        "id": "u-jun",
+        "displayName": "Jun Ito",
+        "handle": "jun",
+        "avatarUrl": "https://i.pravatar.cc/160?img=68"
+      },
+      "trends": [
+        {
+          "id": "t-1",
+          "label": "#TypeDrivenUI",
+          "postCount": 18400,
+          "category": "Technology"
+        },
+        {
+          "id": "t-2",
+          "label": "Storybook 9",
+          "postCount": 9320,
+          "category": "Technology"
+        },
+        {
+          "id": "t-3",
+          "label": "Canal light",
+          "postCount": 2140
+        }
+      ]
+    },
+    "root": {
+      "id": "app-shell-1",
+      "component": "src/components/app-shell#AppShell",
+      "props": {
+        "density": "cozy"
+      },
+      "slots": {
+        "header": [
+          {
+            "id": "timeline-header-1",
+            "component": "src/components/timeline-header#TimelineHeader",
+            "props": {},
+            "slots": {
+              "search": [
+                {
+                  "id": "search-field-1",
+                  "component": "src/components/search-field#SearchField",
+                  "props": {
+                    "value": "",
+                    "placeholder": "Search Yosegi",
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ],
+              "notifications": [
+                {
+                  "id": "notification-bell-1",
+                  "component": "src/components/notification-bell#NotificationBell",
+                  "props": {
+                    "unreadCount": 7,
+                    "tone": "quiet"
+                  },
+                  "slots": {}
+                }
+              ]
+            },
+            "bindings": {
+              "viewer": "viewer"
+            }
+          }
+        ],
+        "main": [
+          {
+            "id": "feed-tabs-1",
+            "component": "src/components/feed-tabs#FeedTabs",
+            "props": {
+              "activeFeed": "for-you",
+              "density": "cozy"
+            },
+            "slots": {}
+          },
+          {
+            "id": "post-composer-1",
+            "component": "src/components/post-composer#PostComposer",
+            "props": {
+              "draft": "",
+              "visibility": "public",
+              "submitLabel": "Post"
+            },
+            "slots": {
+              "visibilityPicker": [
+                {
+                  "id": "visibility-picker-1",
+                  "component": "src/components/visibility-picker#VisibilityPicker",
+                  "props": {
+                    "visibility": "public",
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ]
+            },
+            "bindings": {
+              "viewer": "viewer"
+            }
+          },
+          {
+            "id": "post-card-1",
+            "component": "src/components/post-card#PostCard",
+            "props": {
+              "density": "cozy"
+            },
+            "slots": {
+              "authorLine": [
+                {
+                  "id": "post-author-line-1",
+                  "component": "src/components/post-author-line#PostAuthorLine",
+                  "props": {
+                    "label": "2h"
+                  },
+                  "slots": {
+                    "avatar": [
+                      {
+                        "id": "user-avatar-1",
+                        "component": "src/components/user-avatar#UserAvatar",
+                        "props": {
+                          "density": "cozy"
+                        },
+                        "slots": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "actions": [
+                {
+                  "id": "post-action-bar-1",
+                  "component": "src/components/post-action-bar#PostActionBar",
+                  "props": {
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ]
+            }
+          },
+          {
+            "id": "post-card-2",
+            "component": "src/components/post-card#PostCard",
+            "props": {
+              "density": "cozy"
+            },
+            "slots": {
+              "authorLine": [
+                {
+                  "id": "post-author-line-2",
+                  "component": "src/components/post-author-line#PostAuthorLine",
+                  "props": {
+                    "label": "3h"
+                  },
+                  "slots": {
+                    "avatar": [
+                      {
+                        "id": "user-avatar-2",
+                        "component": "src/components/user-avatar#UserAvatar",
+                        "props": {
+                          "density": "cozy"
+                        },
+                        "slots": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "quoted": [
+                {
+                  "id": "quoted-post-1",
+                  "component": "src/components/quoted-post#QuotedPost",
+                  "props": {},
+                  "slots": {
+                    "avatar": [
+                      {
+                        "id": "user-avatar-3",
+                        "component": "src/components/user-avatar#UserAvatar",
+                        "props": {
+                          "density": "compact"
+                        },
+                        "slots": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "actions": [
+                {
+                  "id": "post-action-bar-2",
+                  "component": "src/components/post-action-bar#PostActionBar",
+                  "props": {
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ]
+            }
+          },
+          {
+            "id": "post-card-3",
+            "component": "src/components/post-card#PostCard",
+            "props": {
+              "density": "cozy"
+            },
+            "slots": {
+              "authorLine": [
+                {
+                  "id": "post-author-line-3",
+                  "component": "src/components/post-author-line#PostAuthorLine",
+                  "props": {
+                    "label": "5h"
+                  },
+                  "slots": {
+                    "avatar": [
+                      {
+                        "id": "user-avatar-4",
+                        "component": "src/components/user-avatar#UserAvatar",
+                        "props": {
+                          "density": "cozy"
+                        },
+                        "slots": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "media": [
+                {
+                  "id": "post-media-1",
+                  "component": "src/components/post-media#PostMedia",
+                  "props": {
+                    "images": [
+                      {
+                        "url": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800",
+                        "alt": "Morning light across a still canal"
+                      },
+                      {
+                        "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
+                        "alt": "Low fog over the water by the studio"
+                      }
+                    ],
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ],
+              "actions": [
+                {
+                  "id": "post-action-bar-3",
+                  "component": "src/components/post-action-bar#PostActionBar",
+                  "props": {
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ]
+            }
+          },
+          {
+            "id": "post-card-4",
+            "component": "src/components/post-card#PostCard",
+            "props": {
+              "density": "cozy"
+            },
+            "slots": {
+              "authorLine": [
+                {
+                  "id": "post-author-line-4",
+                  "component": "src/components/post-author-line#PostAuthorLine",
+                  "props": {
+                    "label": "14h"
+                  },
+                  "slots": {
+                    "avatar": [
+                      {
+                        "id": "user-avatar-5",
+                        "component": "src/components/user-avatar#UserAvatar",
+                        "props": {
+                          "density": "cozy"
+                        },
+                        "slots": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "actions": [
+                {
+                  "id": "post-action-bar-4",
+                  "component": "src/components/post-action-bar#PostActionBar",
+                  "props": {
+                    "density": "cozy"
+                  },
+                  "slots": {}
+                }
+              ]
+            }
+          }
+        ],
+        "sidebar": [
+          {
+            "id": "trend-panel-1",
+            "component": "src/components/trend-panel#TrendPanel",
+            "props": {
+              "heading": "Trending now",
+              "density": "cozy"
+            },
+            "slots": {}
+          },
+          {
+            "id": "suggested-user-panel-1",
+            "component": "src/components/suggested-user-panel#SuggestedUserPanel",
+            "props": {
+              "heading": "Who to follow",
+              "density": "cozy"
+            },
+            "slots": {}
+          }
+        ]
+      }
+    }
+  },
+  "registryVersion": "src:01051c921b30",
+  "structure": {
+    "nodeCount": 28,
+    "componentCount": 15,
+    "depth": 3,
+    "nodes": [
+      {
+        "nodeId": "app-shell-1",
+        "component": "src/components/app-shell#AppShell",
+        "slot": null,
+        "path": "$",
+        "depth": 0,
+        "props": [
+          "density"
+        ],
+        "slots": [
+          "header",
+          "main",
+          "sidebar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "timeline-header-1",
+        "component": "src/components/timeline-header#TimelineHeader",
+        "slot": "header",
+        "path": "$.header[0]",
+        "depth": 1,
+        "props": [],
+        "slots": [
+          "search",
+          "notifications"
+        ],
+        "bindings": [
+          "viewer"
+        ],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "search-field-1",
+        "component": "src/components/search-field#SearchField",
+        "slot": "search",
+        "path": "$.header[0].search[0]",
+        "depth": 2,
+        "props": [
+          "value",
+          "placeholder",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "notification-bell-1",
+        "component": "src/components/notification-bell#NotificationBell",
+        "slot": "notifications",
+        "path": "$.header[0].notifications[0]",
+        "depth": 2,
+        "props": [
+          "unreadCount",
+          "tone"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "feed-tabs-1",
+        "component": "src/components/feed-tabs#FeedTabs",
+        "slot": "main",
+        "path": "$.main[0]",
+        "depth": 1,
+        "props": [
+          "activeFeed",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-composer-1",
+        "component": "src/components/post-composer#PostComposer",
+        "slot": "main",
+        "path": "$.main[1]",
+        "depth": 1,
+        "props": [
+          "draft",
+          "visibility",
+          "submitLabel"
+        ],
+        "slots": [
+          "visibilityPicker"
+        ],
+        "bindings": [
+          "viewer"
+        ],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "visibility-picker-1",
+        "component": "src/components/visibility-picker#VisibilityPicker",
+        "slot": "visibilityPicker",
+        "path": "$.main[1].visibilityPicker[0]",
+        "depth": 2,
+        "props": [
+          "visibility",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-card-1",
+        "component": "src/components/post-card#PostCard",
+        "slot": "main",
+        "path": "$.main[2]",
+        "depth": 1,
+        "props": [
+          "density"
+        ],
+        "slots": [
+          "authorLine",
+          "actions"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-author-line-1",
+        "component": "src/components/post-author-line#PostAuthorLine",
+        "slot": "authorLine",
+        "path": "$.main[2].authorLine[0]",
+        "depth": 2,
+        "props": [
+          "label"
+        ],
+        "slots": [
+          "avatar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "user-avatar-1",
+        "component": "src/components/user-avatar#UserAvatar",
+        "slot": "avatar",
+        "path": "$.main[2].authorLine[0].avatar[0]",
+        "depth": 3,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-action-bar-1",
+        "component": "src/components/post-action-bar#PostActionBar",
+        "slot": "actions",
+        "path": "$.main[2].actions[0]",
+        "depth": 2,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-card-2",
+        "component": "src/components/post-card#PostCard",
+        "slot": "main",
+        "path": "$.main[3]",
+        "depth": 1,
+        "props": [
+          "density"
+        ],
+        "slots": [
+          "authorLine",
+          "quoted",
+          "actions"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-author-line-2",
+        "component": "src/components/post-author-line#PostAuthorLine",
+        "slot": "authorLine",
+        "path": "$.main[3].authorLine[0]",
+        "depth": 2,
+        "props": [
+          "label"
+        ],
+        "slots": [
+          "avatar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "user-avatar-2",
+        "component": "src/components/user-avatar#UserAvatar",
+        "slot": "avatar",
+        "path": "$.main[3].authorLine[0].avatar[0]",
+        "depth": 3,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "quoted-post-1",
+        "component": "src/components/quoted-post#QuotedPost",
+        "slot": "quoted",
+        "path": "$.main[3].quoted[0]",
+        "depth": 2,
+        "props": [],
+        "slots": [
+          "avatar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "user-avatar-3",
+        "component": "src/components/user-avatar#UserAvatar",
+        "slot": "avatar",
+        "path": "$.main[3].quoted[0].avatar[0]",
+        "depth": 3,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-action-bar-2",
+        "component": "src/components/post-action-bar#PostActionBar",
+        "slot": "actions",
+        "path": "$.main[3].actions[0]",
+        "depth": 2,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-card-3",
+        "component": "src/components/post-card#PostCard",
+        "slot": "main",
+        "path": "$.main[4]",
+        "depth": 1,
+        "props": [
+          "density"
+        ],
+        "slots": [
+          "authorLine",
+          "media",
+          "actions"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-author-line-3",
+        "component": "src/components/post-author-line#PostAuthorLine",
+        "slot": "authorLine",
+        "path": "$.main[4].authorLine[0]",
+        "depth": 2,
+        "props": [
+          "label"
+        ],
+        "slots": [
+          "avatar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "user-avatar-4",
+        "component": "src/components/user-avatar#UserAvatar",
+        "slot": "avatar",
+        "path": "$.main[4].authorLine[0].avatar[0]",
+        "depth": 3,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-media-1",
+        "component": "src/components/post-media#PostMedia",
+        "slot": "media",
+        "path": "$.main[4].media[0]",
+        "depth": 2,
+        "props": [
+          "images",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-action-bar-3",
+        "component": "src/components/post-action-bar#PostActionBar",
+        "slot": "actions",
+        "path": "$.main[4].actions[0]",
+        "depth": 2,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-card-4",
+        "component": "src/components/post-card#PostCard",
+        "slot": "main",
+        "path": "$.main[5]",
+        "depth": 1,
+        "props": [
+          "density"
+        ],
+        "slots": [
+          "authorLine",
+          "actions"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-author-line-4",
+        "component": "src/components/post-author-line#PostAuthorLine",
+        "slot": "authorLine",
+        "path": "$.main[5].authorLine[0]",
+        "depth": 2,
+        "props": [
+          "label"
+        ],
+        "slots": [
+          "avatar"
+        ],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "user-avatar-5",
+        "component": "src/components/user-avatar#UserAvatar",
+        "slot": "avatar",
+        "path": "$.main[5].authorLine[0].avatar[0]",
+        "depth": 3,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "post-action-bar-4",
+        "component": "src/components/post-action-bar#PostActionBar",
+        "slot": "actions",
+        "path": "$.main[5].actions[0]",
+        "depth": 2,
+        "props": [
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "trend-panel-1",
+        "component": "src/components/trend-panel#TrendPanel",
+        "slot": "sidebar",
+        "path": "$.sidebar[0]",
+        "depth": 1,
+        "props": [
+          "heading",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      },
+      {
+        "nodeId": "suggested-user-panel-1",
+        "component": "src/components/suggested-user-panel#SuggestedUserPanel",
+        "slot": "sidebar",
+        "path": "$.sidebar[1]",
+        "depth": 1,
+        "props": [
+          "heading",
+          "density"
+        ],
+        "slots": [],
+        "bindings": [],
+        "events": [],
+        "when": null,
+        "each": null
+      }
+    ],
+    "outline": [
+      "src/components/app-shell#AppShell #app-shell-1 props=density",
+      "  header: src/components/timeline-header#TimelineHeader #timeline-header-1 bindings=viewer",
+      "    search: src/components/search-field#SearchField #search-field-1 props=value,placeholder,density",
+      "    notifications: src/components/notification-bell#NotificationBell #notification-bell-1 props=unreadCount,tone",
+      "  main: src/components/feed-tabs#FeedTabs #feed-tabs-1 props=activeFeed,density",
+      "  main: src/components/post-composer#PostComposer #post-composer-1 props=draft,visibility,submitLabel bindings=viewer",
+      "    visibilityPicker: src/components/visibility-picker#VisibilityPicker #visibility-picker-1 props=visibility,density",
+      "  main: src/components/post-card#PostCard #post-card-1 props=density",
+      "    authorLine: src/components/post-author-line#PostAuthorLine #post-author-line-1 props=label",
+      "      avatar: src/components/user-avatar#UserAvatar #user-avatar-1 props=density",
+      "    actions: src/components/post-action-bar#PostActionBar #post-action-bar-1 props=density",
+      "  main: src/components/post-card#PostCard #post-card-2 props=density",
+      "    authorLine: src/components/post-author-line#PostAuthorLine #post-author-line-2 props=label",
+      "      avatar: src/components/user-avatar#UserAvatar #user-avatar-2 props=density",
+      "    quoted: src/components/quoted-post#QuotedPost #quoted-post-1",
+      "      avatar: src/components/user-avatar#UserAvatar #user-avatar-3 props=density",
+      "    actions: src/components/post-action-bar#PostActionBar #post-action-bar-2 props=density",
+      "  main: src/components/post-card#PostCard #post-card-3 props=density",
+      "    authorLine: src/components/post-author-line#PostAuthorLine #post-author-line-3 props=label",
+      "      avatar: src/components/user-avatar#UserAvatar #user-avatar-4 props=density",
+      "    media: src/components/post-media#PostMedia #post-media-1 props=images,density",
+      "    actions: src/components/post-action-bar#PostActionBar #post-action-bar-3 props=density",
+      "  main: src/components/post-card#PostCard #post-card-4 props=density",
+      "    authorLine: src/components/post-author-line#PostAuthorLine #post-author-line-4 props=label",
+      "      avatar: src/components/user-avatar#UserAvatar #user-avatar-5 props=density",
+      "    actions: src/components/post-action-bar#PostActionBar #post-action-bar-4 props=density",
+      "  sidebar: src/components/trend-panel#TrendPanel #trend-panel-1 props=heading,density",
+      "  sidebar: src/components/suggested-user-panel#SuggestedUserPanel #suggested-user-panel-1 props=heading,density"
+    ]
+  },
+  "components": [
+    {
+      "id": "src/components/app-shell#AppShell",
+      "name": "AppShell",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { AppShell } from \"~/components/app-shell\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "app-shell-1"
+      ],
+      "usedProps": {
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [
+        "header",
+        "main",
+        "sidebar"
+      ],
+      "manifest": {
+        "id": "src/components/app-shell#AppShell",
+        "name": "AppShell",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/app-shell.tsx",
+          "exportName": "AppShell",
+          "specifier": "~/components/app-shell"
+        },
+        "props": {
+          "density": {
+            "kind": "enum",
+            "description": "Spacing scale for the whole page.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {
+          "header": {
+            "description": "Slot pinned to the top of the viewport.",
+            "required": true
+          },
+          "main": {
+            "description": "Slot for the primary column.",
+            "required": true
+          },
+          "sidebar": {
+            "description": "Slot for the right-hand column.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/feed-tabs#FeedTabs",
+      "name": "FeedTabs",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { FeedTabs } from \"~/components/feed-tabs\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "feed-tabs-1"
+      ],
+      "usedProps": {
+        "activeFeed": [
+          "for-you"
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/feed-tabs#FeedTabs",
+        "name": "FeedTabs",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/feed-tabs.tsx",
+          "exportName": "FeedTabs",
+          "specifier": "~/components/feed-tabs"
+        },
+        "props": {
+          "activeFeed": {
+            "kind": "enum",
+            "description": "The currently selected feed.",
+            "required": true,
+            "options": [
+              "for-you",
+              "following",
+              "list"
+            ]
+          },
+          "onFeedChange": {
+            "kind": "function",
+            "description": "Fired with the feed the user moved to.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "(feed: FeedKind) => void"
+            ]
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the tab padding.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/notification-bell#NotificationBell",
+      "name": "NotificationBell",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { NotificationBell } from \"~/components/notification-bell\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "notification-bell-1"
+      ],
+      "usedProps": {
+        "unreadCount": [
+          7
+        ],
+        "tone": [
+          "quiet"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/notification-bell#NotificationBell",
+        "name": "NotificationBell",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/notification-bell.tsx",
+          "exportName": "NotificationBell",
+          "specifier": "~/components/notification-bell"
+        },
+        "props": {
+          "unreadCount": {
+            "kind": "number",
+            "description": "Badge count; the badge is hidden at 0.",
+            "required": true
+          },
+          "tone": {
+            "kind": "enum",
+            "description": "Colour intent of the control.",
+            "options": [
+              "reply",
+              "repost",
+              "like",
+              "quiet"
+            ],
+            "defaultValue": "quiet"
+          },
+          "onBellPress": {
+            "kind": "function",
+            "description": "Fired when the bell is activated.",
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/post-action-bar#PostActionBar",
+      "name": "PostActionBar",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { PostActionBar } from \"~/components/post-action-bar\";",
+      "usageCount": 4,
+      "nodeIds": [
+        "post-action-bar-1",
+        "post-action-bar-2",
+        "post-action-bar-3",
+        "post-action-bar-4"
+      ],
+      "usedProps": {
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/post-action-bar#PostActionBar",
+        "name": "PostActionBar",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/post-action-bar.tsx",
+          "exportName": "PostActionBar",
+          "specifier": "~/components/post-action-bar"
+        },
+        "props": {
+          "post": {
+            "kind": "json",
+            "description": "The post whose counts and liked state are shown.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "PostModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "author",
+                  "type": "AuthorModel"
+                },
+                {
+                  "name": "body",
+                  "type": "string"
+                },
+                {
+                  "name": "createdAt",
+                  "type": "string",
+                  "description": "ISO 8601 timestamp."
+                },
+                {
+                  "name": "visibility",
+                  "type": "Visibility"
+                },
+                {
+                  "name": "replyCount",
+                  "type": "number"
+                },
+                {
+                  "name": "repostCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likeCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likedByViewer",
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          "onReplyPress": {
+            "kind": "function",
+            "description": "Fired when reply is activated.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          },
+          "onRepostPress": {
+            "kind": "function",
+            "description": "Fired when repost is activated.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          },
+          "onLikePress": {
+            "kind": "function",
+            "description": "Fired when like is activated.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the size of the buttons.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/post-author-line#PostAuthorLine",
+      "name": "PostAuthorLine",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { PostAuthorLine } from \"~/components/post-author-line\";",
+      "usageCount": 4,
+      "nodeIds": [
+        "post-author-line-1",
+        "post-author-line-2",
+        "post-author-line-3",
+        "post-author-line-4"
+      ],
+      "usedProps": {
+        "label": [
+          "2h",
+          "3h",
+          "5h",
+          "14h"
+        ]
+      },
+      "usedSlots": [
+        "avatar"
+      ],
+      "manifest": {
+        "id": "src/components/post-author-line#PostAuthorLine",
+        "name": "PostAuthorLine",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/post-author-line.tsx",
+          "exportName": "PostAuthorLine",
+          "specifier": "~/components/post-author-line"
+        },
+        "props": {
+          "author": {
+            "kind": "json",
+            "description": "Who wrote the post.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "AuthorModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "displayName",
+                  "type": "string"
+                },
+                {
+                  "name": "handle",
+                  "type": "string",
+                  "description": "Without the leading \"@\"."
+                },
+                {
+                  "name": "avatarUrl",
+                  "type": "string"
+                },
+                {
+                  "name": "verified",
+                  "type": "boolean",
+                  "optional": true
+                }
+              ]
+            }
+          },
+          "label": {
+            "kind": "string",
+            "description": "Relative time since the post, already formatted, e.g. \"2h\".",
+            "required": true
+          },
+          "visibility": {
+            "kind": "enum",
+            "description": "When set, a small badge naming the audience is shown.",
+            "options": [
+              "public",
+              "followers",
+              "circle",
+              "unlisted"
+            ]
+          }
+        },
+        "slots": {
+          "avatar": {
+            "description": "Slot for the author's avatar.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/post-card#PostCard",
+      "name": "PostCard",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { PostCard } from \"~/components/post-card\";",
+      "usageCount": 4,
+      "nodeIds": [
+        "post-card-1",
+        "post-card-2",
+        "post-card-3",
+        "post-card-4"
+      ],
+      "usedProps": {
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [
+        "authorLine",
+        "actions",
+        "quoted",
+        "media"
+      ],
+      "manifest": {
+        "id": "src/components/post-card#PostCard",
+        "name": "PostCard",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/post-card.tsx",
+          "exportName": "PostCard",
+          "specifier": "~/components/post-card"
+        },
+        "props": {
+          "post": {
+            "kind": "json",
+            "description": "The post to render; the body text is read from it.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "PostModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "author",
+                  "type": "AuthorModel"
+                },
+                {
+                  "name": "body",
+                  "type": "string"
+                },
+                {
+                  "name": "createdAt",
+                  "type": "string",
+                  "description": "ISO 8601 timestamp."
+                },
+                {
+                  "name": "visibility",
+                  "type": "Visibility"
+                },
+                {
+                  "name": "replyCount",
+                  "type": "number"
+                },
+                {
+                  "name": "repostCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likeCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likedByViewer",
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the card padding and body text size.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {
+          "authorLine": {
+            "description": "Slot above the body, holding the author and timestamp.",
+            "required": true
+          },
+          "actions": {
+            "description": "Slot below the body, holding the reply/repost/like controls.",
+            "required": true
+          },
+          "media": {
+            "description": "Slot for attached images."
+          },
+          "quoted": {
+            "description": "Slot for a post this one quotes."
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/post-composer#PostComposer",
+      "name": "PostComposer",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { PostComposer } from \"~/components/post-composer\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "post-composer-1"
+      ],
+      "usedProps": {
+        "draft": [
+          ""
+        ],
+        "visibility": [
+          "public"
+        ],
+        "submitLabel": [
+          "Post"
+        ]
+      },
+      "usedSlots": [
+        "visibilityPicker"
+      ],
+      "manifest": {
+        "id": "src/components/post-composer#PostComposer",
+        "name": "PostComposer",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/post-composer.tsx",
+          "exportName": "PostComposer",
+          "specifier": "~/components/post-composer"
+        },
+        "props": {
+          "viewer": {
+            "kind": "json",
+            "description": "The signed-in user, whose avatar sits beside the field.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "AuthorModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "displayName",
+                  "type": "string"
+                },
+                {
+                  "name": "handle",
+                  "type": "string",
+                  "description": "Without the leading \"@\"."
+                },
+                {
+                  "name": "avatarUrl",
+                  "type": "string"
+                },
+                {
+                  "name": "verified",
+                  "type": "boolean",
+                  "optional": true
+                }
+              ]
+            }
+          },
+          "draft": {
+            "kind": "string",
+            "description": "Current text of the post being written.",
+            "required": true
+          },
+          "visibility": {
+            "kind": "enum",
+            "description": "Audience the draft will be posted to.",
+            "required": true,
+            "options": [
+              "public",
+              "followers",
+              "circle",
+              "unlisted"
+            ]
+          },
+          "onDraftChange": {
+            "kind": "function",
+            "description": "Fired on every keystroke with the next draft text.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "(draft: string) => void"
+            ]
+          },
+          "onSubmitPress": {
+            "kind": "function",
+            "description": "Fired when the submit button is activated.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          },
+          "submitLabel": {
+            "kind": "string",
+            "description": "Text of the submit button.",
+            "defaultValue": "Post"
+          }
+        },
+        "slots": {
+          "visibilityPicker": {
+            "description": "Slot for the control that changes the audience.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/post-media#PostMedia",
+      "name": "PostMedia",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { PostMedia } from \"~/components/post-media\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "post-media-1"
+      ],
+      "usedProps": {
+        "images": [
+          [
+            {
+              "url": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800",
+              "alt": "Morning light across a still canal"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
+              "alt": "Low fog over the water by the studio"
+            }
+          ]
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/post-media#PostMedia",
+        "name": "PostMedia",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/post-media.tsx",
+          "exportName": "PostMedia",
+          "specifier": "~/components/post-media"
+        },
+        "props": {
+          "images": {
+            "kind": "json",
+            "description": "Attached images, laid out in a one- or two-column grid.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "object",
+              "array": true,
+              "fields": [
+                {
+                  "name": "url",
+                  "type": "string"
+                },
+                {
+                  "name": "alt",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the gap between images and their height.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/quoted-post#QuotedPost",
+      "name": "QuotedPost",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { QuotedPost } from \"~/components/quoted-post\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "quoted-post-1"
+      ],
+      "usedProps": {},
+      "usedSlots": [
+        "avatar"
+      ],
+      "manifest": {
+        "id": "src/components/quoted-post#QuotedPost",
+        "name": "QuotedPost",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/quoted-post.tsx",
+          "exportName": "QuotedPost",
+          "specifier": "~/components/quoted-post"
+        },
+        "props": {
+          "post": {
+            "kind": "json",
+            "description": "The post being quoted.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "PostModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "author",
+                  "type": "AuthorModel"
+                },
+                {
+                  "name": "body",
+                  "type": "string"
+                },
+                {
+                  "name": "createdAt",
+                  "type": "string",
+                  "description": "ISO 8601 timestamp."
+                },
+                {
+                  "name": "visibility",
+                  "type": "Visibility"
+                },
+                {
+                  "name": "replyCount",
+                  "type": "number"
+                },
+                {
+                  "name": "repostCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likeCount",
+                  "type": "number"
+                },
+                {
+                  "name": "likedByViewer",
+                  "type": "boolean"
+                }
+              ]
+            }
+          }
+        },
+        "slots": {
+          "avatar": {
+            "description": "Slot for the quoted author's avatar.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/search-field#SearchField",
+      "name": "SearchField",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { SearchField } from \"~/components/search-field\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "search-field-1"
+      ],
+      "usedProps": {
+        "value": [
+          ""
+        ],
+        "placeholder": [
+          "Search Yosegi"
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/search-field#SearchField",
+        "name": "SearchField",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/search-field.tsx",
+          "exportName": "SearchField",
+          "specifier": "~/components/search-field"
+        },
+        "props": {
+          "value": {
+            "kind": "string",
+            "description": "Current query text.",
+            "required": true
+          },
+          "placeholder": {
+            "kind": "string",
+            "defaultValue": "Search"
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Control size.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          },
+          "onQueryChange": {
+            "kind": "function",
+            "description": "Fired on every keystroke with the next query text.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "(value: string) => void"
+            ]
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/suggested-user-panel#SuggestedUserPanel",
+      "name": "SuggestedUserPanel",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { SuggestedUserPanel } from \"~/components/suggested-user-panel\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "suggested-user-panel-1"
+      ],
+      "usedProps": {
+        "heading": [
+          "Who to follow"
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/suggested-user-panel#SuggestedUserPanel",
+        "name": "SuggestedUserPanel",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/suggested-user-panel.tsx",
+          "exportName": "SuggestedUserPanel",
+          "specifier": "~/components/suggested-user-panel"
+        },
+        "props": {
+          "heading": {
+            "kind": "string",
+            "description": "Panel title, e.g. \"Who to follow\".",
+            "required": true
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the panel padding and row spacing.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {
+          "rows": {
+            "description": "Slot for the rows of the panel.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/timeline-header#TimelineHeader",
+      "name": "TimelineHeader",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { TimelineHeader } from \"~/components/timeline-header\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "timeline-header-1"
+      ],
+      "usedProps": {},
+      "usedSlots": [
+        "search",
+        "notifications"
+      ],
+      "manifest": {
+        "id": "src/components/timeline-header#TimelineHeader",
+        "name": "TimelineHeader",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/timeline-header.tsx",
+          "exportName": "TimelineHeader",
+          "specifier": "~/components/timeline-header"
+        },
+        "props": {
+          "viewer": {
+            "kind": "json",
+            "description": "The signed-in user, shown on the left.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "AuthorModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "displayName",
+                  "type": "string"
+                },
+                {
+                  "name": "handle",
+                  "type": "string",
+                  "description": "Without the leading \"@\"."
+                },
+                {
+                  "name": "avatarUrl",
+                  "type": "string"
+                },
+                {
+                  "name": "verified",
+                  "type": "boolean",
+                  "optional": true
+                }
+              ]
+            }
+          },
+          "onViewerPress": {
+            "kind": "function",
+            "description": "Fired when the viewer block is activated.",
+            "editable": false,
+            "signatures": [
+              "() => void"
+            ]
+          }
+        },
+        "slots": {
+          "search": {
+            "description": "Slot for the search control.",
+            "required": true
+          },
+          "notifications": {
+            "description": "Slot for the notification control.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/trend-panel#TrendPanel",
+      "name": "TrendPanel",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { TrendPanel } from \"~/components/trend-panel\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "trend-panel-1"
+      ],
+      "usedProps": {
+        "heading": [
+          "Trending now"
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/trend-panel#TrendPanel",
+        "name": "TrendPanel",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/trend-panel.tsx",
+          "exportName": "TrendPanel",
+          "specifier": "~/components/trend-panel"
+        },
+        "props": {
+          "heading": {
+            "kind": "string",
+            "description": "Panel title, e.g. \"Trending now\".",
+            "required": true
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the panel padding and row spacing.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {
+          "items": {
+            "description": "Slot for the rows of the panel.",
+            "required": true
+          }
+        },
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/user-avatar#UserAvatar",
+      "name": "UserAvatar",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { UserAvatar } from \"~/components/user-avatar\";",
+      "usageCount": 5,
+      "nodeIds": [
+        "user-avatar-1",
+        "user-avatar-2",
+        "user-avatar-3",
+        "user-avatar-4",
+        "user-avatar-5"
+      ],
+      "usedProps": {
+        "density": [
+          "cozy",
+          "compact"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/user-avatar#UserAvatar",
+        "name": "UserAvatar",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/user-avatar.tsx",
+          "exportName": "UserAvatar",
+          "specifier": "~/components/user-avatar"
+        },
+        "props": {
+          "author": {
+            "kind": "json",
+            "description": "The whole author; the image, alt text and initials all come from it.",
+            "required": true,
+            "editable": false,
+            "shape": {
+              "type": "AuthorModel",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "name": "displayName",
+                  "type": "string"
+                },
+                {
+                  "name": "handle",
+                  "type": "string",
+                  "description": "Without the leading \"@\"."
+                },
+                {
+                  "name": "avatarUrl",
+                  "type": "string"
+                },
+                {
+                  "name": "verified",
+                  "type": "boolean",
+                  "optional": true
+                }
+              ]
+            }
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Drives the avatar diameter.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "id": "src/components/visibility-picker#VisibilityPicker",
+      "name": "VisibilityPicker",
+      "synthetic": false,
+      "unregistered": false,
+      "importStatement": "import { VisibilityPicker } from \"~/components/visibility-picker\";",
+      "usageCount": 1,
+      "nodeIds": [
+        "visibility-picker-1"
+      ],
+      "usedProps": {
+        "visibility": [
+          "public"
+        ],
+        "density": [
+          "cozy"
+        ]
+      },
+      "usedSlots": [],
+      "manifest": {
+        "id": "src/components/visibility-picker#VisibilityPicker",
+        "name": "VisibilityPicker",
+        "category": "src/components",
+        "import": {
+          "packageName": "./src/components/visibility-picker.tsx",
+          "exportName": "VisibilityPicker",
+          "specifier": "~/components/visibility-picker"
+        },
+        "props": {
+          "visibility": {
+            "kind": "enum",
+            "description": "The currently selected audience.",
+            "required": true,
+            "options": [
+              "public",
+              "followers",
+              "circle",
+              "unlisted"
+            ]
+          },
+          "onVisibilityChange": {
+            "kind": "function",
+            "description": "Fired with the audience the user picked.",
+            "required": true,
+            "editable": false,
+            "signatures": [
+              "(visibility: Visibility) => void"
+            ]
+          },
+          "density": {
+            "kind": "enum",
+            "description": "Control size.",
+            "options": [
+              "compact",
+              "cozy",
+              "roomy"
+            ],
+            "defaultValue": "cozy"
+          }
+        },
+        "slots": {},
+        "propsFromTypes": true,
+        "curation": {
+          "recommended": false
+        }
+      }
+    }
+  ],
+  "imports": [
+    "import { AppShell } from \"~/components/app-shell\";",
+    "import { FeedTabs } from \"~/components/feed-tabs\";",
+    "import { NotificationBell } from \"~/components/notification-bell\";",
+    "import { PostActionBar } from \"~/components/post-action-bar\";",
+    "import { PostAuthorLine } from \"~/components/post-author-line\";",
+    "import { PostCard } from \"~/components/post-card\";",
+    "import { PostComposer } from \"~/components/post-composer\";",
+    "import { PostMedia } from \"~/components/post-media\";",
+    "import { QuotedPost } from \"~/components/quoted-post\";",
+    "import { SearchField } from \"~/components/search-field\";",
+    "import { SuggestedUserPanel } from \"~/components/suggested-user-panel\";",
+    "import { TimelineHeader } from \"~/components/timeline-header\";",
+    "import { TrendPanel } from \"~/components/trend-panel\";",
+    "import { UserAvatar } from \"~/components/user-avatar\";",
+    "import { VisibilityPicker } from \"~/components/visibility-picker\";"
+  ],
+  "tasks": [
+    {
+      "kind": "binding",
+      "nodeId": "timeline-header-1",
+      "component": "src/components/timeline-header#TimelineHeader",
+      "path": "$.header[0]",
+      "prop": "viewer",
+      "expression": "viewer"
+    },
+    {
+      "kind": "binding",
+      "nodeId": "post-composer-1",
+      "component": "src/components/post-composer#PostComposer",
+      "path": "$.main[1]",
+      "prop": "viewer",
+      "expression": "viewer"
+    }
+  ],
+  "target": {
+    "route": "/timeline",
+    "preferredPath": null
+  },
+  "implementation": {
+    "framework": null,
+    "routing": null,
+    "allowRawHtml": false,
+    "allowCustomCss": false
+  },
+  "requirements": [
+    "Do not change the components or props specified in the Screen Definition.",
+    "Make bindings and events concrete by following the host's existing implementation (API client, state management).",
+    "Follow the host's naming and testing conventions, then run type checking, lint, and the related tests."
+  ]
+}

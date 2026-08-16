@@ -1,0 +1,361 @@
+{
+	"schemaVersion": "1.0",
+	"id": "TimelineScreen",
+	"name": "TimelineScreen",
+	"status": "draft",
+	"componentRegistryVersion": "src:01051c921b30",
+	"revision": 0,
+	"fixtures": {
+		"viewer": {
+			"id": "u-viewer",
+			"displayName": "Nao Kurata",
+			"handle": "nao",
+			"avatarUrl": "https://i.pravatar.cc/160?img=15",
+			"verified": true
+		},
+		"rin": {
+			"id": "u-rin",
+			"displayName": "Rin Amano",
+			"handle": "rin",
+			"avatarUrl": "https://i.pravatar.cc/160?img=32",
+			"verified": true
+		},
+		"kai": {
+			"id": "u-kai",
+			"displayName": "Kai Doi",
+			"handle": "kai",
+			"avatarUrl": "https://i.pravatar.cc/160?img=12"
+		},
+		"mio": {
+			"id": "u-mio",
+			"displayName": "Mio Sato",
+			"handle": "mio",
+			"avatarUrl": "https://i.pravatar.cc/160?img=45",
+			"verified": true
+		},
+		"jun": {
+			"id": "u-jun",
+			"displayName": "Jun Ito",
+			"handle": "jun",
+			"avatarUrl": "https://i.pravatar.cc/160?img=68"
+		},
+		"trends": [
+			{
+				"id": "t-1",
+				"label": "#TypeDrivenUI",
+				"postCount": 18400,
+				"category": "Technology"
+			},
+			{
+				"id": "t-2",
+				"label": "Storybook 9",
+				"postCount": 9320,
+				"category": "Technology"
+			},
+			{
+				"id": "t-3",
+				"label": "Canal light",
+				"postCount": 2140
+			}
+		]
+	},
+	"root": {
+		"id": "app-shell-1",
+		"component": "src/components/app-shell#AppShell",
+		"props": {
+			"density": "cozy"
+		},
+		"slots": {
+			"header": [
+				{
+					"id": "timeline-header-1",
+					"component": "src/components/timeline-header#TimelineHeader",
+					"props": {},
+					"slots": {
+						"search": [
+							{
+								"id": "search-field-1",
+								"component": "src/components/search-field#SearchField",
+								"props": {
+									"value": "",
+									"placeholder": "Search Yosegi",
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						],
+						"notifications": [
+							{
+								"id": "notification-bell-1",
+								"component": "src/components/notification-bell#NotificationBell",
+								"props": {
+									"unreadCount": 7,
+									"tone": "quiet"
+								},
+								"slots": {}
+							}
+						]
+					},
+					"bindings": {
+						"viewer": "viewer"
+					}
+				}
+			],
+			"main": [
+				{
+					"id": "feed-tabs-1",
+					"component": "src/components/feed-tabs#FeedTabs",
+					"props": {
+						"activeFeed": "for-you",
+						"density": "cozy"
+					},
+					"slots": {}
+				},
+				{
+					"id": "post-composer-1",
+					"component": "src/components/post-composer#PostComposer",
+					"props": {
+						"draft": "",
+						"visibility": "public",
+						"submitLabel": "Post"
+					},
+					"slots": {
+						"visibilityPicker": [
+							{
+								"id": "visibility-picker-1",
+								"component": "src/components/visibility-picker#VisibilityPicker",
+								"props": {
+									"visibility": "public",
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						]
+					},
+					"bindings": {
+						"viewer": "viewer"
+					}
+				},
+				{
+					"id": "post-card-1",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-author-line-1",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"label": "2h"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "user-avatar-1",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"density": "cozy"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-action-bar-1",
+								"component": "src/components/post-action-bar#PostActionBar",
+								"props": {
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-2",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-author-line-2",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"label": "3h"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "user-avatar-2",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"density": "cozy"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"quoted": [
+							{
+								"id": "quoted-post-1",
+								"component": "src/components/quoted-post#QuotedPost",
+								"props": {},
+								"slots": {
+									"avatar": [
+										{
+											"id": "user-avatar-3",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"density": "compact"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-action-bar-2",
+								"component": "src/components/post-action-bar#PostActionBar",
+								"props": {
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-3",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-author-line-3",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"label": "5h"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "user-avatar-4",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"density": "cozy"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"media": [
+							{
+								"id": "post-media-1",
+								"component": "src/components/post-media#PostMedia",
+								"props": {
+									"images": [
+										{
+											"url": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800",
+											"alt": "Morning light across a still canal"
+										},
+										{
+											"url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
+											"alt": "Low fog over the water by the studio"
+										}
+									],
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-action-bar-3",
+								"component": "src/components/post-action-bar#PostActionBar",
+								"props": {
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-4",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"density": "cozy"
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "post-author-line-4",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"label": "14h"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "user-avatar-5",
+											"component": "src/components/user-avatar#UserAvatar",
+											"props": {
+												"density": "cozy"
+											},
+											"slots": {}
+										}
+									]
+								}
+							}
+						],
+						"actions": [
+							{
+								"id": "post-action-bar-4",
+								"component": "src/components/post-action-bar#PostActionBar",
+								"props": {
+									"density": "cozy"
+								},
+								"slots": {}
+							}
+						]
+					}
+				}
+			],
+			"sidebar": [
+				{
+					"id": "trend-panel-1",
+					"component": "src/components/trend-panel#TrendPanel",
+					"props": {
+						"heading": "Trending now",
+						"density": "cozy"
+					},
+					"slots": {}
+				},
+				{
+					"id": "suggested-user-panel-1",
+					"component": "src/components/suggested-user-panel#SuggestedUserPanel",
+					"props": {
+						"heading": "Who to follow",
+						"density": "cozy"
+					},
+					"slots": {}
+				}
+			]
+		}
+	}
+}

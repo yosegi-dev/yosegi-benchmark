@@ -1,0 +1,22 @@
+{
+	"name": "@bench/mui",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"dependencies": {
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"@mui/icons-material": "^9",
+		"@mui/material": "^9",
+		"react": "^19",
+		"react-dom": "^19"
+	},
+	"devDependencies": {
+		"@storybook/react-vite": "^9",
+		"storybook": "^9",
+		"vite": "^7"
+	},
+	"scripts": {
+		"storybook": "storybook"
+	}
+}

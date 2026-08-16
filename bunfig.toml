@@ -1,0 +1,5 @@
+[install]
+# Hoisted, unlike the Yosegi repository itself. These hosts stand in for ordinary
+# product repositories, and an ordinary repository does not turn on the isolated
+# linker — a host that resolves its dependencies the usual way is the point.
+linker = "hoisted"

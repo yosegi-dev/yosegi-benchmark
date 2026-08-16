@@ -1,0 +1,43 @@
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import type { ReactNode } from "react";
+
+export interface ReactionToolbarProps {
+	/** Name of the surface the toolbar belongs to. */
+	label: string;
+	/** Controls at the leading edge. */
+	leading?: ReactNode;
+	/** Controls at the trailing edge. */
+	trailing?: ReactNode;
+	/** Tightens the height. */
+	dense?: boolean;
+	/** Draws a divider under the toolbar. */
+	divided?: boolean;
+}
+
+export function ReactionToolbar({ label, leading, trailing, dense = false, divided = true }: ReactionToolbarProps) {
+	return (
+		<Paper
+			variant="outlined"
+			square
+			sx={{
+				px: 1.5,
+				py: dense ? 0.5 : 1,
+				borderBottomWidth: divided ? 1 : 0,
+				borderRadius: 0,
+			}}
+		>
+			<Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
+				{leading}
+				<Typography variant="subtitle2" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>
+					{label}
+				</Typography>
+				<Divider orientation="vertical" flexItem sx={{ mx: 0.5 }} />
+				<Box sx={{ ml: "auto", display: "flex", alignItems: "center", gap: 1 }}>{trailing}</Box>
+			</Stack>
+		</Paper>
+	);
+}
