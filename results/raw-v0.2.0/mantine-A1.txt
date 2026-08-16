@@ -1,0 +1,42 @@
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(95,4): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(96,44): error TS2322: Type '{ viewer: { id: string; displayName: string; handle: string; avatarUrl: string; }; notificationCount: number; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
+  Property 'notificationCount' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'. Did you mean 'notifications'?
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(99,7): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'TrendPanelProps': heading, items
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(101,9): error TS2741: Property 'rank' is missing in type '{ key: string; trend: { id: string; label: string; category: string; postCount: number; }; }' but required in type 'TrendItemProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(104,7): error TS2739: Type '{ children: Element[]; }' is missing the following properties from type 'SuggestedUserPanelProps': heading, rows
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(106,9): error TS2322: Type '{ children: Element; key: string; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(107,41): error TS2322: Type '{ following: false; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onClick' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(114,14): error TS2322: Type '{ value: string; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
+  Property 'value' does not exist on type 'IntrinsicAttributes & FeedTabsProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(117,5): error TS2322: Type '{ value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
+  Property 'value' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(124,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(125,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(128,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(135,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(136,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(138,17): error TS2739: Type '{ id: string; author: { id: string; displayName: string; handle: string; avatarUrl: string; }; text: string; timestamp: string; visibility: "public"; replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is missing the following properties from type 'PostModel': body, createdAt, likedByViewer
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(140,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(147,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(148,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(152,7): error TS2322: Type 'string' is not assignable to type '{ url: string; alt: string; }'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(153,7): error TS2322: Type 'string' is not assignable to type '{ url: string; alt: string; }'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(157,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(164,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(165,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mantine/src/__score__/TimelineScreen.stories.tsx(168,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+  Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
