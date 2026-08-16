@@ -1,0 +1,67 @@
+=== story import (exit 1) ===
+{
+  "error": {
+    "code": "STORY_NOT_FOUND",
+    "message": "No Story with a render function was found. Import only reads a Story whose export has a render function; a `component` + `args` Story carries no structure, so read the Story file directly instead of importing it.",
+    "file": "TimelineScreen.stories.tsx",
+    "warnings": [
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"noop\" is not a JSON literal, so it was not imported as a fixture: () => {}",
+        "nodeId": null,
+        "line": 22
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"postOne\" is not a JSON literal, so it was not imported as a fixture: {\n\tid: \"p-1\",\n\tauthor: rin,\n\tbody: \"Shipped the new timeline layout today. Two columns, one main feed, and the sidebar finally stops fighting the content.\",\n\tcreatedAt: \"2024-05-02T09:12:00.000Z\",\n\tvisibility: \"public\",\n\treplyCount: 12,\n\trepostCount: 48,\n\tlikeCount: 310,\n\tlikedByViewer: true,\n}",
+        "nodeId": null,
+        "line": 60
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"postTwo\" is not a JSON literal, so it was not imported as a fixture: {\n\tid: \"p-2\",\n\tauthor: kai,\n\tbody: \"This is the part people underrate: the sidebar is a layout problem, not a content problem.\",\n\tcreatedAt: \"2024-05-02T08:40:00.000Z\",\n\tvisibility: \"followers\",\n\treplyCount: 5,\n\trepostCount: 17,\n\tlikeCount: 94,\n\tlikedByViewer: false,\n}",
+        "nodeId": null,
+        "line": 72
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"postThree\" is not a JSON literal, so it was not imported as a fixture: {\n\tid: \"p-3\",\n\tauthor: mio,\n\tbody: \"Two shots from this morning's walk before the rain came in.\",\n\tcreatedAt: \"2024-05-02T07:55:00.000Z\",\n\tvisibility: \"public\",\n\treplyCount: 8,\n\trepostCount: 23,\n\tlikeCount: 176,\n\tlikedByViewer: false,\n}",
+        "nodeId": null,
+        "line": 84
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"postFour\" is not a JSON literal, so it was not imported as a fixture: {\n\tid: \"p-4\",\n\tauthor: jun,\n\tbody: \"Small circle post: still not convinced that infinite scroll beats a plain paginated feed.\",\n\tcreatedAt: \"2024-05-02T06:30:00.000Z\",\n\tvisibility: \"circle\",\n\treplyCount: 3,\n\trepostCount: 6,\n\tlikeCount: 41,\n\tlikedByViewer: false,\n}",
+        "nodeId": null,
+        "line": 96
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"suggestions\" is not a JSON literal, so it was not imported as a fixture: [\n\t{ author: rin, reason: \"Followed by @kai\", following: false },\n\t{ author: mio, reason: \"Followed by @rin and 4 others\", following: false },\n\t{ author: jun, reason: \"New to your circle\", following: true },\n]",
+        "nodeId": null,
+        "line": 114
+      },
+      {
+        "code": "OPAQUE_FIXTURE",
+        "message": "Top-level \"meta\" is not a JSON literal, so it was not imported as a fixture: {\n\ttitle: \"Screens/TimelineScreen\",\n\tcomponent: TimelineScreen,\n\tparameters: { layout: \"fullscreen\" },\n} satisfies Meta<typeof TimelineScreen>",
+        "nodeId": null,
+        "line": 266
+      },
+      {
+        "code": "STORY_NOT_FOUND",
+        "message": "No Story with a render function was found. Import only reads a Story whose export has a render function; a `component` + `args` Story carries no structure, so read the Story file directly instead of importing it.",
+        "nodeId": null,
+        "line": null
+      }
+    ]
+  }
+}
+
+=== screen context ===
+{
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "ENOENT: no such file or directory, open 'screen.json'"
+  }
+}
+EXIT=1

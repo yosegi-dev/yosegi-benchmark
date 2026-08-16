@@ -16,172 +16,187 @@ import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 
-const viewer = {
-	id: "u-viewer",
-	displayName: "Aoi Nakamura",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/150?img=15",
-};
-
-const rin = {
-	id: "u-rin",
-	displayName: "Rin Amano",
-	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/150?img=32",
-};
-
-const kai = {
-	id: "u-kai",
-	displayName: "Kai Doi",
-	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/150?img=12",
-};
-
-const mio = {
-	id: "u-mio",
-	displayName: "Mio Sato",
-	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/150?img=45",
-};
-
-const jun = {
-	id: "u-jun",
-	displayName: "Jun Ito",
-	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/150?img=8",
-};
-
-const quotedPost = {
-	id: "post-1",
-	author: rin,
-	text: "Shipped the new timeline renderer this morning. Scroll performance is finally where I wanted it six months ago.",
-	relativeTime: "2h",
-	visibility: "public" as const,
-};
-
-const trends = [
-	{ id: "t-1", category: "Technology", label: "#TypeScript", postCount: 18400 },
-	{ id: "t-2", category: "Design", label: "Design tokens", postCount: 9210 },
-	{ id: "t-3", category: "Trending in Japan", label: "#朝活", postCount: 4380 },
-];
-
-const suggestions = [rin, mio, jun];
-
 const noop = () => {};
 
-const meta: Meta = {
+const TimelineScreen = () => (
+	<AppShell
+		header={
+			<TimelineHeader
+				avatarUrl="https://i.pravatar.cc/80?img=12"
+				displayName="Rin Amano"
+				searchValue=""
+				onSearchChange={noop}
+				notificationCount={3}
+				onNotificationClick={noop}
+			/>
+		}
+		sidebar={
+			<>
+				<TrendPanel title="Trends for you">
+					<TrendItem
+						category="Technology"
+						label="#TypeScript"
+						postCount={12800}
+						onClick={noop}
+					/>
+					<TrendItem
+						category="Design"
+						label="#DesignSystems"
+						postCount={5400}
+						onClick={noop}
+					/>
+					<TrendItem
+						category="Sports"
+						label="#WorldCup"
+						postCount={98200}
+						onClick={noop}
+					/>
+				</TrendPanel>
+				<SuggestedUserPanel title="Who to follow">
+					<SuggestedUserRow
+						displayName="Aoi Kimura"
+						handle="@aoi"
+						avatarUrl="https://i.pravatar.cc/80?img=21"
+						bio="Frontend engineer"
+					>
+						<FollowButton following={false} onToggle={noop} />
+					</SuggestedUserRow>
+					<SuggestedUserRow
+						displayName="Haru Nakano"
+						handle="@haru"
+						avatarUrl="https://i.pravatar.cc/80?img=22"
+						bio="Illustrator"
+					>
+						<FollowButton following={false} onToggle={noop} />
+					</SuggestedUserRow>
+					<SuggestedUserRow
+						displayName="Sora Fujii"
+						handle="@sora"
+						avatarUrl="https://i.pravatar.cc/80?img=23"
+						bio="Product designer"
+					>
+						<FollowButton following={true} onToggle={noop} />
+					</SuggestedUserRow>
+				</SuggestedUserPanel>
+			</>
+		}
+	>
+		<FeedTabs value="for-you" onChange={noop} />
+		<PostComposer
+			value=""
+			onChange={noop}
+			visibility="public"
+			onVisibilityChange={noop}
+			onSubmit={noop}
+			avatarUrl="https://i.pravatar.cc/80?img=12"
+			placeholder="What's happening?"
+		/>
+
+		<PostCard visibility="public">
+			<PostAuthorLine
+				displayName="Rin Amano"
+				handle="@rin"
+				avatarUrl="https://i.pravatar.cc/80?img=12"
+				relativeTime="2h"
+			/>
+			<PostBody text="Shipped the new timeline layout today. Two columns, and it finally feels right on a wide screen." />
+			<PostActionBar
+				replyCount={12}
+				repostCount={48}
+				likeCount={310}
+				liked={true}
+				onReply={noop}
+				onRepost={noop}
+				onLike={noop}
+			/>
+		</PostCard>
+
+		<PostCard visibility="followers">
+			<PostAuthorLine
+				displayName="Kai Doi"
+				handle="@kai"
+				avatarUrl="https://i.pravatar.cc/80?img=13"
+				relativeTime="1h"
+			/>
+			<PostBody text="This is exactly the direction I was hoping for." />
+			<QuotedPost
+				displayName="Rin Amano"
+				handle="@rin"
+				avatarUrl="https://i.pravatar.cc/80?img=12"
+				relativeTime="2h"
+				text="Shipped the new timeline layout today. Two columns, and it finally feels right on a wide screen."
+			/>
+			<PostActionBar
+				replyCount={4}
+				repostCount={9}
+				likeCount={57}
+				liked={false}
+				onReply={noop}
+				onRepost={noop}
+				onLike={noop}
+			/>
+		</PostCard>
+
+		<PostCard visibility="public">
+			<PostAuthorLine
+				displayName="Mio Sato"
+				handle="@mio"
+				avatarUrl="https://i.pravatar.cc/80?img=14"
+				relativeTime="45m"
+			/>
+			<PostBody text="Two shots from this morning's walk along the river." />
+			<PostMedia
+				images={[
+					{
+						src: "https://picsum.photos/id/1015/640/480",
+						alt: "River at sunrise",
+					},
+					{
+						src: "https://picsum.photos/id/1016/640/480",
+						alt: "Bridge over the river",
+					},
+				]}
+			/>
+			<PostActionBar
+				replyCount={7}
+				repostCount={21}
+				likeCount={164}
+				liked={false}
+				onReply={noop}
+				onRepost={noop}
+				onLike={noop}
+			/>
+		</PostCard>
+
+		<PostCard visibility="circle">
+			<PostAuthorLine
+				displayName="Jun Ito"
+				handle="@jun"
+				avatarUrl="https://i.pravatar.cc/80?img=15"
+				relativeTime="10m"
+			/>
+			<PostBody text="Quiet note for the circle: the migration is done and nothing broke." />
+			<PostActionBar
+				replyCount={2}
+				repostCount={1}
+				likeCount={18}
+				liked={false}
+				onReply={noop}
+				onRepost={noop}
+				onLike={noop}
+			/>
+		</PostCard>
+	</AppShell>
+);
+
+const meta = {
 	title: "Screens/TimelineScreen",
-};
+	component: TimelineScreen,
+	parameters: {
+		layout: "fullscreen",
+	},
+} satisfies Meta<typeof TimelineScreen>;
 
 export default meta;
 
-export const Timeline: StoryObj<typeof meta> = {
-	render: () => (
-		<AppShell
-			header={
-				<TimelineHeader
-					user={viewer}
-					searchValue=""
-					onSearchChange={noop}
-					notificationCount={3}
-				/>
-			}
-			sidebar={
-				<>
-					<TrendPanel title="Trends for you">
-						{trends.map((trend) => (
-							<TrendItem key={trend.id} trend={trend} onClick={noop} />
-						))}
-					</TrendPanel>
-					<SuggestedUserPanel title="Who to follow">
-						{suggestions.map((user) => (
-							<SuggestedUserRow key={user.id} user={user}>
-								<FollowButton following={false} onToggle={noop} />
-							</SuggestedUserRow>
-						))}
-					</SuggestedUserPanel>
-				</>
-			}
-		>
-			<FeedTabs value="for-you" onChange={noop} />
-
-			<PostComposer
-				value=""
-				onChange={noop}
-				visibility="public"
-				onVisibilityChange={noop}
-				onSubmit={noop}
-				placeholder="What's happening?"
-			/>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={rin} relativeTime="2h" />
-				<PostBody text="Shipped the new timeline renderer this morning. Scroll performance is finally where I wanted it six months ago." />
-				<PostActionBar
-					replyCount={12}
-					repostCount={48}
-					likeCount={310}
-					liked
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
-			</PostCard>
-
-			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} relativeTime="1h" />
-				<PostBody text="This is the part everyone skips: the win was in the measurement, not the rewrite." />
-				<QuotedPost post={quotedPost} />
-				<PostActionBar
-					replyCount={5}
-					repostCount={21}
-					likeCount={96}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
-			</PostCard>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={mio} relativeTime="34m" />
-				<PostBody text="Two shots from this morning's walk before the studio opened." />
-				<PostMedia
-					images={[
-						{
-							src: "https://picsum.photos/id/1015/800/600",
-							alt: "A river running between pine-covered hills",
-						},
-						{
-							src: "https://picsum.photos/id/1025/800/600",
-							alt: "A quiet street at dawn",
-						},
-					]}
-				/>
-				<PostActionBar
-					replyCount={3}
-					repostCount={9}
-					likeCount={142}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
-			</PostCard>
-
-			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} relativeTime="12m" />
-				<PostBody text="Small circle question: what is the smallest change you made this year that you would not undo?" />
-				<PostActionBar
-					replyCount={8}
-					repostCount={2}
-					likeCount={37}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
-			</PostCard>
-		</AppShell>
-	),
-};
+export const Default: StoryObj<typeof meta> = {};

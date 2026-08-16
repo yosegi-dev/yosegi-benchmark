@@ -23,53 +23,58 @@ const viewer = {
 	id: "u-viewer",
 	displayName: "Aoi Kimura",
 	handle: "aoi",
-	avatarUrl: "https://placehold.co/96x96/png?text=A",
+	avatarUrl: "https://i.pravatar.cc/96?img=15",
 };
 
 const rin = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://placehold.co/96x96/png?text=R",
+	avatarUrl: "https://i.pravatar.cc/96?img=1",
 };
 
 const kai = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://placehold.co/96x96/png?text=K",
+	avatarUrl: "https://i.pravatar.cc/96?img=12",
 };
 
 const mio = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://placehold.co/96x96/png?text=M",
+	avatarUrl: "https://i.pravatar.cc/96?img=5",
 };
 
 const jun = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://placehold.co/96x96/png?text=J",
+	avatarUrl: "https://i.pravatar.cc/96?img=8",
 };
 
-const noop = () => {};
+const meta: Meta<typeof AppShell> = {
+	title: "Screens/TimelineScreen",
+	component: AppShell,
+	parameters: {
+		layout: "fullscreen",
+		viewport: { defaultViewport: "desktop" },
+	},
+};
 
-function TimelineScreen() {
-	return (
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+	render: () => (
 		<AppShell
 			header={
 				<TimelineHeader
-					avatar={<UserAvatar user={viewer} size="medium" />}
-					search={
-						<SearchField
-							value=""
-							onChange={noop}
-							placeholder="Search Yosegi"
-						/>
-					}
-					notifications={<NotificationBell count={3} onClick={noop} />}
+					avatar={<UserAvatar src={viewer.avatarUrl} alt={viewer.displayName} size="md" />}
+					search={<SearchField value="" placeholder="Search" onChange={() => {}} />}
+					actions={<NotificationBell count={3} onClick={() => {}} />}
 				/>
 			}
 			sidebar={
@@ -78,26 +83,29 @@ function TimelineScreen() {
 						<TrendItem
 							trend={{
 								id: "t-1",
+								label: "#FrontendFriday",
 								category: "Technology",
-								label: "#TypeScript",
-								postCount: 18400,
+								postCount: 12400,
 							}}
+							onClick={() => {}}
 						/>
 						<TrendItem
 							trend={{
 								id: "t-2",
+								label: "Design Systems",
 								category: "Design",
-								label: "#DesignSystems",
-								postCount: 9320,
+								postCount: 8210,
 							}}
+							onClick={() => {}}
 						/>
 						<TrendItem
 							trend={{
 								id: "t-3",
-								category: "Tokyo · Trending",
-								label: "#Storybook",
-								postCount: 4210,
+								label: "#TypeScript",
+								category: "Programming",
+								postCount: 5730,
 							}}
+							onClick={() => {}}
 						/>
 					</TrendPanel>
 					<SuggestedUserPanel title="Who to follow">
@@ -106,124 +114,75 @@ function TimelineScreen() {
 								id: "u-hana",
 								displayName: "Hana Kubo",
 								handle: "hana",
-								avatarUrl: "https://placehold.co/96x96/png?text=H",
+								avatarUrl: "https://i.pravatar.cc/96?img=20",
 							}}
-							action={<FollowButton following={false} onClick={noop} />}
-						/>
+						>
+							<FollowButton following={false} onToggle={() => {}} />
+						</SuggestedUserRow>
 						<SuggestedUserRow
 							user={{
 								id: "u-sora",
 								displayName: "Sora Nakai",
 								handle: "sora",
-								avatarUrl: "https://placehold.co/96x96/png?text=S",
+								avatarUrl: "https://i.pravatar.cc/96?img=31",
 							}}
-							action={<FollowButton following={false} onClick={noop} />}
-						/>
+						>
+							<FollowButton following={false} onToggle={() => {}} />
+						</SuggestedUserRow>
 						<SuggestedUserRow
 							user={{
-								id: "u-taku",
-								displayName: "Taku Mori",
-								handle: "taku",
-								avatarUrl: "https://placehold.co/96x96/png?text=T",
+								id: "u-yuki",
+								displayName: "Yuki Hara",
+								handle: "yuki",
+								avatarUrl: "https://i.pravatar.cc/96?img=45",
 							}}
-							action={<FollowButton following={true} onClick={noop} />}
-						/>
+						>
+							<FollowButton following={true} onToggle={() => {}} />
+						</SuggestedUserRow>
 					</SuggestedUserPanel>
 				</>
 			}
 		>
-			<FeedTabs value="for-you" onChange={noop} />
+			<FeedTabs value="for-you" onChange={() => {}} />
 			<PostComposer
-				author={viewer}
 				value=""
-				onChange={noop}
 				visibility="public"
-				onVisibilityChange={noop}
-				onSubmit={noop}
+				onChange={() => {}}
+				onVisibilityChange={() => {}}
+				onSubmit={() => {}}
+				placeholder="What's happening?"
 			/>
 			<PostCard visibility="public">
-				<PostAuthorLine author={rin} time="2h" />
-				<PostBody text="Shipped the new registry pipeline today. Types in, components out, no hand-written config anywhere." />
-				<PostActionBar
-					replyCount={12}
-					repostCount={48}
-					likeCount={310}
-					liked={true}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
+				<PostAuthorLine author={rin} relativeTime="2h" />
+				<PostBody text="Rebuilt the timeline layout today. Two columns, no magic numbers, everything on the spacing scale." />
+				<PostActionBar replyCount={12} repostCount={48} likeCount={310} liked={true} />
 			</PostCard>
 			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} time="1h" />
-				<PostBody text="This is the part everyone underestimates. Generating the screen is easy; making it type-check is the whole job." />
+				<PostAuthorLine author={kai} relativeTime="3h" />
+				<PostBody text="This matches what we landed on last sprint. Sharing for the team." />
 				<QuotedPost
 					author={rin}
-					time="2h"
-					text="Shipped the new registry pipeline today. Types in, components out, no hand-written config anywhere."
+					relativeTime="2h"
+					text="Rebuilt the timeline layout today. Two columns, no magic numbers, everything on the spacing scale."
 				/>
-				<PostActionBar
-					replyCount={5}
-					repostCount={21}
-					likeCount={96}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
+				<PostActionBar replyCount={4} repostCount={9} likeCount={57} liked={false} />
 			</PostCard>
 			<PostCard visibility="public">
-				<PostAuthorLine author={mio} time="45m" />
-				<PostBody text="Two screenshots from the design review this morning. Left is the old spacing scale, right is the new one." />
+				<PostAuthorLine author={mio} relativeTime="5h" />
+				<PostBody text="Two shots from the component review. Before and after the density pass." />
 				<PostMedia
 					images={[
-						{
-							src: "https://placehold.co/640x360/png?text=Before",
-							alt: "Old spacing scale applied to the timeline",
-						},
-						{
-							src: "https://placehold.co/640x360/png?text=After",
-							alt: "New spacing scale applied to the timeline",
-						},
+						{ src: "https://picsum.photos/seed/timeline-a/640/360", alt: "Before the density pass" },
+						{ src: "https://picsum.photos/seed/timeline-b/640/360", alt: "After the density pass" },
 					]}
 				/>
-				<PostActionBar
-					replyCount={8}
-					repostCount={33}
-					likeCount={174}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
+				<PostActionBar replyCount={7} repostCount={21} likeCount={143} liked={false} />
 			</PostCard>
 			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} time="12m" />
-				<PostBody text="Small circle post: the migration is going to take one more sprint than we told anyone. Planning accordingly." />
-				<PostActionBar
-					replyCount={3}
-					repostCount={2}
-					likeCount={27}
-					liked={false}
-					onReply={noop}
-					onRepost={noop}
-					onLike={noop}
-				/>
+				<PostAuthorLine author={jun} relativeTime="8h" />
+				<PostBody text="Small circle note: the follower-only posts still need a clearer badge." />
+				<PostActionBar replyCount={2} repostCount={1} likeCount={18} liked={false} />
 			</PostCard>
 		</AppShell>
-	);
-}
-
-const meta = {
-	title: "Screens/TimelineScreen",
-	component: TimelineScreen,
-	parameters: {
-		layout: "fullscreen",
-	},
-} satisfies Meta<typeof TimelineScreen>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {};
+	),
+};

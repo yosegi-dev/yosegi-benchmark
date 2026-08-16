@@ -19,5 +19,10 @@
 			"~/*": ["./src/*"]
 		}
 	},
-	"include": ["src"]
+	"include": ["src"],
+	// The three arms' stories are copied into src/__screens__ for visual review in
+	// Storybook. Vite strips types without checking them, which is the point — how A1's
+	// type errors render is what a human is being asked to look at. tsc must not see
+	// them: `typecheck` and `score.sh` both rely on the host compiling clean.
+	"exclude": ["src/__screens__"]
 }

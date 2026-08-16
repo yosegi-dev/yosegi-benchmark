@@ -20,8 +20,8 @@ import { VisibilityPicker } from "~/components/visibility-picker";
 import type { AuthorModel, PostModel, TrendModel } from "~/models";
 
 const viewer: AuthorModel = {
-	id: "u-nao",
-	displayName: "Nao Kubo",
+	id: "u-viewer",
+	displayName: "Nao Kimura",
 	handle: "@nao",
 	avatarUrl: "https://i.pravatar.cc/160?img=15",
 	verified: true,
@@ -53,14 +53,15 @@ const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "@jun",
-	avatarUrl: "https://i.pravatar.cc/160?img=8",
+	avatarUrl: "https://i.pravatar.cc/160?img=68",
+	verified: false,
 };
 
 const postRin: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Spent the morning rewriting the layout pass. Half the code disappeared and the page got faster.",
-	createdAt: "2026-08-13T07:40:00.000Z",
+	body: "Shipped the new timeline today. Two columns, sticky header, and every card is finally the\nsame height as its content.",
+	createdAt: "2026-08-15T09:12:00.000Z",
 	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
@@ -71,79 +72,54 @@ const postRin: PostModel = {
 const postKai: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This matches what we saw last quarter — the fastest change is usually the one that removes a step.",
-	createdAt: "2026-08-13T06:55:00.000Z",
+	body: "This is the part nobody sees until it lands. Congrats on the release.",
+	createdAt: "2026-08-15T08:40:00.000Z",
 	visibility: "followers",
 	replyCount: 4,
-	repostCount: 11,
-	likeCount: 63,
+	repostCount: 9,
+	likeCount: 61,
 	likedByViewer: false,
 };
 
 const postMio: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Two shots from the studio window this week. Same corner, completely different light.",
-	createdAt: "2026-08-13T05:20:00.000Z",
+	body: "Two shots from this morning's walk before the heat set in.",
+	createdAt: "2026-08-15T07:05:00.000Z",
 	visibility: "public",
 	replyCount: 7,
-	repostCount: 19,
-	likeCount: 142,
+	repostCount: 23,
+	likeCount: 154,
 	likedByViewer: false,
 };
 
 const postJun: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Small circle question: how do you keep a reading list from turning into a graveyard?",
-	createdAt: "2026-08-13T04:05:00.000Z",
+	body: "Small circle question: what is the one keyboard shortcut you would not give up?",
+	createdAt: "2026-08-15T06:22:00.000Z",
 	visibility: "circle",
-	replyCount: 9,
+	replyCount: 19,
 	repostCount: 2,
-	likeCount: 27,
+	likeCount: 33,
 	likedByViewer: false,
 };
 
-const mioImages: { url: string; alt: string }[] = [
-	{ url: "https://picsum.photos/seed/studio-morning/800/600", alt: "Studio window in flat morning light" },
-	{ url: "https://picsum.photos/seed/studio-evening/800/600", alt: "The same window at sunset" },
+const mioImages = [
+	{ url: "https://picsum.photos/id/1015/800/600", alt: "A river cutting through a rocky canyon" },
+	{ url: "https://picsum.photos/id/1025/800/600", alt: "A pug resting on a blanket" },
 ];
 
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#LayoutPass", postCount: 4820, category: "Technology" },
-	{ id: "t-2", label: "Design Systems", postCount: 2310, category: "Design" },
-	{ id: "t-3", label: "#StudioLight", postCount: 1290, category: "Photography" },
+	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
+	{ id: "t-2", label: "#MorningWalk", postCount: 9120, category: "Lifestyle" },
+	{ id: "t-3", label: "#Storybook", postCount: 4360, category: "Technology" },
 ];
 
-const suggestions: { author: AuthorModel; reason: string }[] = [
-	{
-		author: {
-			id: "u-aoi",
-			displayName: "Aoi Nakata",
-			handle: "@aoi",
-			avatarUrl: "https://i.pravatar.cc/160?img=24",
-			verified: true,
-		},
-		reason: "Followed by Rin",
-	},
-	{
-		author: {
-			id: "u-sora",
-			displayName: "Sora Hayashi",
-			handle: "@sora",
-			avatarUrl: "https://i.pravatar.cc/160?img=52",
-		},
-		reason: "Posts about design systems",
-	},
-	{
-		author: {
-			id: "u-riku",
-			displayName: "Riku Mori",
-			handle: "@riku",
-			avatarUrl: "https://i.pravatar.cc/160?img=60",
-		},
-		reason: "New to your timeline",
-	},
+const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
+	{ author: rin, reason: "Followed by Kai Doi", following: false },
+	{ author: mio, reason: "Posts about photography", following: false },
+	{ author: jun, reason: "New to your circle", following: true },
 ];
 
 const noop = () => {};
@@ -154,20 +130,20 @@ function TimelineScreen() {
 			header={
 				<TimelineHeader
 					viewer={viewer}
-					onViewerPress={noop}
 					search={<SearchField value="" onQueryChange={noop} placeholder="Search Yosegi" />}
-					notifications={<NotificationBell unreadCount={3} onBellPress={noop} />}
+					notifications={<NotificationBell unreadCount={5} onBellPress={noop} tone="quiet" />}
+					onViewerPress={noop}
 				/>
 			}
 			main={
-				<>
+				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 					<FeedTabs activeFeed="for-you" onFeedChange={noop} />
 					<PostComposer
+						viewer={viewer}
 						draft=""
+						visibility="public"
 						onDraftChange={noop}
 						onSubmitPress={noop}
-						viewer={viewer}
-						visibility="public"
 						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 					/>
 					<PostCard
@@ -248,10 +224,10 @@ function TimelineScreen() {
 							/>
 						}
 					/>
-				</>
+				</div>
 			}
 			sidebar={
-				<>
+				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 					<TrendPanel
 						heading="Trending now"
 						items={trends.map((trend, index) => (
@@ -266,11 +242,11 @@ function TimelineScreen() {
 								author={suggestion.author}
 								reason={suggestion.reason}
 								avatar={<UserAvatar author={suggestion.author} />}
-								follow={<FollowButton following={false} onFollowToggle={noop} />}
+								follow={<FollowButton following={suggestion.following} onFollowToggle={noop} />}
 							/>
 						))}
 					/>
-				</>
+				</div>
 			}
 		/>
 	);
@@ -286,4 +262,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Timeline: Story = {};
+export const Default: Story = {};

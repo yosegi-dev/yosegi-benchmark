@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
-import { FollowButton } from "~/components/follow-button";
 import { PostActionBar } from "~/components/post-action-bar";
 import { PostAuthorLine } from "~/components/post-author-line";
 import { PostBody } from "~/components/post-body";
@@ -15,117 +14,95 @@ import { SuggestedUserRow } from "~/components/suggested-user-row";
 import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
-import type { AuthorModel, PostModel, TrendModel } from "~/models";
 
-const viewer: AuthorModel = {
+const viewer = {
 	id: "u-viewer",
 	name: "Aoi Kimura",
 	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/150?u=aoi",
+	avatarUrl: "https://i.pravatar.cc/150?img=15",
 };
 
-const rin: AuthorModel = {
+const rin = {
 	id: "u-rin",
 	name: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/150?u=rin",
+	avatarUrl: "https://i.pravatar.cc/150?img=1",
 };
 
-const kai: AuthorModel = {
+const kai = {
 	id: "u-kai",
 	name: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/150?u=kai",
+	avatarUrl: "https://i.pravatar.cc/150?img=12",
 };
 
-const mio: AuthorModel = {
+const mio = {
 	id: "u-mio",
 	name: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/150?u=mio",
+	avatarUrl: "https://i.pravatar.cc/150?img=5",
 };
 
-const jun: AuthorModel = {
+const jun = {
 	id: "u-jun",
 	name: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/150?u=jun",
+	avatarUrl: "https://i.pravatar.cc/150?img=8",
 };
 
-const postOne: PostModel = {
-	id: "p-1",
-	author: rin,
-	body: "The new build finally boots on the first try. Three weeks of flaky startup, gone.",
-	createdAt: "2026-08-13T09:12:00.000Z",
-	visibility: "public",
-	replyCount: 12,
-	repostCount: 48,
-	likeCount: 310,
-	liked: true,
-};
-
-const trends: TrendModel[] = [
+const trends = [
 	{
 		id: "t-1",
-		name: "#StorybookCSF",
-		category: "Frontend",
+		category: "Technology",
+		topic: "TypeScript 6.0",
 		postCount: 18400,
 	},
 	{
 		id: "t-2",
-		name: "#DesignTokens",
 		category: "Design",
-		postCount: 9260,
+		topic: "Design Tokens",
+		postCount: 7320,
 	},
 	{
 		id: "t-3",
-		name: "#TypeScript",
-		category: "Technology",
-		postCount: 52100,
+		category: "Trending in Japan",
+		topic: "夏フェス",
+		postCount: 42100,
 	},
 ];
 
-const suggestedUsers: AuthorModel[] = [
+const suggested = [
 	{
-		id: "u-hana",
-		name: "Hana Kurosawa",
-		handle: "hana",
-		avatarUrl: "https://i.pravatar.cc/150?u=hana",
+		id: "u-haru",
+		name: "Haru Nakamura",
+		handle: "haru",
+		avatarUrl: "https://i.pravatar.cc/150?img=21",
+	},
+	{
+		id: "u-yui",
+		name: "Yui Tanaka",
+		handle: "yui",
+		avatarUrl: "https://i.pravatar.cc/150?img=32",
 	},
 	{
 		id: "u-sora",
-		name: "Sora Nakai",
+		name: "Sora Fujii",
 		handle: "sora",
-		avatarUrl: "https://i.pravatar.cc/150?u=sora",
-	},
-	{
-		id: "u-taku",
-		name: "Taku Miyamoto",
-		handle: "taku",
-		avatarUrl: "https://i.pravatar.cc/150?u=taku",
+		avatarUrl: "https://i.pravatar.cc/150?img=47",
 	},
 ];
 
-const meta = {
-	title: "Screens/TimelineScreen",
-	parameters: {
-		layout: "fullscreen",
-	},
-} satisfies Meta;
+const noop = () => {};
 
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-	render: () => (
+function TimelineScreen() {
+	return (
 		<AppShell
 			header={
 				<TimelineHeader
 					user={viewer}
-					searchValue=""
-					onSearchChange={() => {}}
 					notificationCount={3}
+					searchValue=""
+					onSearchChange={noop}
 				/>
 			}
 			sidebar={
@@ -136,69 +113,72 @@ export const Default: Story = {
 						))}
 					</TrendPanel>
 					<SuggestedUserPanel title="Who to follow">
-						{suggestedUsers.map((user) => (
+						{suggested.map((user) => (
 							<SuggestedUserRow
 								key={user.id}
 								user={user}
-								action={<FollowButton following={false} onToggle={() => {}} />}
+								following={false}
+								onToggleFollow={noop}
 							/>
 						))}
 					</SuggestedUserPanel>
 				</>
 			}
 		>
-			<FeedTabs value="for-you" onValueChange={() => {}} />
-
+			<FeedTabs value="for-you" onChange={noop} />
 			<PostComposer
-				author={viewer}
 				value=""
-				onChange={() => {}}
+				onChange={noop}
 				visibility="public"
-				onVisibilityChange={() => {}}
-				onSubmit={() => {}}
+				onVisibilityChange={noop}
+				onSubmit={noop}
 			/>
 
-			<PostCard>
-				<PostAuthorLine author={rin} timestamp="2h" visibility="public" />
-				<PostBody text={postOne.body} />
+			<PostCard visibility="public">
+				<PostAuthorLine author={rin} timestamp="2h" />
+				<PostBody text="Shipped the new timeline layout today. Two columns, no surprises, everything where you expect it." />
 				<PostActionBar
 					replyCount={12}
 					repostCount={48}
 					likeCount={310}
 					liked
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={kai} timestamp="1h" visibility="followers" />
-				<PostBody text="This matches what I saw on the staging cluster last night. Worth writing up." />
-				<QuotedPost post={postOne} />
+			<PostCard visibility="followers">
+				<PostAuthorLine author={kai} timestamp="1h" />
+				<PostBody text="This is the part everyone skips and then regrets. Good call." />
+				<QuotedPost
+					author={rin}
+					timestamp="2h"
+					text="Shipped the new timeline layout today. Two columns, no surprises, everything where you expect it."
+				/>
 				<PostActionBar
 					replyCount={4}
 					repostCount={9}
 					likeCount={57}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={mio} timestamp="46m" visibility="public" />
-				<PostBody text="Two shots from the studio wall this morning. Same paint, different light." />
+			<PostCard visibility="public">
+				<PostAuthorLine author={mio} timestamp="34m" />
+				<PostBody text="Two shots from the studio window this morning. The light lasted about four minutes." />
 				<PostMedia
 					images={[
 						{
-							src: "https://placehold.co/800x600/png",
-							alt: "Studio wall in morning light",
+							src: "https://picsum.photos/seed/timeline-a/800/600",
+							alt: "Morning light across a studio desk",
 						},
 						{
-							src: "https://placehold.co/800x600/png",
-							alt: "Studio wall in afternoon light",
+							src: "https://picsum.photos/seed/timeline-b/800/600",
+							alt: "A window frame casting long shadows",
 						},
 					]}
 				/>
@@ -207,25 +187,39 @@ export const Default: Story = {
 					repostCount={21}
 					likeCount={143}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={jun} timestamp="12m" visibility="circle" />
-				<PostBody text="Small circle question: does anyone still run the nightly export by hand?" />
+			<PostCard visibility="circle">
+				<PostAuthorLine author={jun} timestamp="12m" />
+				<PostBody text="Small circle post: the migration is done and nothing broke. Telling you first." />
 				<PostActionBar
 					replyCount={2}
-					repostCount={1}
-					likeCount={18}
+					repostCount={3}
+					likeCount={28}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
 				/>
 			</PostCard>
 		</AppShell>
-	),
-};
+	);
+}
+
+const meta = {
+	title: "Screens/TimelineScreen",
+	component: TimelineScreen,
+	parameters: {
+		layout: "fullscreen",
+	},
+} satisfies Meta<typeof TimelineScreen>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};

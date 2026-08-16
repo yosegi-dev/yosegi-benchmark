@@ -1,51 +1,54 @@
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(68,4): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
-  Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(71,6): error TS2322: Type '{ user: { id: string; name: string; handle: string; avatarUrl: string; }; searchValue: string; onSearchChange: () => void; notificationCount: number; onNotificationClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
-  Property 'user' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(80,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(56,4): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & TrendPanelProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(85,9): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'TrendModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(94,9): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'TrendModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(103,9): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'TrendModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(109,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(59,5): error TS2322: Type '{ rank: number; category: string; name: string; postCount: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+  Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(65,5): error TS2322: Type '{ rank: number; category: string; name: string; postCount: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+  Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(69,24): error TS2322: Type '{ rank: number; category: string; name: string; postCount: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+  Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(71,4): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserPanelProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(110,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(72,5): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(118,40): error TS2322: Type '{ following: false; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onClick' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(120,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(81,37): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(83,5): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(128,40): error TS2322: Type '{ following: false; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onClick' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(130,8): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(92,37): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(94,5): error TS2322: Type '{ children: Element; user: { id: string; name: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(138,32): error TS2322: Type '{ following: true; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onClick' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(144,14): error TS2322: Type '{ value: string; onValueChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(103,36): error TS2322: Type '{ following: true; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(110,3): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(113,5): error TS2322: Type '{ user: { id: string; name: string; handle: string; avatarUrl: string; }; searchValue: string; onSearchChange: () => void; notificationCount: number; onNotificationClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
+  Property 'user' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(122,13): error TS2322: Type '{ value: string; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
   Property 'value' does not exist on type 'IntrinsicAttributes & FeedTabsProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(147,5): error TS2322: Type '{ author: { id: string; name: string; handle: string; avatarUrl: string; }; value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(125,4): error TS2322: Type '{ author: { id: string; name: string; handle: string; avatarUrl: string; }; value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; placeholder: string; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
   Property 'author' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(155,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(134,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(156,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(159,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: true; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(135,20): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(138,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(169,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(148,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(170,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(173,6): error TS2322: Type '{ author: { id: string; name: string; handle: string; avatarUrl: string; }; timestamp: string; text: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(149,20): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(152,5): error TS2322: Type '{ author: { id: string; name: string; handle: string; avatarUrl: string; }; text: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
   Property 'author' does not exist on type 'IntrinsicAttributes & QuotedPostProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(178,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(157,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(188,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(167,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(189,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(194,8): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(198,8): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(204,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(168,20): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(173,7): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(177,7): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(183,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(214,5): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(193,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(215,21): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
-hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(218,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(194,20): error TS2741: Property 'displayName' is missing in type '{ id: string; name: string; handle: string; avatarUrl: string; }' but required in type 'AuthorModel'.
+hosts/shadcn-m/src/__score__/TimelineScreen.stories.tsx(197,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.

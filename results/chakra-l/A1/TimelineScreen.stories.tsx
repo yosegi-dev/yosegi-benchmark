@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -15,7 +16,7 @@ import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 
-const meta: Meta = {
+const meta: Meta<typeof AppShell> = {
 	title: "Screens/TimelineScreen",
 	component: AppShell,
 	parameters: {
@@ -25,207 +26,156 @@ const meta: Meta = {
 
 export default meta;
 
-export const Timeline: StoryObj = {
-	render: () => (
-		<AppShell
-			header={
-				<TimelineHeader
-					viewer={{
-						id: "viewer",
-						displayName: "Rin Amano",
-						handle: "rin",
-						avatarUrl: "https://i.pravatar.cc/80?img=1",
-					}}
-					searchValue=""
-					searchPlaceholder="Search"
-					onSearchChange={() => {}}
-					notificationCount={3}
-					onNotificationClick={() => {}}
-				/>
-			}
-			sidebar={
-				<>
-					<TrendPanel title="Trends for you">
-						<TrendItem
-							rank={1}
-							category="Technology"
-							topic="#Storybook"
-							postCount={12800}
-							onClick={() => {}}
-						/>
-						<TrendItem
-							rank={2}
-							category="Design"
-							topic="#DesignSystems"
-							postCount={9400}
-							onClick={() => {}}
-						/>
-						<TrendItem
-							rank={3}
-							category="Programming"
-							topic="#TypeScript"
-							postCount={4300}
-							onClick={() => {}}
-						/>
-					</TrendPanel>
-					<SuggestedUserPanel title="Who to follow">
-						<SuggestedUserRow
-							user={{
-								id: "u-nao",
-								displayName: "Nao Kubo",
-								handle: "nao",
-								avatarUrl: "https://i.pravatar.cc/80?img=5",
-							}}
-							bio="Frontend engineer. Building design systems."
-						>
-							<FollowButton following={false} onToggle={() => {}} />
-						</SuggestedUserRow>
-						<SuggestedUserRow
-							user={{
-								id: "u-hana",
-								displayName: "Hana Mori",
-								handle: "hana",
-								avatarUrl: "https://i.pravatar.cc/80?img=9",
-							}}
-							bio="Illustrator, occasional photographer."
-						>
-							<FollowButton following={false} onToggle={() => {}} />
-						</SuggestedUserRow>
-						<SuggestedUserRow
-							user={{
-								id: "u-sora",
-								displayName: "Sora Nishi",
-								handle: "sora",
-								avatarUrl: "https://i.pravatar.cc/80?img=12",
-							}}
-							bio="Writing about accessibility on the web."
-						>
-							<FollowButton following={true} onToggle={() => {}} />
-						</SuggestedUserRow>
-					</SuggestedUserPanel>
-				</>
-			}
-		>
-			<FeedTabs value="for-you" onValueChange={() => {}} />
+type Story = StoryObj<typeof meta>;
 
-			<PostComposer
-				value=""
-				placeholder="What's happening?"
-				visibility="public"
-				onValueChange={() => {}}
-				onVisibilityChange={() => {}}
-				onSubmit={() => {}}
+export const Default: Story = {
+	args: {
+		header: (
+			<TimelineHeader
+				avatarUrl="https://i.pravatar.cc/80?img=15"
+				displayName="Viewer"
+				handle="@viewer"
+				searchPlaceholder="Search"
+				searchValue=""
+				notificationCount={3}
 			/>
-
-			<PostCard id="post-1" visibility="public">
-				<PostAuthorLine
-					author={{
-						id: "u-rin",
-						displayName: "Rin Amano",
-						handle: "rin",
-						avatarUrl: "https://i.pravatar.cc/80?img=1",
-					}}
-					timestamp="2h"
+		),
+		sidebar: (
+			<>
+				<TrendPanel title="Trends for you">
+					<TrendItem
+						category="Technology"
+						name="#TypeScript"
+						postCount={12800}
+						rank={1}
+					/>
+					<TrendItem
+						category="Design"
+						name="#DesignSystems"
+						postCount={5400}
+						rank={2}
+					/>
+					<TrendItem
+						category="Music"
+						name="#NowPlaying"
+						postCount={2300}
+						rank={3}
+					/>
+				</TrendPanel>
+				<SuggestedUserPanel title="Who to follow">
+					<SuggestedUserRow
+						avatarUrl="https://i.pravatar.cc/80?img=21"
+						displayName="Aoi Nakamura"
+						handle="@aoi"
+						bio="Frontend engineer"
+						action={<FollowButton following={false} />}
+					/>
+					<SuggestedUserRow
+						avatarUrl="https://i.pravatar.cc/80?img=22"
+						displayName="Haru Kobayashi"
+						handle="@haru"
+						bio="Illustrator"
+						action={<FollowButton following={false} />}
+					/>
+					<SuggestedUserRow
+						avatarUrl="https://i.pravatar.cc/80?img=23"
+						displayName="Sora Tanaka"
+						handle="@sora"
+						bio="Product designer"
+						action={<FollowButton following={true} />}
+					/>
+				</SuggestedUserPanel>
+			</>
+		),
+		children: (
+			<>
+				<FeedTabs value="for-you" />
+				<PostComposer
+					value=""
+					visibility="public"
+					placeholder="What's happening?"
+					submitLabel="Post"
 				/>
-				<PostBody text="Shipped the first pass of the timeline today. Four posts, one sidebar, and a composer that finally remembers its visibility setting." />
-				<PostActionBar
-					replyCount={12}
-					repostCount={48}
-					likeCount={310}
-					liked={true}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard id="post-2" visibility="followers">
-				<PostAuthorLine
-					author={{
-						id: "u-kai",
-						displayName: "Kai Doi",
-						handle: "kai",
-						avatarUrl: "https://i.pravatar.cc/80?img=3",
-					}}
-					timestamp="1h"
-				/>
-				<PostBody text="This is the part everyone underestimates. Visibility is a product decision, not a checkbox." />
-				<QuotedPost
-					author={{
-						id: "u-rin",
-						displayName: "Rin Amano",
-						handle: "rin",
-						avatarUrl: "https://i.pravatar.cc/80?img=1",
-					}}
-					text="Shipped the first pass of the timeline today. Four posts, one sidebar, and a composer that finally remembers its visibility setting."
-					timestamp="2h"
-				/>
-				<PostActionBar
-					replyCount={5}
-					repostCount={9}
-					likeCount={64}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard id="post-3" visibility="public">
-				<PostAuthorLine
-					author={{
-						id: "u-mio",
-						displayName: "Mio Sato",
-						handle: "mio",
-						avatarUrl: "https://i.pravatar.cc/80?img=7",
-					}}
-					timestamp="42m"
-				/>
-				<PostBody text="Two frames from this morning's walk. The light was doing something strange over the river." />
-				<PostMedia
-					images={[
-						{
-							src: "https://picsum.photos/seed/river-a/800/600",
-							alt: "Morning light over a river",
-						},
-						{
-							src: "https://picsum.photos/seed/river-b/800/600",
-							alt: "A footbridge in the fog",
-						},
-					]}
-				/>
-				<PostActionBar
-					replyCount={3}
-					repostCount={21}
-					likeCount={187}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard id="post-4" visibility="circle">
-				<PostAuthorLine
-					author={{
-						id: "u-jun",
-						displayName: "Jun Ito",
-						handle: "jun",
-						avatarUrl: "https://i.pravatar.cc/80?img=15",
-					}}
-					timestamp="10m"
-				/>
-				<PostBody text="Small circle only: I am rewriting the whole notification pipeline tonight and I have no regrets yet." />
-				<PostActionBar
-					replyCount={1}
-					repostCount={0}
-					likeCount={7}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-		</AppShell>
-	),
+				<PostCard visibility="public">
+					<PostAuthorLine
+						avatarUrl="https://i.pravatar.cc/80?img=1"
+						displayName="Rin Amano"
+						handle="@rin"
+						relativeTime="2h"
+					/>
+					<PostBody text="Shipped the new timeline layout this morning. It finally feels right." />
+					<PostActionBar
+						replyCount={12}
+						repostCount={48}
+						likeCount={310}
+						liked={true}
+					/>
+				</PostCard>
+				<PostCard visibility="followers">
+					<PostAuthorLine
+						avatarUrl="https://i.pravatar.cc/80?img=2"
+						displayName="Kai Doi"
+						handle="@kai"
+						relativeTime="1h"
+					/>
+					<PostBody text="This is the part everyone underestimates." />
+					<QuotedPost
+						avatarUrl="https://i.pravatar.cc/80?img=1"
+						displayName="Rin Amano"
+						handle="@rin"
+						relativeTime="2h"
+						text="Shipped the new timeline layout this morning. It finally feels right."
+					/>
+					<PostActionBar
+						replyCount={4}
+						repostCount={9}
+						likeCount={62}
+						liked={false}
+					/>
+				</PostCard>
+				<PostCard visibility="public">
+					<PostAuthorLine
+						avatarUrl="https://i.pravatar.cc/80?img=3"
+						displayName="Mio Sato"
+						handle="@mio"
+						relativeTime="45m"
+					/>
+					<PostBody text="Two frames from this weekend's walk." />
+					<PostMedia
+						images={[
+							{
+								src: "https://picsum.photos/seed/mio-1/640/360",
+								alt: "A quiet street at dusk",
+							},
+							{
+								src: "https://picsum.photos/seed/mio-2/640/360",
+								alt: "A river seen from a bridge",
+							},
+						]}
+					/>
+					<PostActionBar
+						replyCount={7}
+						repostCount={21}
+						likeCount={154}
+						liked={false}
+					/>
+				</PostCard>
+				<PostCard visibility="circle">
+					<PostAuthorLine
+						avatarUrl="https://i.pravatar.cc/80?img=4"
+						displayName="Jun Ito"
+						handle="@jun"
+						relativeTime="20m"
+					/>
+					<PostBody text="Keeping this one to the circle: the migration plan is finally written down." />
+					<PostActionBar
+						replyCount={2}
+						repostCount={3}
+						likeCount={18}
+						liked={false}
+					/>
+				</PostCard>
+			</>
+		),
+	},
 };

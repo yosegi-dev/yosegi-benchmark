@@ -15,182 +15,162 @@ import { SuggestedUserRow } from "~/components/suggested-user-row";
 import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
-import type { AuthorModel, TrendModel } from "~/models";
 
-const viewer: AuthorModel = {
-	id: "u-viewer",
-	name: "Nao Kubo",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/96?img=15",
-};
-
-const rin: AuthorModel = {
-	id: "u-rin",
-	name: "Rin Amano",
-	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/96?img=32",
-};
-
-const kai: AuthorModel = {
-	id: "u-kai",
-	name: "Kai Doi",
-	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/96?img=12",
-};
-
-const mio: AuthorModel = {
-	id: "u-mio",
-	name: "Mio Sato",
-	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/96?img=45",
-};
-
-const jun: AuthorModel = {
-	id: "u-jun",
-	name: "Jun Ito",
-	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/96?img=68",
-};
-
-const trends: TrendModel[] = [
-	{ id: "t-1", category: "Technology", name: "#TypeScript", postCount: 18400 },
-	{ id: "t-2", category: "Design", name: "#DesignSystems", postCount: 9200 },
-	{ id: "t-3", category: "Photography", name: "#GoldenHour", postCount: 4310 },
-];
-
-const suggestions: AuthorModel[] = [
-	{
-		id: "u-aya",
-		name: "Aya Morita",
-		handle: "aya",
-		avatarUrl: "https://i.pravatar.cc/96?img=24",
-	},
-	{
-		id: "u-sho",
-		name: "Sho Nakai",
-		handle: "sho",
-		avatarUrl: "https://i.pravatar.cc/96?img=51",
-	},
-	{
-		id: "u-emi",
-		name: "Emi Hara",
-		handle: "emi",
-		avatarUrl: "https://i.pravatar.cc/96?img=9",
-	},
-];
-
-const meta: Meta = {
+const meta = {
 	title: "Screens/TimelineScreen",
 	parameters: {
 		layout: "fullscreen",
 	},
-};
+} satisfies Meta;
 
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<typeof meta>;
 
-export const Timeline: Story = {
+export const Default: Story = {
 	render: () => (
 		<AppShell
-			header={<TimelineHeader user={viewer} notificationCount={3} />}
+			header={
+				<TimelineHeader
+					avatarUrl="https://i.pravatar.cc/80?img=12"
+					displayName="Rin Amano"
+					handle="rin"
+					searchValue=""
+					notificationCount={3}
+				/>
+			}
 			sidebar={
 				<>
 					<TrendPanel title="Trends for you">
-						{trends.map((trend) => (
-							<TrendItem key={trend.id} trend={trend} />
-						))}
+						<TrendItem
+							category="Technology"
+							title="Storybook"
+							postCount={12400}
+						/>
+						<TrendItem
+							category="Design"
+							title="Chakra UI"
+							postCount={8200}
+						/>
+						<TrendItem
+							category="Programming"
+							title="TypeScript"
+							postCount={31000}
+						/>
 					</TrendPanel>
 					<SuggestedUserPanel title="Who to follow">
-						{suggestions.map((user) => (
-							<SuggestedUserRow key={user.id} user={user}>
-								<FollowButton following={false} onToggle={() => {}} />
-							</SuggestedUserRow>
-						))}
+						<SuggestedUserRow
+							avatarUrl="https://i.pravatar.cc/80?img=32"
+							displayName="Aoi Nakamura"
+							handle="aoi"
+							action={<FollowButton following={false} />}
+						/>
+						<SuggestedUserRow
+							avatarUrl="https://i.pravatar.cc/80?img=45"
+							displayName="Haru Kobayashi"
+							handle="haru"
+							action={<FollowButton following={false} />}
+						/>
+						<SuggestedUserRow
+							avatarUrl="https://i.pravatar.cc/80?img=57"
+							displayName="Nao Fujita"
+							handle="nao"
+							action={<FollowButton following={true} />}
+						/>
 					</SuggestedUserPanel>
 				</>
 			}
 		>
-			<FeedTabs value="for-you" onValueChange={() => {}} />
+			<FeedTabs value="for-you" onChange={() => {}} />
 			<PostComposer
-				author={viewer}
 				value=""
-				onChange={() => {}}
 				visibility="public"
-				onVisibilityChange={() => {}}
+				avatarUrl="https://i.pravatar.cc/80?img=12"
+				placeholder="What's happening?"
+				onChange={() => {}}
 				onSubmit={() => {}}
 			/>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={rin} timestamp="2h" />
-				<PostBody text="Spent the morning rewriting our registry loader and it finally reads like the thing it actually does." />
+			<PostCard>
+				<PostAuthorLine
+					avatarUrl="https://i.pravatar.cc/80?img=12"
+					displayName="Rin Amano"
+					handle="rin"
+					timestamp="2h"
+					visibility="public"
+				/>
+				<PostBody text="Spent the morning rewriting our timeline screen from scratch. Fewer components, far less state." />
 				<PostActionBar
 					replyCount={12}
 					repostCount={48}
 					likeCount={310}
-					liked
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
+					liked={true}
 				/>
 			</PostCard>
-
-			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} timestamp="1h" />
-				<PostBody text="This is the part everyone skips, and it is the part that decides whether the rest holds up." />
+			<PostCard>
+				<PostAuthorLine
+					avatarUrl="https://i.pravatar.cc/80?img=15"
+					displayName="Kai Doi"
+					handle="kai"
+					timestamp="1h"
+					visibility="followers"
+				/>
+				<PostBody text="This matches what we saw last quarter. Cutting state was the whole win." />
 				<QuotedPost
-					author={rin}
+					avatarUrl="https://i.pravatar.cc/80?img=12"
+					displayName="Rin Amano"
+					handle="rin"
 					timestamp="2h"
-					text="Spent the morning rewriting our registry loader and it finally reads like the thing it actually does."
+					text="Spent the morning rewriting our timeline screen from scratch. Fewer components, far less state."
 				/>
 				<PostActionBar
 					replyCount={4}
 					repostCount={9}
 					likeCount={57}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
 				/>
 			</PostCard>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={mio} timestamp="35m" />
-				<PostBody text="Two frames from the harbour walk yesterday. The light lasted about four minutes." />
+			<PostCard>
+				<PostAuthorLine
+					avatarUrl="https://i.pravatar.cc/80?img=23"
+					displayName="Mio Sato"
+					handle="mio"
+					timestamp="45m"
+					visibility="public"
+				/>
+				<PostBody text="Two shots from the studio session this morning." />
 				<PostMedia
 					images={[
 						{
-							src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
-							alt: "Harbour at sunset",
+							src: "https://picsum.photos/seed/timeline-a/640/480",
+							alt: "Studio desk with a camera and prints",
 						},
 						{
-							src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800",
-							alt: "Fog over the water",
+							src: "https://picsum.photos/seed/timeline-b/640/480",
+							alt: "Close-up of a contact sheet on a light table",
 						},
 					]}
 				/>
 				<PostActionBar
 					replyCount={7}
 					repostCount={21}
-					likeCount={188}
+					likeCount={164}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
 				/>
 			</PostCard>
-
-			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} timestamp="12m" />
-				<PostBody text="Small circle question: does anyone still run the nightly job by hand, or has that finally died?" />
+			<PostCard>
+				<PostAuthorLine
+					avatarUrl="https://i.pravatar.cc/80?img=51"
+					displayName="Jun Ito"
+					handle="jun"
+					timestamp="20m"
+					visibility="circle"
+				/>
+				<PostBody text="Quiet note for the close friends list: the migration is done and nothing broke." />
 				<PostActionBar
 					replyCount={2}
 					repostCount={1}
-					likeCount={16}
+					likeCount={19}
 					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
 				/>
 			</PostCard>
 		</AppShell>

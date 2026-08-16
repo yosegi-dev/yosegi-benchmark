@@ -1,58 +1,58 @@
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(22,3): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(95,4): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(25,5): error TS2322: Type '{ avatarSrc: string; displayName: string; searchValue: string; onSearchChange: () => void; notificationCount: number; onNotificationClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(35,6): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(98,6): error TS2322: Type '{ user: { id: string; displayName: string; handle: string; avatarUrl: string; }; searchValue: string; onSearchChange: () => void; notificationCount: number; onNotificationClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
+  Property 'user' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(107,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & TrendPanelProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(38,7): error TS2322: Type '{ rank: number; category: string; label: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(109,8): error TS2322: Type '{ category: string; name: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(45,7): error TS2322: Type '{ rank: number; category: string; label: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(115,8): error TS2322: Type '{ category: string; name: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(52,7): error TS2322: Type '{ rank: number; category: string; label: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(121,8): error TS2322: Type '{ category: string; name: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(58,6): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(127,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserPanelProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(59,7): error TS2322: Type '{ children: Element; avatarSrc: string; displayName: string; handle: string; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(128,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(65,39): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(67,7): error TS2322: Type '{ children: Element; avatarSrc: string; displayName: string; handle: string; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(130,9): error TS2322: Type '{ userId: string; following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'userId' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(135,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(73,39): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(75,7): error TS2322: Type '{ children: Element; avatarSrc: string; displayName: string; handle: string; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(136,22): error TS2322: Type '{ userId: string; following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'userId' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(138,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; reason: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(81,31): error TS2322: Type '{ following: true; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(87,13): error TS2322: Type '{ value: string; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(140,9): error TS2322: Type '{ userId: string; following: true; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
+  Property 'userId' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(149,14): error TS2322: Type '{ value: string; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
   Property 'value' does not exist on type 'IntrinsicAttributes & FeedTabsProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(90,4): error TS2322: Type '{ value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; avatarSrc: string; placeholder: string; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
-  Property 'value' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(99,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(151,5): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; value: string; onChange: () => void; visibility: "public"; onVisibilityChange: () => void; onSubmit: () => void; placeholder: string; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
+  Property 'author' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(160,5): error TS2322: Type '{ children: Element[]; postId: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(101,5): error TS2322: Type '{ avatarSrc: string; displayName: string; handle: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(108,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: true; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(161,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'relativeTime' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(164,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; reposted: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(118,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(175,5): error TS2322: Type '{ children: Element[]; postId: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(120,5): error TS2322: Type '{ avatarSrc: string; displayName: string; handle: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(127,5): error TS2322: Type '{ avatarSrc: string; displayName: string; handle: string; timestamp: string; text: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & QuotedPostProps'. Did you mean 'avatar'?
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(134,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(176,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'relativeTime' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(179,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; text: string; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
+  Property 'author' does not exist on type 'IntrinsicAttributes & QuotedPostProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(184,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; reposted: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(144,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(195,5): error TS2322: Type '{ children: Element[]; postId: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(146,5): error TS2322: Type '{ avatarSrc: string; displayName: string; handle: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(155,7): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(159,7): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(165,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(196,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'relativeTime' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(198,16): error TS2322: Type '{ id: string; src: string; alt: string; width: number; height: number; }[]' is not assignable to type '{ url: string; alt: string; }[]'.
+  Property 'url' is missing in type '{ id: string; src: string; alt: string; width: number; height: number; }' but required in type '{ url: string; alt: string; }'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(200,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; reposted: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(175,4): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(211,5): error TS2322: Type '{ children: Element[]; postId: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(177,5): error TS2322: Type '{ avatarSrc: string; displayName: string; handle: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'avatarSrc' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
-hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(184,5): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(212,34): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'relativeTime' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
+hosts/mui-l/src/__score__/TimelineScreen.stories.tsx(215,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; reposted: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.

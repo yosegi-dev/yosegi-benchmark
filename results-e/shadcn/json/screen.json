@@ -3,9 +3,9 @@
 	"id": "moderation-review",
 	"name": "Moderation review",
 	"componentRegistryVersion": "src:0b2bf57b5aa7",
-	"revision": 1,
+	"revision": 0,
 	"root": {
-		"id": "shell",
+		"id": "root",
 		"component": "src/components/app-shell#AppShell",
 		"props": {
 			"density": "cozy"
@@ -23,300 +23,316 @@
 			],
 			"main": [
 				{
-					"id": "post-card-1",
-					"component": "src/components/post-card#PostCard",
+					"id": "reported-posts",
+					"component": "Box",
 					"props": {
-						"post": {
-							"id": "post-1",
-							"author": {
-								"id": "user-rin",
-								"displayName": "Rin Amano",
-								"handle": "rin",
-								"avatarUrl": "https://i.pravatar.cc/128?img=11"
-							},
-							"body": "Reminder: design system office hours moved to Thursdays. Same room, same link.",
-							"createdAt": "2026-08-13T06:00:00.000Z",
-							"visibility": "public",
-							"replyCount": 4,
-							"repostCount": 2,
-							"likeCount": 11,
-							"likedByViewer": false
-						},
-						"density": "cozy"
+						"className": "flex flex-col gap-4"
 					},
 					"slots": {
-						"authorLine": [
+						"children": [
 							{
-								"id": "author-line-1",
-								"component": "src/components/post-author-line#PostAuthorLine",
+								"id": "post-card-1",
+								"component": "src/components/post-card#PostCard",
 								"props": {
-									"author": {
-										"id": "user-rin",
-										"displayName": "Rin Amano",
-										"handle": "rin",
-										"avatarUrl": "https://i.pravatar.cc/128?img=11"
-									},
-									"label": "2h",
-									"visibility": "public"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "avatar-1",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {
-												"author": {
-													"id": "user-rin",
-													"displayName": "Rin Amano",
-													"handle": "rin",
-													"avatarUrl": "https://i.pravatar.cc/128?img=11"
-												},
-												"density": "cozy"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "actions-1",
-								"component": "Box",
-								"props": {
-									"className": "text-sm text-muted-foreground"
-								},
-								"slots": {
-									"children": [
-										{
-											"id": "tally-1",
-											"component": "Text",
-											"props": {
-												"text": "Reported 3 times"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-card-2",
-					"component": "src/components/post-card#PostCard",
-					"props": {
-						"post": {
-							"id": "post-2",
-							"author": {
-								"id": "user-kai",
-								"displayName": "Kai Doi",
-								"handle": "kai",
-								"avatarUrl": "https://i.pravatar.cc/128?img=12"
-							},
-							"body": "Thursdays work much better for the frontend team. Thanks for moving it.",
-							"createdAt": "2026-08-13T03:00:00.000Z",
-							"visibility": "followers",
-							"replyCount": 1,
-							"repostCount": 0,
-							"likeCount": 6,
-							"likedByViewer": false
-						},
-						"density": "cozy"
-					},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "author-line-2",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"author": {
-										"id": "user-kai",
-										"displayName": "Kai Doi",
-										"handle": "kai",
-										"avatarUrl": "https://i.pravatar.cc/128?img=12"
-									},
-									"label": "5h",
-									"visibility": "followers"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "avatar-2",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {
-												"author": {
-													"id": "user-kai",
-													"displayName": "Kai Doi",
-													"handle": "kai",
-													"avatarUrl": "https://i.pravatar.cc/128?img=12"
-												},
-												"density": "cozy"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"quoted": [
-							{
-								"id": "quoted-2",
-								"component": "src/components/quoted-post#QuotedPost",
-								"props": {
+									"density": "cozy",
 									"post": {
 										"id": "post-1",
 										"author": {
-											"id": "user-rin",
+											"id": "author-rin",
 											"displayName": "Rin Amano",
 											"handle": "rin",
-											"avatarUrl": "https://i.pravatar.cc/128?img=11"
+											"avatarUrl": "https://example.com/avatars/rin.png",
+											"verified": true
 										},
-										"body": "Reminder: design system office hours moved to Thursdays. Same room, same link.",
-										"createdAt": "2026-08-13T06:00:00.000Z",
+										"body": "Reminder: the migration guide moves to the new docs site tomorrow morning.",
+										"createdAt": "2024-05-21T09:00:00.000Z",
 										"visibility": "public",
-										"replyCount": 4,
-										"repostCount": 2,
-										"likeCount": 11,
+										"replyCount": 12,
+										"repostCount": 4,
+										"likeCount": 38,
 										"likedByViewer": false
 									}
 								},
 								"slots": {
-									"avatar": [
+									"authorLine": [
 										{
-											"id": "quoted-avatar-2",
-											"component": "src/components/user-avatar#UserAvatar",
+											"id": "author-line-1",
+											"component": "src/components/post-author-line#PostAuthorLine",
 											"props": {
+												"label": "2h",
+												"visibility": "public",
 												"author": {
-													"id": "user-rin",
+													"id": "author-rin",
 													"displayName": "Rin Amano",
 													"handle": "rin",
-													"avatarUrl": "https://i.pravatar.cc/128?img=11"
-												},
-												"density": "compact"
+													"avatarUrl": "https://example.com/avatars/rin.png",
+													"verified": true
+												}
 											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "actions-2",
-								"component": "Box",
-								"props": {
-									"className": "text-sm text-muted-foreground"
-								},
-								"slots": {
-									"children": [
-										{
-											"id": "tally-2",
-											"component": "Text",
-											"props": {
-												"text": "Reported once"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-card-3",
-					"component": "src/components/post-card#PostCard",
-					"props": {
-						"post": {
-							"id": "post-3",
-							"author": {
-								"id": "user-mio",
-								"displayName": "Mio Sato",
-								"handle": "mio",
-								"avatarUrl": "https://i.pravatar.cc/128?img=13"
-							},
-							"body": "Shipped the new token pipeline today. Before and after below.",
-							"createdAt": "2026-08-12T08:00:00.000Z",
-							"visibility": "unlisted",
-							"replyCount": 7,
-							"repostCount": 3,
-							"likeCount": 24,
-							"likedByViewer": false
-						},
-						"density": "cozy"
-					},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "author-line-3",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"author": {
-										"id": "user-mio",
-										"displayName": "Mio Sato",
-										"handle": "mio",
-										"avatarUrl": "https://i.pravatar.cc/128?img=13"
-									},
-									"label": "1d",
-									"visibility": "unlisted"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "avatar-3",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {
-												"author": {
-													"id": "user-mio",
-													"displayName": "Mio Sato",
-													"handle": "mio",
-													"avatarUrl": "https://i.pravatar.cc/128?img=13"
-												},
-												"density": "cozy"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"media": [
-							{
-								"id": "media-3",
-								"component": "src/components/post-media#PostMedia",
-								"props": {
-									"images": [
-										{
-											"url": "https://placehold.co/640x360/png?text=Before",
-											"alt": "Token pipeline before the change"
-										},
-										{
-											"url": "https://placehold.co/640x360/png?text=After",
-											"alt": "Token pipeline after the change"
+											"slots": {
+												"avatar": [
+													{
+														"id": "avatar-1",
+														"component": "src/components/user-avatar#UserAvatar",
+														"props": {
+															"density": "cozy",
+															"author": {
+																"id": "author-rin",
+																"displayName": "Rin Amano",
+																"handle": "rin",
+																"avatarUrl": "https://example.com/avatars/rin.png",
+																"verified": true
+															}
+														},
+														"slots": {}
+													}
+												]
+											}
 										}
 									],
-									"density": "cozy"
-								},
-								"slots": {}
-							}
-						],
-						"actions": [
+									"actions": [
+										{
+											"id": "report-tally-1",
+											"component": "Box",
+											"props": {
+												"className": "text-sm text-muted-foreground"
+											},
+											"slots": {
+												"children": [
+													{
+														"id": "report-tally-1-text",
+														"component": "Text",
+														"props": {
+															"text": "Reported 3 times"
+														},
+														"slots": {}
+													}
+												]
+											}
+										}
+									]
+								}
+							},
 							{
-								"id": "actions-3",
-								"component": "Box",
+								"id": "post-card-2",
+								"component": "src/components/post-card#PostCard",
 								"props": {
-									"className": "text-sm text-muted-foreground"
+									"density": "cozy",
+									"post": {
+										"id": "post-2",
+										"author": {
+											"id": "author-kai",
+											"displayName": "Kai Doi",
+											"handle": "kai",
+											"avatarUrl": "https://example.com/avatars/kai.png"
+										},
+										"body": "Quoting this because the old link is still pinned in three different channels.",
+										"createdAt": "2024-05-21T06:00:00.000Z",
+										"visibility": "followers",
+										"replyCount": 3,
+										"repostCount": 1,
+										"likeCount": 9,
+										"likedByViewer": false
+									}
 								},
 								"slots": {
-									"children": [
+									"authorLine": [
 										{
-											"id": "tally-3",
-											"component": "Text",
+											"id": "author-line-2",
+											"component": "src/components/post-author-line#PostAuthorLine",
 											"props": {
-												"text": "Reported 5 times"
+												"label": "5h",
+												"visibility": "followers",
+												"author": {
+													"id": "author-kai",
+													"displayName": "Kai Doi",
+													"handle": "kai",
+													"avatarUrl": "https://example.com/avatars/kai.png"
+												}
+											},
+											"slots": {
+												"avatar": [
+													{
+														"id": "avatar-2",
+														"component": "src/components/user-avatar#UserAvatar",
+														"props": {
+															"density": "cozy",
+															"author": {
+																"id": "author-kai",
+																"displayName": "Kai Doi",
+																"handle": "kai",
+																"avatarUrl": "https://example.com/avatars/kai.png"
+															}
+														},
+														"slots": {}
+													}
+												]
+											}
+										}
+									],
+									"quoted": [
+										{
+											"id": "quoted-post-2",
+											"component": "src/components/quoted-post#QuotedPost",
+											"props": {
+												"post": {
+													"id": "post-1",
+													"author": {
+														"id": "author-rin",
+														"displayName": "Rin Amano",
+														"handle": "rin",
+														"avatarUrl": "https://example.com/avatars/rin.png",
+														"verified": true
+													},
+													"body": "Reminder: the migration guide moves to the new docs site tomorrow morning.",
+													"createdAt": "2024-05-21T09:00:00.000Z",
+													"visibility": "public",
+													"replyCount": 12,
+													"repostCount": 4,
+													"likeCount": 38,
+													"likedByViewer": false
+												}
+											},
+											"slots": {
+												"avatar": [
+													{
+														"id": "quoted-avatar-2",
+														"component": "src/components/user-avatar#UserAvatar",
+														"props": {
+															"density": "compact",
+															"author": {
+																"id": "author-rin",
+																"displayName": "Rin Amano",
+																"handle": "rin",
+																"avatarUrl": "https://example.com/avatars/rin.png",
+																"verified": true
+															}
+														},
+														"slots": {}
+													}
+												]
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "report-tally-2",
+											"component": "Box",
+											"props": {
+												"className": "text-sm text-muted-foreground"
+											},
+											"slots": {
+												"children": [
+													{
+														"id": "report-tally-2-text",
+														"component": "Text",
+														"props": {
+															"text": "Reported once"
+														},
+														"slots": {}
+													}
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"id": "post-card-3",
+								"component": "src/components/post-card#PostCard",
+								"props": {
+									"density": "cozy",
+									"post": {
+										"id": "post-3",
+										"author": {
+											"id": "author-mio",
+											"displayName": "Mio Sato",
+											"handle": "mio",
+											"avatarUrl": "https://example.com/avatars/mio.png"
+										},
+										"body": "Two screenshots from the review queue dashboard, before and after the filter change.",
+										"createdAt": "2024-05-20T11:00:00.000Z",
+										"visibility": "unlisted",
+										"replyCount": 7,
+										"repostCount": 2,
+										"likeCount": 21,
+										"likedByViewer": false
+									}
+								},
+								"slots": {
+									"authorLine": [
+										{
+											"id": "author-line-3",
+											"component": "src/components/post-author-line#PostAuthorLine",
+											"props": {
+												"label": "1d",
+												"visibility": "unlisted",
+												"author": {
+													"id": "author-mio",
+													"displayName": "Mio Sato",
+													"handle": "mio",
+													"avatarUrl": "https://example.com/avatars/mio.png"
+												}
+											},
+											"slots": {
+												"avatar": [
+													{
+														"id": "avatar-3",
+														"component": "src/components/user-avatar#UserAvatar",
+														"props": {
+															"density": "cozy",
+															"author": {
+																"id": "author-mio",
+																"displayName": "Mio Sato",
+																"handle": "mio",
+																"avatarUrl": "https://example.com/avatars/mio.png"
+															}
+														},
+														"slots": {}
+													}
+												]
+											}
+										}
+									],
+									"media": [
+										{
+											"id": "media-3",
+											"component": "src/components/post-media#PostMedia",
+											"props": {
+												"density": "cozy",
+												"images": [
+													{
+														"url": "https://example.com/media/queue-before.png",
+														"alt": "Review queue dashboard before the filter change"
+													},
+													{
+														"url": "https://example.com/media/queue-after.png",
+														"alt": "Review queue dashboard after the filter change"
+													}
+												]
 											},
 											"slots": {}
+										}
+									],
+									"actions": [
+										{
+											"id": "report-tally-3",
+											"component": "Box",
+											"props": {
+												"className": "text-sm text-muted-foreground"
+											},
+											"slots": {
+												"children": [
+													{
+														"id": "report-tally-3-text",
+														"component": "Text",
+														"props": {
+															"text": "Reported 5 times"
+														},
+														"slots": {}
+													}
+												]
+											}
 										}
 									]
 								}
@@ -336,7 +352,7 @@
 					"slots": {
 						"items": [
 							{
-								"id": "trend-1",
+								"id": "trend-item-1",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 1,
@@ -349,7 +365,7 @@
 								"slots": {}
 							},
 							{
-								"id": "trend-2",
+								"id": "trend-item-2",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 2,
@@ -362,7 +378,7 @@
 								"slots": {}
 							},
 							{
-								"id": "trend-3",
+								"id": "trend-item-3",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 3,

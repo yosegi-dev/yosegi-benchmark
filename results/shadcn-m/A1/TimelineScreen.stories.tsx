@@ -18,212 +18,204 @@ import { TrendPanel } from "~/components/trend-panel";
 
 const viewer = {
 	id: "u-viewer",
-	name: "Nao Kubo",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/96?img=15",
+	name: "Aoi Mori",
+	handle: "aoi",
+	avatarUrl: "https://i.pravatar.cc/150?img=15",
 };
 
 const rin = {
 	id: "u-rin",
 	name: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/96?img=32",
+	avatarUrl: "https://i.pravatar.cc/150?img=1",
 };
 
 const kai = {
 	id: "u-kai",
 	name: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/96?img=12",
+	avatarUrl: "https://i.pravatar.cc/150?img=12",
 };
 
 const mio = {
 	id: "u-mio",
 	name: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/96?img=45",
+	avatarUrl: "https://i.pravatar.cc/150?img=32",
 };
 
 const jun = {
 	id: "u-jun",
 	name: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/96?img=68",
+	avatarUrl: "https://i.pravatar.cc/150?img=54",
 };
 
-const meta: Meta = {
+const sidebar = (
+	<>
+		<TrendPanel title="Trends for you">
+			<TrendItem
+				rank={1}
+				category="Technology"
+				name="#TypeScript"
+				postCount={12400}
+			/>
+			<TrendItem
+				rank={2}
+				category="Design"
+				name="#DesignSystems"
+				postCount={8300}
+			/>
+			<TrendItem rank={3} category="Frontend" name="#Storybook" postCount={4100} />
+		</TrendPanel>
+		<SuggestedUserPanel title="Who to follow">
+			<SuggestedUserRow
+				user={{
+					id: "u-sora",
+					name: "Sora Kimura",
+					handle: "sora",
+					avatarUrl: "https://i.pravatar.cc/150?img=5",
+				}}
+				reason="Followed by Rin Amano"
+			>
+				<FollowButton following={false} onToggle={() => {}} />
+			</SuggestedUserRow>
+			<SuggestedUserRow
+				user={{
+					id: "u-nao",
+					name: "Nao Fujii",
+					handle: "nao",
+					avatarUrl: "https://i.pravatar.cc/150?img=20",
+				}}
+				reason="Based on your activity"
+			>
+				<FollowButton following={false} onToggle={() => {}} />
+			</SuggestedUserRow>
+			<SuggestedUserRow
+				user={{
+					id: "u-haru",
+					name: "Haru Nakano",
+					handle: "haru",
+					avatarUrl: "https://i.pravatar.cc/150?img=41",
+				}}
+				reason="New to the timeline"
+			>
+				<FollowButton following={true} onToggle={() => {}} />
+			</SuggestedUserRow>
+		</SuggestedUserPanel>
+	</>
+);
+
+const TimelineScreen = () => (
+	<AppShell
+		header={
+			<TimelineHeader
+				user={viewer}
+				searchValue=""
+				onSearchChange={() => {}}
+				notificationCount={3}
+				onNotificationClick={() => {}}
+			/>
+		}
+		sidebar={sidebar}
+	>
+		<FeedTabs value="for-you" onChange={() => {}} />
+
+		<PostComposer
+			author={viewer}
+			value=""
+			onChange={() => {}}
+			visibility="public"
+			onVisibilityChange={() => {}}
+			onSubmit={() => {}}
+			placeholder="What's happening?"
+		/>
+
+		<PostCard visibility="public">
+			<PostAuthorLine author={rin} timestamp="2h" />
+			<PostBody text="Shipped the new timeline layout today. Two columns, one sidebar, and a composer that finally feels fast." />
+			<PostActionBar
+				replyCount={12}
+				repostCount={48}
+				likeCount={310}
+				liked={true}
+				onReply={() => {}}
+				onRepost={() => {}}
+				onLike={() => {}}
+			/>
+		</PostCard>
+
+		<PostCard visibility="followers">
+			<PostAuthorLine author={kai} timestamp="1h" />
+			<PostBody text="This is exactly the direction I was hoping for. The composer alone saves me a dozen clicks a day." />
+			<QuotedPost
+				author={rin}
+				text="Shipped the new timeline layout today. Two columns, one sidebar, and a composer that finally feels fast."
+				timestamp="2h"
+			/>
+			<PostActionBar
+				replyCount={4}
+				repostCount={9}
+				likeCount={57}
+				liked={false}
+				onReply={() => {}}
+				onRepost={() => {}}
+				onLike={() => {}}
+			/>
+		</PostCard>
+
+		<PostCard visibility="public">
+			<PostAuthorLine author={mio} timestamp="45m" />
+			<PostBody text="Two shots from this morning's walk. The light was doing something unusual on the way to the station." />
+			<PostMedia
+				images={[
+					{
+						src: "https://picsum.photos/id/1015/800/600",
+						alt: "A river running between pine covered hills",
+					},
+					{
+						src: "https://picsum.photos/id/1025/800/600",
+						alt: "A close portrait of a dog resting on a wooden floor",
+					},
+				]}
+			/>
+			<PostActionBar
+				replyCount={7}
+				repostCount={21}
+				likeCount={168}
+				liked={false}
+				onReply={() => {}}
+				onRepost={() => {}}
+				onLike={() => {}}
+			/>
+		</PostCard>
+
+		<PostCard visibility="circle">
+			<PostAuthorLine author={jun} timestamp="20m" />
+			<PostBody text="Keeping this one small: the migration is done, nothing broke, and I am going to sleep for a very long time." />
+			<PostActionBar
+				replyCount={2}
+				repostCount={3}
+				likeCount={41}
+				liked={false}
+				onReply={() => {}}
+				onRepost={() => {}}
+				onLike={() => {}}
+			/>
+		</PostCard>
+	</AppShell>
+);
+
+const meta = {
 	title: "Screens/TimelineScreen",
-	component: AppShell,
+	component: TimelineScreen,
 	parameters: {
 		layout: "fullscreen",
 	},
-};
+} satisfies Meta<typeof TimelineScreen>;
 
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<typeof meta>;
 
-export const Timeline: Story = {
-	render: () => (
-		<AppShell
-			header={
-				<TimelineHeader
-					user={viewer}
-					searchValue=""
-					onSearchChange={() => {}}
-					notificationCount={3}
-					onNotificationClick={() => {}}
-				/>
-			}
-			sidebar={
-				<>
-					<TrendPanel title="Trends for you">
-						<TrendItem
-							trend={{
-								id: "t-1",
-								category: "Technology",
-								name: "TypeScript 6.0",
-								postCount: 18400,
-							}}
-							onClick={() => {}}
-						/>
-						<TrendItem
-							trend={{
-								id: "t-2",
-								category: "Design",
-								name: "Design Tokens",
-								postCount: 9210,
-							}}
-							onClick={() => {}}
-						/>
-						<TrendItem
-							trend={{
-								id: "t-3",
-								category: "Trending in Japan",
-								name: "梅雨入り",
-								postCount: 42300,
-							}}
-							onClick={() => {}}
-						/>
-					</TrendPanel>
-					<SuggestedUserPanel title="Who to follow">
-						<SuggestedUserRow
-							user={{
-								id: "u-aoi",
-								name: "Aoi Nakamura",
-								handle: "aoi",
-								avatarUrl: "https://i.pravatar.cc/96?img=24",
-							}}
-						>
-							<FollowButton following={false} onClick={() => {}} />
-						</SuggestedUserRow>
-						<SuggestedUserRow
-							user={{
-								id: "u-sora",
-								name: "Sora Hayashi",
-								handle: "sora",
-								avatarUrl: "https://i.pravatar.cc/96?img=51",
-							}}
-						>
-							<FollowButton following={false} onClick={() => {}} />
-						</SuggestedUserRow>
-						<SuggestedUserRow
-							user={{
-								id: "u-haru",
-								name: "Haru Kondo",
-								handle: "haru",
-								avatarUrl: "https://i.pravatar.cc/96?img=7",
-							}}
-						>
-							<FollowButton following onClick={() => {}} />
-						</SuggestedUserRow>
-					</SuggestedUserPanel>
-				</>
-			}
-		>
-			<FeedTabs value="for-you" onValueChange={() => {}} />
-
-			<PostComposer
-				author={viewer}
-				value=""
-				onChange={() => {}}
-				visibility="public"
-				onVisibilityChange={() => {}}
-				onSubmit={() => {}}
-			/>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={rin} timestamp="2h" />
-				<PostBody text="Shipped the new registry pipeline this morning. Turns out most of the work was deleting code we no longer needed." />
-				<PostActionBar
-					replyCount={12}
-					repostCount={48}
-					likeCount={310}
-					liked
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} timestamp="1h" />
-				<PostBody text="This matches what we saw last quarter — the deletions are the release notes." />
-				<QuotedPost
-					author={rin}
-					timestamp="2h"
-					text="Shipped the new registry pipeline this morning. Turns out most of the work was deleting code we no longer needed."
-				/>
-				<PostActionBar
-					replyCount={4}
-					repostCount={11}
-					likeCount={87}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard visibility="public">
-				<PostAuthorLine author={mio} timestamp="35m" />
-				<PostBody text="Two frames from the studio session yesterday. Natural light only, no retouching." />
-				<PostMedia
-					images={[
-						{
-							src: "https://images.example.com/timeline/studio-01.jpg",
-							alt: "A wooden desk beside a tall window",
-						},
-						{
-							src: "https://images.example.com/timeline/studio-02.jpg",
-							alt: "A ceramic mug lit from the side",
-						},
-					]}
-				/>
-				<PostActionBar
-					replyCount={9}
-					repostCount={26}
-					likeCount={512}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-
-			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} timestamp="12m" />
-				<PostBody text="Small circle only: the offsite is confirmed for the second week of next month." />
-				<PostActionBar
-					replyCount={2}
-					repostCount={0}
-					likeCount={19}
-					liked={false}
-					onReply={() => {}}
-					onRepost={() => {}}
-					onLike={() => {}}
-				/>
-			</PostCard>
-		</AppShell>
-	),
-};
+export const Default: Story = {};

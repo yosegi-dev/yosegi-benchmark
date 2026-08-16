@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
-
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -19,13 +17,15 @@ import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 import { UserAvatar } from "~/components/user-avatar";
 import { VisibilityPicker } from "~/components/visibility-picker";
-import type { AuthorModel, FeedKind, PostModel, TrendModel, Visibility } from "~/models";
+import type { AuthorModel, PostModel, TrendModel } from "~/models";
+
+const noop = () => {};
 
 const viewer: AuthorModel = {
-	id: "u-nao",
-	displayName: "Nao Kubo",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/150?img=12",
+	id: "u-viewer",
+	displayName: "Aoi Nakamura",
+	handle: "aoi",
+	avatarUrl: "https://i.pravatar.cc/128?img=1",
 	verified: true,
 };
 
@@ -33,7 +33,7 @@ const rin: AuthorModel = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/150?img=32",
+	avatarUrl: "https://i.pravatar.cc/128?img=5",
 	verified: true,
 };
 
@@ -41,28 +41,28 @@ const kai: AuthorModel = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/150?img=51",
+	avatarUrl: "https://i.pravatar.cc/128?img=12",
 };
 
 const mio: AuthorModel = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/150?img=45",
+	avatarUrl: "https://i.pravatar.cc/128?img=32",
 };
 
 const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/150?img=68",
+	avatarUrl: "https://i.pravatar.cc/128?img=44",
 };
 
-const postRin: PostModel = {
+const postOne: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Shipped the new timeline layout today. Two columns, sticky header, and every card finally\nlines up on the same grid.",
-	createdAt: "2h",
+	body: "Shipped the new timeline today. Two columns, one composer, zero regrets.",
+	createdAt: "2026-08-17T09:00:00.000Z",
 	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
@@ -70,11 +70,11 @@ const postRin: PostModel = {
 	likedByViewer: true,
 };
 
-const postKai: PostModel = {
+const postTwo: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part nobody sees in the screenshot: the grid work underneath.",
-	createdAt: "1h",
+	body: "This is the write-up I keep sending to people who ask how we lay out a feed.",
+	createdAt: "2026-08-17T08:20:00.000Z",
 	visibility: "followers",
 	replyCount: 4,
 	repostCount: 9,
@@ -82,183 +82,171 @@ const postKai: PostModel = {
 	likedByViewer: false,
 };
 
-const postMio: PostModel = {
+const postThree: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Two frames from the studio this morning. Same lens, ten minutes apart.",
-	createdAt: "38m",
+	body: "Morning walk before the standup. The light was doing something unusual.",
+	createdAt: "2026-08-17T07:05:00.000Z",
 	visibility: "public",
 	replyCount: 7,
-	repostCount: 21,
-	likeCount: 154,
+	repostCount: 15,
+	likeCount: 128,
 	likedByViewer: false,
 };
 
-const postJun: PostModel = {
+const postFour: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Small circle post: the migration is done and nothing broke. Sleeping well tonight.",
-	createdAt: "12m",
+	body: "Small circle question: what is the smallest change you made that people noticed?",
+	createdAt: "2026-08-17T06:40:00.000Z",
 	visibility: "circle",
-	replyCount: 2,
+	replyCount: 21,
 	repostCount: 3,
-	likeCount: 27,
+	likeCount: 57,
 	likedByViewer: false,
 };
 
-const mioImages = [
-	{ url: "https://picsum.photos/seed/mio-a/800/600", alt: "Studio desk lit from the left" },
-	{ url: "https://picsum.photos/seed/mio-b/800/600", alt: "The same desk ten minutes later" },
+const postThreeImages = [
+	{ url: "https://picsum.photos/seed/timeline-a/800/600", alt: "A footpath under morning light" },
+	{ url: "https://picsum.photos/seed/timeline-b/800/600", alt: "A river seen from a low bridge" },
 ];
 
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#designsystems", postCount: 18400, category: "Design" },
-	{ id: "t-2", label: "Storybook 9", category: "Technology", postCount: 9320 },
-	{ id: "t-3", label: "#typescript", postCount: 41200, category: "Programming" },
+	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
+	{ id: "t-2", label: "Storybook 9", postCount: 9120, category: "Trending in Japan" },
+	{ id: "t-3", label: "#MorningWalk", postCount: 3480 },
 ];
 
-const suggestions: { author: AuthorModel; reason: string }[] = [
+const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
 	{
 		author: {
-			id: "u-aoi",
-			displayName: "Aoi Nakamura",
-			handle: "aoi",
-			avatarUrl: "https://i.pravatar.cc/150?img=24",
+			id: "u-hana",
+			displayName: "Hana Kubo",
+			handle: "hana",
+			avatarUrl: "https://i.pravatar.cc/128?img=20",
 			verified: true,
 		},
 		reason: "Followed by rin",
+		following: false,
+	},
+	{
+		author: {
+			id: "u-taku",
+			displayName: "Taku Mori",
+			handle: "taku",
+			avatarUrl: "https://i.pravatar.cc/128?img=52",
+		},
+		reason: "Followed by kai and 3 others",
+		following: false,
 	},
 	{
 		author: {
 			id: "u-sora",
-			displayName: "Sora Hayashi",
+			displayName: "Sora Fujii",
 			handle: "sora",
-			avatarUrl: "https://i.pravatar.cc/150?img=15",
+			avatarUrl: "https://i.pravatar.cc/128?img=60",
 		},
-		reason: "Followed by kai and 3 others",
-	},
-	{
-		author: {
-			id: "u-yuki",
-			displayName: "Yuki Mori",
-			handle: "yuki",
-			avatarUrl: "https://i.pravatar.cc/150?img=59",
-		},
-		reason: "New to your timeline",
+		reason: "New to your area",
+		following: true,
 	},
 ];
 
-const noop = () => {};
-
 function TimelineScreen() {
-	const [query, setQuery] = useState("");
-	const [feed, setFeed] = useState<FeedKind>("for-you");
-	const [draft, setDraft] = useState("");
-	const [visibility, setVisibility] = useState<Visibility>("public");
-	const [following, setFollowing] = useState<Record<string, boolean>>({});
-
 	return (
 		<AppShell
 			header={
 				<TimelineHeader
 					viewer={viewer}
-					search={<SearchField value={query} onQueryChange={setQuery} />}
-					notifications={<NotificationBell unreadCount={5} onBellPress={noop} />}
 					onViewerPress={noop}
+					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
+					notifications={<NotificationBell unreadCount={3} onBellPress={noop} tone="quiet" />}
 				/>
 			}
 			main={
-				<div style={{ display: "grid", gap: "1rem" }}>
-					<FeedTabs activeFeed={feed} onFeedChange={setFeed} />
-
+				<div>
+					<FeedTabs activeFeed="for-you" onFeedChange={noop} />
 					<PostComposer
-						viewer={viewer}
-						draft={draft}
-						visibility={visibility}
-						visibilityPicker={
-							<VisibilityPicker visibility={visibility} onVisibilityChange={setVisibility} />
-						}
-						onDraftChange={setDraft}
+						draft=""
+						onDraftChange={noop}
 						onSubmitPress={noop}
+						viewer={viewer}
+						visibility="public"
+						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 					/>
-
 					<PostCard
-						post={postRin}
+						post={postOne}
 						authorLine={
 							<PostAuthorLine
-								author={postRin.author}
-								label={postRin.createdAt}
-								visibility={postRin.visibility}
-								avatar={<UserAvatar author={postRin.author} />}
+								author={postOne.author}
+								label="2h"
+								visibility={postOne.visibility}
+								avatar={<UserAvatar author={postOne.author} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postRin}
+								post={postOne}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
 							/>
 						}
 					/>
-
 					<PostCard
-						post={postKai}
+						post={postTwo}
 						authorLine={
 							<PostAuthorLine
-								author={postKai.author}
-								label={postKai.createdAt}
-								visibility={postKai.visibility}
-								avatar={<UserAvatar author={postKai.author} />}
+								author={postTwo.author}
+								label="3h"
+								visibility={postTwo.visibility}
+								avatar={<UserAvatar author={postTwo.author} />}
 							/>
 						}
 						quoted={
-							<QuotedPost post={postRin} avatar={<UserAvatar author={postRin.author} density="compact" />} />
+							<QuotedPost post={postOne} avatar={<UserAvatar author={postOne.author} density="compact" />} />
 						}
 						actions={
 							<PostActionBar
-								post={postKai}
+								post={postTwo}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
 							/>
 						}
 					/>
-
 					<PostCard
-						post={postMio}
+						post={postThree}
 						authorLine={
 							<PostAuthorLine
-								author={postMio.author}
-								label={postMio.createdAt}
-								visibility={postMio.visibility}
-								avatar={<UserAvatar author={postMio.author} />}
+								author={postThree.author}
+								label="5h"
+								visibility={postThree.visibility}
+								avatar={<UserAvatar author={postThree.author} />}
 							/>
 						}
-						media={<PostMedia images={mioImages} />}
+						media={<PostMedia images={postThreeImages} />}
 						actions={
 							<PostActionBar
-								post={postMio}
+								post={postThree}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
 							/>
 						}
 					/>
-
 					<PostCard
-						post={postJun}
+						post={postFour}
 						authorLine={
 							<PostAuthorLine
-								author={postJun.author}
-								label={postJun.createdAt}
-								visibility={postJun.visibility}
-								avatar={<UserAvatar author={postJun.author} />}
+								author={postFour.author}
+								label="6h"
+								visibility={postFour.visibility}
+								avatar={<UserAvatar author={postFour.author} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postJun}
+								post={postFour}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -275,23 +263,15 @@ function TimelineScreen() {
 							<TrendItem key={trend.id} rank={index + 1} trend={trend} onTrendPress={noop} />
 						))}
 					/>
-
 					<SuggestedUserPanel
 						heading="Who to follow"
-						rows={suggestions.map(({ author, reason }) => (
+						rows={suggestions.map((suggestion) => (
 							<SuggestedUserRow
-								key={author.id}
-								author={author}
-								reason={reason}
-								avatar={<UserAvatar author={author} />}
-								follow={
-									<FollowButton
-										following={following[author.id] ?? false}
-										onFollowToggle={(next) =>
-											setFollowing((current) => ({ ...current, [author.id]: next }))
-										}
-									/>
-								}
+								key={suggestion.author.id}
+								author={suggestion.author}
+								reason={suggestion.reason}
+								avatar={<UserAvatar author={suggestion.author} />}
+								follow={<FollowButton following={suggestion.following} onFollowToggle={noop} />}
 							/>
 						))}
 					/>
@@ -301,11 +281,11 @@ function TimelineScreen() {
 	);
 }
 
-const meta = {
+const meta: Meta<typeof TimelineScreen> = {
 	title: "Screens/TimelineScreen",
 	component: TimelineScreen,
 	parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof TimelineScreen>;
+};
 
 export default meta;
 

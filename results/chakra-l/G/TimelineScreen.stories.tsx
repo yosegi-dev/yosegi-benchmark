@@ -22,129 +22,127 @@ import { VisibilityPicker } from "~/components/visibility-picker";
 const noop = () => {};
 
 const viewer = {
-	id: "u-viewer",
-	displayName: "Nao Kimura",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/128?img=15",
-	verified: true,
-} as const;
+	id: "u-sora",
+	displayName: "Sora Kimura",
+	handle: "sora",
+	avatarUrl: "https://i.pravatar.cc/160?img=12",
+};
 
 const rin = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/128?img=1",
+	avatarUrl: "https://i.pravatar.cc/160?img=32",
 	verified: true,
-} as const;
+};
 
 const kai = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/128?img=12",
-} as const;
+	avatarUrl: "https://i.pravatar.cc/160?img=15",
+};
 
 const mio = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/128?img=5",
-} as const;
+	avatarUrl: "https://i.pravatar.cc/160?img=45",
+};
 
 const jun = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/128?img=33",
-} as const;
+	avatarUrl: "https://i.pravatar.cc/160?img=68",
+};
 
-const post1 = {
+const postRin = {
 	id: "p-1",
 	author: rin,
-	body: "Shipped the new timeline today. Two columns, no surprises, and it finally feels fast on a cold load.",
-	createdAt: "2026-08-14T09:12:00.000Z",
-	visibility: "public",
+	body: "Rewrote the timeline in one sitting. The trick was letting each card own its own slots instead of threading everything through one giant prop.",
+	createdAt: "2026-03-02T09:12:00.000Z",
+	visibility: "public" as const,
 	replyCount: 12,
 	repostCount: 48,
 	likeCount: 310,
 	likedByViewer: true,
-} as const;
+};
 
-const post2 = {
+const postKai = {
 	id: "p-2",
 	author: kai,
-	body: "This matches what we measured last week. Cold load was the whole problem.",
-	createdAt: "2026-08-14T08:40:00.000Z",
-	visibility: "followers",
+	body: "This matches what we landed on last quarter. Slots first, props second.",
+	createdAt: "2026-03-02T08:40:00.000Z",
+	visibility: "followers" as const,
 	replyCount: 4,
 	repostCount: 9,
 	likeCount: 57,
 	likedByViewer: false,
-} as const;
+};
 
-const post3 = {
+const postMio = {
 	id: "p-3",
 	author: mio,
-	body: "Two shots from this morning's walk before the office. The light lasted about ten minutes.",
-	createdAt: "2026-08-14T07:05:00.000Z",
-	visibility: "public",
+	body: "Two shots from this morning's walk before the office. The light near the river was unreasonably good.",
+	createdAt: "2026-03-02T07:05:00.000Z",
+	visibility: "public" as const,
 	replyCount: 7,
 	repostCount: 21,
 	likeCount: 164,
 	likedByViewer: false,
-} as const;
+};
 
-const post4 = {
+const postJun = {
 	id: "p-4",
 	author: jun,
-	body: "Small circle question: what do you actually keep in your read-later list for more than a week?",
-	createdAt: "2026-08-14T06:20:00.000Z",
-	visibility: "circle",
-	replyCount: 18,
-	repostCount: 2,
-	likeCount: 41,
+	body: "Small circle post: I am finally happy with the migration plan. Details on Thursday.",
+	createdAt: "2026-03-02T06:22:00.000Z",
+	visibility: "circle" as const,
+	replyCount: 2,
+	repostCount: 3,
+	likeCount: 28,
 	likedByViewer: false,
-} as const;
+};
 
-const post3Images = [
-	{
-		url: "https://picsum.photos/id/1015/800/600",
-		alt: "A river running between two rock faces at sunrise",
-	},
-	{
-		url: "https://picsum.photos/id/1025/800/600",
-		alt: "A dog resting on a wooden floor in morning light",
-	},
-];
+const trendYosegi = {
+	id: "t-1",
+	label: "#YosegiCon",
+	postCount: 12400,
+	category: "Technology",
+};
 
-const trends = [
-	{ id: "t-1", label: "#TimelineRewrite", postCount: 12400, category: "Technology" },
-	{ id: "t-2", label: "Cold start", postCount: 8300, category: "Trending in Japan" },
-	{ id: "t-3", label: "#MorningWalk", postCount: 5120, category: "Lifestyle" },
-];
+const trendSakura = {
+	id: "t-2",
+	label: "Sakura forecast",
+	postCount: 8300,
+	category: "Trending now",
+};
 
-const suggestions = [
-	{ author: rin, reason: "Followed by kai", following: false },
-	{ author: mio, reason: "Followed by rin and 3 others", following: true },
-	{ author: jun, reason: "Based on accounts you follow", following: false },
-];
+const trendDesignSystems = {
+	id: "t-3",
+	label: "#DesignSystems",
+	postCount: 5100,
+	category: "Design",
+};
 
 const meta: Meta<typeof AppShell> = {
 	title: "Screens/TimelineScreen",
 	component: AppShell,
-	parameters: { layout: "fullscreen" },
 };
 
 export default meta;
 
-export const Timeline: StoryObj<typeof AppShell> = {
+type Story = StoryObj<typeof AppShell>;
+
+export const Default: Story = {
 	render: () => (
 		<AppShell
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					onViewerPress={noop}
-					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
+					search={<SearchField value="" onQueryChange={noop} />}
 					notifications={<NotificationBell unreadCount={3} onBellPress={noop} />}
 				/>
 			}
@@ -162,18 +160,18 @@ export const Timeline: StoryObj<typeof AppShell> = {
 						}
 					/>
 					<PostCard
-						post={post1}
+						post={postRin}
 						authorLine={
 							<PostAuthorLine
-								author={post1.author}
+								author={rin}
 								label="2h"
-								visibility={post1.visibility}
-								avatar={<UserAvatar author={post1.author} />}
+								visibility={postRin.visibility}
+								avatar={<UserAvatar author={rin} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={post1}
+								post={postRin}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -181,21 +179,21 @@ export const Timeline: StoryObj<typeof AppShell> = {
 						}
 					/>
 					<PostCard
-						post={post2}
+						post={postKai}
 						authorLine={
 							<PostAuthorLine
-								author={post2.author}
+								author={kai}
 								label="3h"
-								visibility={post2.visibility}
-								avatar={<UserAvatar author={post2.author} />}
+								visibility={postKai.visibility}
+								avatar={<UserAvatar author={kai} />}
 							/>
 						}
 						quoted={
-							<QuotedPost post={post1} avatar={<UserAvatar author={post1.author} />} />
+							<QuotedPost post={postRin} avatar={<UserAvatar author={rin} />} />
 						}
 						actions={
 							<PostActionBar
-								post={post2}
+								post={postKai}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -203,19 +201,32 @@ export const Timeline: StoryObj<typeof AppShell> = {
 						}
 					/>
 					<PostCard
-						post={post3}
+						post={postMio}
 						authorLine={
 							<PostAuthorLine
-								author={post3.author}
+								author={mio}
 								label="5h"
-								visibility={post3.visibility}
-								avatar={<UserAvatar author={post3.author} />}
+								visibility={postMio.visibility}
+								avatar={<UserAvatar author={mio} />}
 							/>
 						}
-						media={<PostMedia images={post3Images} />}
+						media={
+							<PostMedia
+								images={[
+									{
+										url: "https://images.example.com/riverside-morning.jpg",
+										alt: "Morning light on the riverside path",
+									},
+									{
+										url: "https://images.example.com/bridge-shadow.jpg",
+										alt: "Shadow of a bridge across still water",
+									},
+								]}
+							/>
+						}
 						actions={
 							<PostActionBar
-								post={post3}
+								post={postMio}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -223,18 +234,18 @@ export const Timeline: StoryObj<typeof AppShell> = {
 						}
 					/>
 					<PostCard
-						post={post4}
+						post={postJun}
 						authorLine={
 							<PostAuthorLine
-								author={post4.author}
+								author={jun}
 								label="6h"
-								visibility={post4.visibility}
-								avatar={<UserAvatar author={post4.author} />}
+								visibility={postJun.visibility}
+								avatar={<UserAvatar author={jun} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={post4}
+								post={postJun}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -247,31 +258,48 @@ export const Timeline: StoryObj<typeof AppShell> = {
 				<>
 					<TrendPanel
 						heading="Trends for you"
-						items={trends.map((trend, index) => (
-							<TrendItem
-								key={trend.id}
-								rank={index + 1}
-								trend={trend}
-								onTrendPress={noop}
-							/>
-						))}
+						items={
+							<>
+								<TrendItem rank={1} trend={trendYosegi} onTrendPress={noop} />
+								<TrendItem rank={2} trend={trendSakura} onTrendPress={noop} />
+								<TrendItem
+									rank={3}
+									trend={trendDesignSystems}
+									onTrendPress={noop}
+								/>
+							</>
+						}
 					/>
 					<SuggestedUserPanel
 						heading="Who to follow"
-						rows={suggestions.map((suggestion) => (
-							<SuggestedUserRow
-								key={suggestion.author.id}
-								author={suggestion.author}
-								reason={suggestion.reason}
-								avatar={<UserAvatar author={suggestion.author} />}
-								follow={
-									<FollowButton
-										following={suggestion.following}
-										onFollowToggle={noop}
-									/>
-								}
-							/>
-						))}
+						rows={
+							<>
+								<SuggestedUserRow
+									author={rin}
+									reason="Followed by kai"
+									avatar={<UserAvatar author={rin} />}
+									follow={
+										<FollowButton following={false} onFollowToggle={noop} />
+									}
+								/>
+								<SuggestedUserRow
+									author={mio}
+									reason="Posts you might like"
+									avatar={<UserAvatar author={mio} />}
+									follow={
+										<FollowButton following={false} onFollowToggle={noop} />
+									}
+								/>
+								<SuggestedUserRow
+									author={jun}
+									reason="Followed by rin"
+									avatar={<UserAvatar author={jun} />}
+									follow={
+										<FollowButton following={false} onFollowToggle={noop} />
+									}
+								/>
+							</>
+						}
 					/>
 				</>
 			}

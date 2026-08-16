@@ -13,7 +13,7 @@ const rin: AuthorModel = {
 	id: "author-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/160?img=47",
+	avatarUrl: "https://placehold.co/96x96/png?text=RA",
 	verified: true,
 };
 
@@ -21,151 +21,140 @@ const kai: AuthorModel = {
 	id: "author-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/160?img=12",
+	avatarUrl: "https://placehold.co/96x96/png?text=KD",
 };
 
 const mio: AuthorModel = {
 	id: "author-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/160?img=32",
+	avatarUrl: "https://placehold.co/96x96/png?text=MS",
 };
 
-const postRin: PostModel = {
+const postOne: PostModel = {
 	id: "post-1",
 	author: rin,
-	body: "Reminder that a design system is a contract, not a folder of components. If the contract is not written down, every team writes their own.",
-	createdAt: "2026-08-13T07:40:00.000Z",
+	body: "Reposting the same screenshot in four threads is not a bug report. Please stop.",
+	createdAt: "2026-08-17T05:10:00.000Z",
 	visibility: "public",
 	replyCount: 12,
-	repostCount: 34,
-	likeCount: 210,
+	repostCount: 4,
+	likeCount: 38,
 	likedByViewer: false,
 };
 
-const postKai: PostModel = {
+const postTwo: PostModel = {
 	id: "post-2",
 	author: kai,
-	body: "This is the part people skip. Writing the contract down is the whole job.",
-	createdAt: "2026-08-13T04:35:00.000Z",
+	body: "Quoting this so the moderation log keeps the original context.",
+	createdAt: "2026-08-17T02:10:00.000Z",
 	visibility: "followers",
-	replyCount: 4,
-	repostCount: 9,
-	likeCount: 63,
+	replyCount: 3,
+	repostCount: 1,
+	likeCount: 9,
 	likedByViewer: false,
 };
 
-const postMio: PostModel = {
+const postThree: PostModel = {
 	id: "post-3",
 	author: mio,
-	body: "Spent the day auditing our token usage across screens. Two screenshots of the before and after.",
-	createdAt: "2026-08-12T09:15:00.000Z",
+	body: "Two screenshots from the report queue, attached for review.",
+	createdAt: "2026-08-16T07:10:00.000Z",
 	visibility: "unlisted",
-	replyCount: 7,
-	repostCount: 15,
-	likeCount: 88,
+	replyCount: 21,
+	repostCount: 7,
+	likeCount: 64,
 	likedByViewer: false,
 };
 
-const typescriptTrend: TrendModel = {
-	id: "trend-typescript",
-	label: "#typescript",
-	postCount: 8320,
-};
+const postThreeImages: { url: string; alt: string }[] = [
+	{
+		url: "https://placehold.co/640x400/png?text=Report+1",
+		alt: "First reported screenshot",
+	},
+	{
+		url: "https://placehold.co/640x400/png?text=Report+2",
+		alt: "Second reported screenshot",
+	},
+];
 
-const storybookTrend: TrendModel = {
-	id: "trend-storybook",
-	label: "#storybook",
-	postCount: 6120,
-};
+const trends: TrendModel[] = [
+	{ id: "trend-typescript", label: "#typescript", postCount: 8320 },
+	{ id: "trend-storybook", label: "#storybook", postCount: 6120 },
+	{ id: "trend-designsystems", label: "#designsystems", postCount: 3980 },
+];
 
-const designSystemsTrend: TrendModel = {
-	id: "trend-designsystems",
-	label: "#designsystems",
-	postCount: 3980,
-};
+function ModerationScreen() {
+	return (
+		<AppShell
+			header={<h1>Moderation review</h1>}
+			main={
+				<>
+					<PostCard
+						post={postOne}
+						authorLine={
+							<PostAuthorLine
+								author={postOne.author}
+								label="2h"
+								visibility="public"
+								avatar={<UserAvatar author={postOne.author} />}
+							/>
+						}
+						actions={<div>Reported 3 times</div>}
+					/>
+					<PostCard
+						post={postTwo}
+						authorLine={
+							<PostAuthorLine
+								author={postTwo.author}
+								label="5h"
+								visibility="followers"
+								avatar={<UserAvatar author={postTwo.author} />}
+							/>
+						}
+						quoted={
+							<QuotedPost post={postOne} avatar={<UserAvatar author={postOne.author} />} />
+						}
+						actions={<div>Reported once</div>}
+					/>
+					<PostCard
+						post={postThree}
+						authorLine={
+							<PostAuthorLine
+								author={postThree.author}
+								label="1d"
+								visibility="unlisted"
+								avatar={<UserAvatar author={postThree.author} />}
+							/>
+						}
+						media={<PostMedia images={postThreeImages} />}
+						actions={<div>Reported 5 times</div>}
+					/>
+				</>
+			}
+			sidebar={
+				<TrendPanel
+					heading="Review queue trends"
+					items={
+						<>
+							{trends.map((trend, index) => (
+								<TrendItem key={trend.id} rank={index + 1} trend={trend} />
+							))}
+						</>
+					}
+				/>
+			}
+		/>
+	);
+}
 
 const meta = {
 	title: "Screens/ModerationScreen",
-	component: AppShell,
-	parameters: {
-		layout: "fullscreen",
-	},
-} satisfies Meta<typeof AppShell>;
+	component: ModerationScreen,
+} satisfies Meta<typeof ModerationScreen>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const ModerationReview: Story = {
-	args: {
-		header: <h1>Moderation review</h1>,
-		main: (
-			<>
-				<PostCard
-					post={postRin}
-					authorLine={
-						<PostAuthorLine
-							author={rin}
-							label="2h"
-							visibility="public"
-							avatar={<UserAvatar author={rin} />}
-						/>
-					}
-					actions={<div>Reported 3 times</div>}
-				/>
-				<PostCard
-					post={postKai}
-					authorLine={
-						<PostAuthorLine
-							author={kai}
-							label="5h"
-							visibility="followers"
-							avatar={<UserAvatar author={kai} />}
-						/>
-					}
-					quoted={<QuotedPost post={postRin} avatar={<UserAvatar author={rin} density="compact" />} />}
-					actions={<div>Reported once</div>}
-				/>
-				<PostCard
-					post={postMio}
-					authorLine={
-						<PostAuthorLine
-							author={mio}
-							label="1d"
-							visibility="unlisted"
-							avatar={<UserAvatar author={mio} />}
-						/>
-					}
-					media={
-						<PostMedia
-							images={[
-								{
-									url: "https://placehold.co/600x400/png?text=Before",
-									alt: "Token audit, before",
-								},
-								{
-									url: "https://placehold.co/600x400/png?text=After",
-									alt: "Token audit, after",
-								},
-							]}
-						/>
-					}
-					actions={<div>Reported 5 times</div>}
-				/>
-			</>
-		),
-		sidebar: (
-			<TrendPanel
-				heading="Review queue trends"
-				items={
-					<>
-						<TrendItem rank={1} trend={typescriptTrend} />
-						<TrendItem rank={2} trend={storybookTrend} />
-						<TrendItem rank={3} trend={designSystemsTrend} />
-					</>
-				}
-			/>
-		),
-	},
-};
+export const Default: Story = {};

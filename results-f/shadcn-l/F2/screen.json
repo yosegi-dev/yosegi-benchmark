@@ -8,321 +8,70 @@
 	"fixtures": {
 		"viewer": {
 			"id": "u-viewer",
-			"displayName": "Nao Kubo",
+			"displayName": "Nao Kimura",
 			"handle": "nao",
-			"avatarUrl": "https://i.pravatar.cc/150?img=12"
+			"avatarUrl": "https://i.pravatar.cc/150?img=15"
 		},
 		"rin": {
 			"id": "u-rin",
 			"displayName": "Rin Amano",
 			"handle": "rin",
-			"avatarUrl": "https://i.pravatar.cc/150?img=32",
+			"avatarUrl": "https://i.pravatar.cc/150?img=1",
 			"verified": true
 		},
 		"kai": {
 			"id": "u-kai",
 			"displayName": "Kai Doi",
 			"handle": "kai",
-			"avatarUrl": "https://i.pravatar.cc/150?img=15"
+			"avatarUrl": "https://i.pravatar.cc/150?img=2"
 		},
 		"mio": {
 			"id": "u-mio",
 			"displayName": "Mio Sato",
 			"handle": "mio",
-			"avatarUrl": "https://i.pravatar.cc/150?img=45"
+			"avatarUrl": "https://i.pravatar.cc/150?img=3",
+			"verified": true
 		},
 		"jun": {
 			"id": "u-jun",
 			"displayName": "Jun Ito",
 			"handle": "jun",
-			"avatarUrl": "https://i.pravatar.cc/150?img=8"
+			"avatarUrl": "https://i.pravatar.cc/150?img=4"
 		},
 		"postThreeImages": [
 			{
-				"url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
-				"alt": "A river at sunrise seen from a footpath"
+				"url": "https://images.example.com/studio-wide.jpg",
+				"alt": "Wide view of the studio with the lighting rig set up"
 			},
 			{
-				"url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
-				"alt": "Sunlight through the trees along the same path"
+				"url": "https://images.example.com/studio-desk.jpg",
+				"alt": "Close-up of the mixing desk during the session"
 			}
 		],
 		"trends": [
 			{
 				"id": "t-1",
 				"label": "#DesignSystems",
-				"postCount": 12400,
+				"postCount": 18400,
 				"category": "Technology"
 			},
 			{
 				"id": "t-2",
-				"label": "Layout Shift",
-				"postCount": 3820,
-				"category": "Web"
+				"label": "Storybook 9",
+				"postCount": 9210,
+				"category": "Trending"
 			},
 			{
 				"id": "t-3",
-				"label": "#MorningWalk",
-				"postCount": 941,
-				"category": "Lifestyle"
+				"label": "#TypeScript",
+				"postCount": 5340
 			}
 		]
 	},
 	"root": {
-		"id": "app-shell-1",
-		"component": "src/components/app-shell#AppShell",
+		"id": "timeline-screen-1",
+		"component": "TimelineScreen",
 		"props": {},
-		"slots": {
-			"header": [
-				{
-					"id": "timeline-header-1",
-					"component": "src/components/timeline-header#TimelineHeader",
-					"props": {},
-					"slots": {
-						"search": [
-							{
-								"id": "search-field-1",
-								"component": "src/components/search-field#SearchField",
-								"props": {
-									"value": "",
-									"placeholder": "Search"
-								},
-								"slots": {}
-							}
-						],
-						"notifications": [
-							{
-								"id": "notification-bell-1",
-								"component": "src/components/notification-bell#NotificationBell",
-								"props": {
-									"unreadCount": 3
-								},
-								"slots": {}
-							}
-						]
-					},
-					"bindings": {
-						"viewer": "viewer"
-					}
-				}
-			],
-			"main": [
-				{
-					"id": "feed-tabs-1",
-					"component": "src/components/feed-tabs#FeedTabs",
-					"props": {
-						"activeFeed": "for-you"
-					},
-					"slots": {}
-				},
-				{
-					"id": "post-composer-1",
-					"component": "src/components/post-composer#PostComposer",
-					"props": {
-						"draft": "",
-						"visibility": "public"
-					},
-					"slots": {
-						"visibilityPicker": [
-							{
-								"id": "visibility-picker-1",
-								"component": "src/components/visibility-picker#VisibilityPicker",
-								"props": {
-									"visibility": "public"
-								},
-								"slots": {}
-							}
-						]
-					},
-					"bindings": {
-						"viewer": "viewer"
-					}
-				},
-				{
-					"id": "post-card-1",
-					"component": "src/components/post-card#PostCard",
-					"props": {},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "post-author-line-1",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"label": "2h"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "user-avatar-1",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "post-action-bar-1",
-								"component": "src/components/post-action-bar#PostActionBar",
-								"props": {},
-								"slots": {}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-card-2",
-					"component": "src/components/post-card#PostCard",
-					"props": {},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "post-author-line-2",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"label": "3h"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "user-avatar-2",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"quoted": [
-							{
-								"id": "quoted-post-1",
-								"component": "src/components/quoted-post#QuotedPost",
-								"props": {},
-								"slots": {
-									"avatar": [
-										{
-											"id": "user-avatar-3",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {
-												"density": "compact"
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "post-action-bar-2",
-								"component": "src/components/post-action-bar#PostActionBar",
-								"props": {},
-								"slots": {}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-card-3",
-					"component": "src/components/post-card#PostCard",
-					"props": {},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "post-author-line-3",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"label": "5h"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "user-avatar-4",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"media": [
-							{
-								"id": "post-media-1",
-								"component": "src/components/post-media#PostMedia",
-								"props": {},
-								"slots": {},
-								"bindings": {
-									"images": "postThreeImages"
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "post-action-bar-3",
-								"component": "src/components/post-action-bar#PostActionBar",
-								"props": {},
-								"slots": {}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-card-4",
-					"component": "src/components/post-card#PostCard",
-					"props": {},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "post-author-line-4",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"label": "6h"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "user-avatar-5",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "post-action-bar-4",
-								"component": "src/components/post-action-bar#PostActionBar",
-								"props": {},
-								"slots": {}
-							}
-						]
-					}
-				}
-			],
-			"sidebar": [
-				{
-					"id": "trend-panel-1",
-					"component": "src/components/trend-panel#TrendPanel",
-					"props": {
-						"heading": "Trends for you"
-					},
-					"slots": {}
-				},
-				{
-					"id": "suggested-user-panel-1",
-					"component": "src/components/suggested-user-panel#SuggestedUserPanel",
-					"props": {
-						"heading": "Who to follow"
-					},
-					"slots": {}
-				}
-			]
-		}
+		"slots": {}
 	}
 }

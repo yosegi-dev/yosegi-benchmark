@@ -15,105 +15,17 @@ import { SuggestedUserRow } from "~/components/suggested-user-row";
 import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
-import type { AuthorModel, TrendModel } from "~/models";
-
-const viewer: AuthorModel = {
-	id: "u-viewer",
-	displayName: "Aoi Kurosawa",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/96?img=12",
-};
-
-const rin: AuthorModel = {
-	id: "u-rin",
-	displayName: "Rin Amano",
-	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/96?img=5",
-};
-
-const kai: AuthorModel = {
-	id: "u-kai",
-	displayName: "Kai Doi",
-	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/96?img=8",
-};
-
-const mio: AuthorModel = {
-	id: "u-mio",
-	displayName: "Mio Sato",
-	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/96?img=24",
-};
-
-const jun: AuthorModel = {
-	id: "u-jun",
-	displayName: "Jun Ito",
-	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/96?img=33",
-};
-
-const trends: TrendModel[] = [
-	{
-		id: "t-1",
-		category: "Technology",
-		label: "TypeScript 6",
-		postCount: 18400,
-	},
-	{
-		id: "t-2",
-		category: "Design",
-		label: "Design Tokens",
-		postCount: 9120,
-	},
-	{
-		id: "t-3",
-		category: "Trending in Japan",
-		label: "花見",
-		postCount: 42300,
-	},
-];
-
-const suggestedUsers: AuthorModel[] = [
-	{
-		id: "u-hana",
-		displayName: "Hana Kobayashi",
-		handle: "hana",
-		avatarUrl: "https://i.pravatar.cc/96?img=45",
-	},
-	{
-		id: "u-sora",
-		displayName: "Sora Nakamura",
-		handle: "sora",
-		avatarUrl: "https://i.pravatar.cc/96?img=52",
-	},
-	{
-		id: "u-yuki",
-		displayName: "Yuki Tanaka",
-		handle: "yuki",
-		avatarUrl: "https://i.pravatar.cc/96?img=60",
-	},
-];
 
 const noop = () => {};
 
-const meta = {
-	title: "Screens/TimelineScreen",
-	component: AppShell,
-	parameters: {
-		layout: "fullscreen",
-	},
-} satisfies Meta<typeof AppShell>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Timeline: Story = {
-	render: () => (
+function TimelineScreen() {
+	return (
 		<AppShell
 			header={
 				<TimelineHeader
-					user={viewer}
+					avatarUrl="https://i.pravatar.cc/80?img=12"
+					displayName="Rin Amano"
+					handle="rin"
 					searchValue=""
 					onSearchChange={noop}
 					notificationCount={3}
@@ -123,18 +35,50 @@ export const Timeline: Story = {
 			sidebar={
 				<>
 					<TrendPanel title="Trends for you">
-						{trends.map((trend) => (
-							<TrendItem key={trend.id} trend={trend} onSelect={noop} />
-						))}
+						<TrendItem
+							category="Technology"
+							name="#TypeScript"
+							postCount={18200}
+							onClick={noop}
+						/>
+						<TrendItem
+							category="Design"
+							name="#DesignSystems"
+							postCount={9400}
+							onClick={noop}
+						/>
+						<TrendItem
+							category="Music"
+							name="#NowPlaying"
+							postCount={3100}
+							onClick={noop}
+						/>
 					</TrendPanel>
 					<SuggestedUserPanel title="Who to follow">
-						{suggestedUsers.map((user) => (
-							<SuggestedUserRow
-								key={user.id}
-								user={user}
-								action={<FollowButton following={false} onToggle={noop} />}
-							/>
-						))}
+						<SuggestedUserRow
+							displayName="Aoi Nakamura"
+							handle="aoi"
+							avatarUrl="https://i.pravatar.cc/80?img=31"
+							bio="Frontend engineer"
+						>
+							<FollowButton following={false} onToggle={noop} />
+						</SuggestedUserRow>
+						<SuggestedUserRow
+							displayName="Haru Kobayashi"
+							handle="haru"
+							avatarUrl="https://i.pravatar.cc/80?img=32"
+							bio="Product designer"
+						>
+							<FollowButton following={false} onToggle={noop} />
+						</SuggestedUserRow>
+						<SuggestedUserRow
+							displayName="Sora Tanaka"
+							handle="sora"
+							avatarUrl="https://i.pravatar.cc/80?img=33"
+							bio="Writes about type systems"
+						>
+							<FollowButton following={true} onToggle={noop} />
+						</SuggestedUserRow>
 					</SuggestedUserPanel>
 				</>
 			}
@@ -142,22 +86,28 @@ export const Timeline: Story = {
 			<FeedTabs value="for-you" onChange={noop} />
 
 			<PostComposer
-				author={viewer}
 				value=""
 				onChange={noop}
 				visibility="public"
 				onVisibilityChange={noop}
 				onSubmit={noop}
+				avatarUrl="https://i.pravatar.cc/80?img=12"
+				placeholder="What's happening?"
 			/>
 
 			<PostCard visibility="public">
-				<PostAuthorLine author={rin} timestamp="2h" />
-				<PostBody text="Shipped the new registry pipeline today. It reads the host's types straight from source, so the component list finally stays honest." />
+				<PostAuthorLine
+					displayName="Rin Amano"
+					handle="rin"
+					avatarUrl="https://i.pravatar.cc/80?img=1"
+					time="2h"
+				/>
+				<PostBody text="Shipped the new timeline layout today. Two columns, and the sidebar finally stops fighting the main feed." />
 				<PostActionBar
 					replyCount={12}
 					repostCount={48}
 					likeCount={310}
-					liked
+					liked={true}
 					onReply={noop}
 					onRepost={noop}
 					onLike={noop}
@@ -165,12 +115,19 @@ export const Timeline: Story = {
 			</PostCard>
 
 			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} timestamp="1h" />
-				<PostBody text="This matches what we saw last sprint. Reading the types beats maintaining a hand-written manifest." />
+				<PostAuthorLine
+					displayName="Kai Doi"
+					handle="kai"
+					avatarUrl="https://i.pravatar.cc/80?img=2"
+					time="1h"
+				/>
+				<PostBody text="This matches what we measured last quarter — the sidebar was the whole problem." />
 				<QuotedPost
-					author={rin}
-					text="Shipped the new registry pipeline today. It reads the host's types straight from source, so the component list finally stays honest."
-					timestamp="2h"
+					displayName="Rin Amano"
+					handle="rin"
+					avatarUrl="https://i.pravatar.cc/80?img=1"
+					time="2h"
+					text="Shipped the new timeline layout today. Two columns, and the sidebar finally stops fighting the main feed."
 				/>
 				<PostActionBar
 					replyCount={4}
@@ -184,19 +141,22 @@ export const Timeline: Story = {
 			</PostCard>
 
 			<PostCard visibility="public">
-				<PostAuthorLine author={mio} timestamp="45m" />
+				<PostAuthorLine
+					displayName="Mio Sato"
+					handle="mio"
+					avatarUrl="https://i.pravatar.cc/80?img=3"
+					time="34m"
+				/>
 				<PostBody text="Two shots from this morning's walk before the rain came in." />
 				<PostMedia
 					images={[
 						{
-							id: "m-1",
-							src: "https://picsum.photos/id/1015/800/600",
-							alt: "A river running through a pine forest",
+							src: "https://images.example.com/timeline/morning-street.jpg",
+							alt: "A quiet street at dawn",
 						},
 						{
-							id: "m-2",
-							src: "https://picsum.photos/id/1016/800/600",
-							alt: "Fog settling over a mountain ridge",
+							src: "https://images.example.com/timeline/river-bridge.jpg",
+							alt: "A bridge over a river under grey clouds",
 						},
 					]}
 				/>
@@ -212,12 +172,17 @@ export const Timeline: Story = {
 			</PostCard>
 
 			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} timestamp="20m" />
-				<PostBody text="Small circle question: does anyone still run the nightly build locally, or are we all just trusting CI now?" />
+				<PostAuthorLine
+					displayName="Jun Ito"
+					handle="jun"
+					avatarUrl="https://i.pravatar.cc/80?img=4"
+					time="12m"
+				/>
+				<PostBody text="Keeping this one to the circle: the migration plan is done, review starts Monday." />
 				<PostActionBar
 					replyCount={2}
 					repostCount={1}
-					likeCount={23}
+					likeCount={26}
 					liked={false}
 					onReply={noop}
 					onRepost={noop}
@@ -225,5 +190,19 @@ export const Timeline: Story = {
 				/>
 			</PostCard>
 		</AppShell>
-	),
+	);
+}
+
+const meta: Meta<typeof TimelineScreen> = {
+	title: "Screens/TimelineScreen",
+	component: TimelineScreen,
+	parameters: {
+		layout: "fullscreen",
+	},
 };
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};

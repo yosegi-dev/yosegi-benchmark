@@ -1,0 +1,13 @@
+host           components  A2-floor  A2-search  B        B/A2-search
+shadcn                 20    20.3KB     23.0KB   16.0KB  0.69×
+shadcn-m               80    20.3KB     93.3KB   24.9KB  0.27×
+shadcn-l              240    20.3KB    292.9KB   48.7KB  0.17×
+mui                    20    24.6KB     27.3KB   12.5KB  0.46×
+mui-m                  80    24.6KB    109.7KB   21.9KB  0.20×
+mui-l                 240    24.6KB    332.3KB   45.5KB  0.14×
+chakra                 20    21.6KB     24.5KB   13.1KB  0.53×
+chakra-m               80    21.6KB     84.7KB   21.8KB  0.26×
+chakra-l              240    21.6KB    242.0KB   44.3KB  0.18×
+mantine                20    18.1KB     19.7KB   12.9KB  0.66×
+mantine-m              80    18.1KB     75.2KB   21.8KB  0.29×
+mantine-l             240    18.1KB    231.3KB   45.3KB  0.20×

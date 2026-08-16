@@ -3,27 +3,23 @@
 	"id": "moderation-review",
 	"name": "Moderation review",
 	"componentRegistryVersion": "src:01051c921b30",
-	"revision": 1,
+	"revision": 0,
 	"root": {
-		"id": "app-shell",
+		"id": "root",
 		"component": "src/components/app-shell#AppShell",
-		"props": {
-			"density": "cozy"
-		},
+		"props": {},
 		"slots": {
 			"header": [
 				{
 					"id": "page-heading",
 					"component": "Heading",
-					"props": {
-						"text": "Moderation review"
-					},
+					"props": { "text": "Moderation review" },
 					"slots": {}
 				}
 			],
 			"main": [
 				{
-					"id": "post-1",
+					"id": "post-card-1",
 					"component": "src/components/post-card#PostCard",
 					"props": {
 						"post": {
@@ -32,11 +28,11 @@
 								"id": "author-rin",
 								"displayName": "Rin Amano",
 								"handle": "rin",
-								"avatarUrl": "https://i.pravatar.cc/96?img=1",
+								"avatarUrl": "https://placehold.co/96x96/png?text=RA",
 								"verified": true
 							},
-							"body": "Reminder: the moderation queue is triaged twice a day, not in real time. Please stop pinging the on-call about it.",
-							"createdAt": "2026-08-13T07:00:00.000Z",
+							"body": "Reminder: the moderation queue is triaged twice a day. Flag anything that needs a faster look.",
+							"createdAt": "2024-05-01T09:00:00.000Z",
 							"visibility": "public",
 							"replyCount": 12,
 							"repostCount": 4,
@@ -47,14 +43,14 @@
 					"slots": {
 						"authorLine": [
 							{
-								"id": "post-1-author-line",
+								"id": "author-line-1",
 								"component": "src/components/post-author-line#PostAuthorLine",
 								"props": {
 									"author": {
 										"id": "author-rin",
 										"displayName": "Rin Amano",
 										"handle": "rin",
-										"avatarUrl": "https://i.pravatar.cc/96?img=1",
+										"avatarUrl": "https://placehold.co/96x96/png?text=RA",
 										"verified": true
 									},
 									"label": "2h",
@@ -63,14 +59,14 @@
 								"slots": {
 									"avatar": [
 										{
-											"id": "post-1-avatar",
+											"id": "avatar-1",
 											"component": "src/components/user-avatar#UserAvatar",
 											"props": {
 												"author": {
 													"id": "author-rin",
 													"displayName": "Rin Amano",
 													"handle": "rin",
-													"avatarUrl": "https://i.pravatar.cc/96?img=1",
+													"avatarUrl": "https://placehold.co/96x96/png?text=RA",
 													"verified": true
 												}
 											},
@@ -82,17 +78,15 @@
 						],
 						"actions": [
 							{
-								"id": "post-1-actions",
+								"id": "report-tally-1",
 								"component": "Box",
-								"props": {},
+								"props": { "className": "text-sm text-muted-foreground" },
 								"slots": {
 									"children": [
 										{
-											"id": "post-1-tally",
+											"id": "report-tally-text-1",
 											"component": "Text",
-											"props": {
-												"text": "Reported 3 times"
-											},
+											"props": { "text": "Reported 3 times" },
 											"slots": {}
 										}
 									]
@@ -102,7 +96,7 @@
 					}
 				},
 				{
-					"id": "post-2",
+					"id": "post-card-2",
 					"component": "src/components/post-card#PostCard",
 					"props": {
 						"post": {
@@ -111,12 +105,13 @@
 								"id": "author-kai",
 								"displayName": "Kai Doi",
 								"handle": "kai",
-								"avatarUrl": "https://i.pravatar.cc/96?img=12"
+								"avatarUrl": "https://placehold.co/96x96/png?text=KD",
+								"verified": false
 							},
-							"body": "This is exactly the policy I was told the opposite of last week. Which one is it?",
-							"createdAt": "2026-08-13T04:00:00.000Z",
+							"body": "Quoting the triage note so the follower-only crowd sees it too.",
+							"createdAt": "2024-05-01T06:00:00.000Z",
 							"visibility": "followers",
-							"replyCount": 6,
+							"replyCount": 3,
 							"repostCount": 1,
 							"likeCount": 9,
 							"likedByViewer": false
@@ -125,14 +120,15 @@
 					"slots": {
 						"authorLine": [
 							{
-								"id": "post-2-author-line",
+								"id": "author-line-2",
 								"component": "src/components/post-author-line#PostAuthorLine",
 								"props": {
 									"author": {
 										"id": "author-kai",
 										"displayName": "Kai Doi",
 										"handle": "kai",
-										"avatarUrl": "https://i.pravatar.cc/96?img=12"
+										"avatarUrl": "https://placehold.co/96x96/png?text=KD",
+										"verified": false
 									},
 									"label": "5h",
 									"visibility": "followers"
@@ -140,34 +136,16 @@
 								"slots": {
 									"avatar": [
 										{
-											"id": "post-2-avatar",
+											"id": "avatar-2",
 											"component": "src/components/user-avatar#UserAvatar",
 											"props": {
 												"author": {
 													"id": "author-kai",
 													"displayName": "Kai Doi",
 													"handle": "kai",
-													"avatarUrl": "https://i.pravatar.cc/96?img=12"
+													"avatarUrl": "https://placehold.co/96x96/png?text=KD",
+													"verified": false
 												}
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						],
-						"actions": [
-							{
-								"id": "post-2-actions",
-								"component": "Box",
-								"props": {},
-								"slots": {
-									"children": [
-										{
-											"id": "post-2-tally",
-											"component": "Text",
-											"props": {
-												"text": "Reported once"
 											},
 											"slots": {}
 										}
@@ -177,7 +155,7 @@
 						],
 						"quoted": [
 							{
-								"id": "post-2-quoted",
+								"id": "quoted-post-2",
 								"component": "src/components/quoted-post#QuotedPost",
 								"props": {
 									"post": {
@@ -186,11 +164,11 @@
 											"id": "author-rin",
 											"displayName": "Rin Amano",
 											"handle": "rin",
-											"avatarUrl": "https://i.pravatar.cc/96?img=1",
+											"avatarUrl": "https://placehold.co/96x96/png?text=RA",
 											"verified": true
 										},
-										"body": "Reminder: the moderation queue is triaged twice a day, not in real time. Please stop pinging the on-call about it.",
-										"createdAt": "2026-08-13T07:00:00.000Z",
+										"body": "Reminder: the moderation queue is triaged twice a day. Flag anything that needs a faster look.",
+										"createdAt": "2024-05-01T09:00:00.000Z",
 										"visibility": "public",
 										"replyCount": 12,
 										"repostCount": 4,
@@ -201,72 +179,15 @@
 								"slots": {
 									"avatar": [
 										{
-											"id": "post-2-quoted-avatar",
+											"id": "quoted-avatar-2",
 											"component": "src/components/user-avatar#UserAvatar",
 											"props": {
 												"author": {
 													"id": "author-rin",
 													"displayName": "Rin Amano",
 													"handle": "rin",
-													"avatarUrl": "https://i.pravatar.cc/96?img=1",
+													"avatarUrl": "https://placehold.co/96x96/png?text=RA",
 													"verified": true
-												}
-											},
-											"slots": {}
-										}
-									]
-								}
-							}
-						]
-					}
-				},
-				{
-					"id": "post-3",
-					"component": "src/components/post-card#PostCard",
-					"props": {
-						"post": {
-							"id": "post-3",
-							"author": {
-								"id": "author-mio",
-								"displayName": "Mio Sato",
-								"handle": "mio",
-								"avatarUrl": "https://i.pravatar.cc/96?img=32"
-							},
-							"body": "Screenshots of the two queue dashboards, before and after the rule change.",
-							"createdAt": "2026-08-12T09:00:00.000Z",
-							"visibility": "unlisted",
-							"replyCount": 2,
-							"repostCount": 0,
-							"likeCount": 15,
-							"likedByViewer": false
-						}
-					},
-					"slots": {
-						"authorLine": [
-							{
-								"id": "post-3-author-line",
-								"component": "src/components/post-author-line#PostAuthorLine",
-								"props": {
-									"author": {
-										"id": "author-mio",
-										"displayName": "Mio Sato",
-										"handle": "mio",
-										"avatarUrl": "https://i.pravatar.cc/96?img=32"
-									},
-									"label": "1d",
-									"visibility": "unlisted"
-								},
-								"slots": {
-									"avatar": [
-										{
-											"id": "post-3-avatar",
-											"component": "src/components/user-avatar#UserAvatar",
-											"props": {
-												"author": {
-													"id": "author-mio",
-													"displayName": "Mio Sato",
-													"handle": "mio",
-													"avatarUrl": "https://i.pravatar.cc/96?img=32"
 												}
 											},
 											"slots": {}
@@ -277,16 +198,74 @@
 						],
 						"actions": [
 							{
-								"id": "post-3-actions",
+								"id": "report-tally-2",
 								"component": "Box",
-								"props": {},
+								"props": { "className": "text-sm text-muted-foreground" },
 								"slots": {
 									"children": [
 										{
-											"id": "post-3-tally",
+											"id": "report-tally-text-2",
 											"component": "Text",
+											"props": { "text": "Reported once" },
+											"slots": {}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": "post-card-3",
+					"component": "src/components/post-card#PostCard",
+					"props": {
+						"post": {
+							"id": "post-3",
+							"author": {
+								"id": "author-mio",
+								"displayName": "Mio Sato",
+								"handle": "mio",
+								"avatarUrl": "https://placehold.co/96x96/png?text=MS",
+								"verified": false
+							},
+							"body": "Two screenshots from the report queue, unlisted while we confirm the details.",
+							"createdAt": "2024-04-30T11:00:00.000Z",
+							"visibility": "unlisted",
+							"replyCount": 7,
+							"repostCount": 0,
+							"likeCount": 15,
+							"likedByViewer": false
+						}
+					},
+					"slots": {
+						"authorLine": [
+							{
+								"id": "author-line-3",
+								"component": "src/components/post-author-line#PostAuthorLine",
+								"props": {
+									"author": {
+										"id": "author-mio",
+										"displayName": "Mio Sato",
+										"handle": "mio",
+										"avatarUrl": "https://placehold.co/96x96/png?text=MS",
+										"verified": false
+									},
+									"label": "1d",
+									"visibility": "unlisted"
+								},
+								"slots": {
+									"avatar": [
+										{
+											"id": "avatar-3",
+											"component": "src/components/user-avatar#UserAvatar",
 											"props": {
-												"text": "Reported 5 times"
+												"author": {
+													"id": "author-mio",
+													"displayName": "Mio Sato",
+													"handle": "mio",
+													"avatarUrl": "https://placehold.co/96x96/png?text=MS",
+													"verified": false
+												}
 											},
 											"slots": {}
 										}
@@ -296,21 +275,38 @@
 						],
 						"media": [
 							{
-								"id": "post-3-media",
+								"id": "post-media-3",
 								"component": "src/components/post-media#PostMedia",
 								"props": {
 									"images": [
 										{
-											"url": "https://picsum.photos/seed/queue-before/640/360",
-											"alt": "Review queue dashboard before the rule change"
+											"url": "https://placehold.co/640x360/png?text=Report+1",
+											"alt": "Screenshot of the first reported thread"
 										},
 										{
-											"url": "https://picsum.photos/seed/queue-after/640/360",
-											"alt": "Review queue dashboard after the rule change"
+											"url": "https://placehold.co/640x360/png?text=Report+2",
+											"alt": "Screenshot of the second reported thread"
 										}
 									]
 								},
 								"slots": {}
+							}
+						],
+						"actions": [
+							{
+								"id": "report-tally-3",
+								"component": "Box",
+								"props": { "className": "text-sm text-muted-foreground" },
+								"slots": {
+									"children": [
+										{
+											"id": "report-tally-text-3",
+											"component": "Text",
+											"props": { "text": "Reported 5 times" },
+											"slots": {}
+										}
+									]
+								}
 							}
 						]
 					}
@@ -320,49 +316,44 @@
 				{
 					"id": "trend-panel",
 					"component": "src/components/trend-panel#TrendPanel",
-					"props": {
-						"heading": "Review queue trends"
-					},
+					"props": { "heading": "Review queue trends" },
 					"slots": {
 						"items": [
 							{
-								"id": "trend-1",
+								"id": "trend-item-1",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 1,
 									"trend": {
 										"id": "trend-typescript",
 										"label": "#typescript",
-										"postCount": 8320,
-										"category": "Technology"
+										"postCount": 8320
 									}
 								},
 								"slots": {}
 							},
 							{
-								"id": "trend-2",
+								"id": "trend-item-2",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 2,
 									"trend": {
 										"id": "trend-storybook",
 										"label": "#storybook",
-										"postCount": 6120,
-										"category": "Technology"
+										"postCount": 6120
 									}
 								},
 								"slots": {}
 							},
 							{
-								"id": "trend-3",
+								"id": "trend-item-3",
 								"component": "src/components/trend-item#TrendItem",
 								"props": {
 									"rank": 3,
 									"trend": {
 										"id": "trend-designsystems",
 										"label": "#designsystems",
-										"postCount": 3980,
-										"category": "Design"
+										"postCount": 3980
 									}
 								},
 								"slots": {}

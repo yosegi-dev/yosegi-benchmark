@@ -23,17 +23,16 @@ const noop = () => {};
 
 const viewer = {
 	id: "u-viewer",
-	displayName: "Nao Kubo",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/160?img=12",
-	verified: false,
+	displayName: "Aoi Tanaka",
+	handle: "aoi",
+	avatarUrl: "https://i.pravatar.cc/128?u=aoi",
 };
 
 const rin = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/160?img=32",
+	avatarUrl: "https://i.pravatar.cc/128?u=rin",
 	verified: true,
 };
 
@@ -41,31 +40,30 @@ const kai = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/160?img=51",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/128?u=kai",
 };
 
 const mio = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/160?img=45",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/128?u=mio",
 };
 
 const jun = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/160?img=68",
-	verified: true,
+	avatarUrl: "https://i.pravatar.cc/128?u=jun",
 };
 
-const post1 = {
-	id: "p1",
+// `visibility` is pinned with `as const` so each literal stays the union member
+// `PostModel.visibility` expects instead of widening to `string`.
+const postRin = {
+	id: "p-1",
 	author: rin,
-	body: "Shipped the new registry view this morning. It reads the host's types directly, so the props list is never out of date with the code.",
-	createdAt: "2h",
+	body: "Shipped the new timeline layout today. Two columns, no surprises, and it finally survives a narrow desktop window.",
+	createdAt: "2026-08-17T09:12:00.000Z",
 	visibility: "public" as const,
 	replyCount: 12,
 	repostCount: 48,
@@ -73,99 +71,97 @@ const post1 = {
 	likedByViewer: true,
 };
 
-const post2 = {
-	id: "p2",
+const postKai = {
+	id: "p-2",
 	author: kai,
-	body: "This is the part everyone underestimates. Types as the source of truth removes a whole class of drift.",
-	createdAt: "1h",
+	body: "This is the part everyone skips: the layout is the easy half. Keeping it readable at every density is the work.",
+	createdAt: "2026-08-17T08:40:00.000Z",
 	visibility: "followers" as const,
-	replyCount: 4,
+	replyCount: 5,
 	repostCount: 9,
-	likeCount: 63,
+	likeCount: 64,
 	likedByViewer: false,
 };
 
-const post3 = {
-	id: "p3",
+const postMio = {
+	id: "p-3",
 	author: mio,
-	body: "Two shots from the studio wall we finished last weekend. The second one is my favourite.",
-	createdAt: "38m",
+	body: "Two shots from this morning's walk before the studio opened.",
+	createdAt: "2026-08-17T07:55:00.000Z",
 	visibility: "public" as const,
-	replyCount: 7,
-	repostCount: 15,
-	likeCount: 128,
+	replyCount: 8,
+	repostCount: 21,
+	likeCount: 137,
 	likedByViewer: false,
 };
 
-const post4 = {
-	id: "p4",
+const postJun = {
+	id: "p-4",
 	author: jun,
-	body: "Small circle question: does anyone still run their own build server, or has everyone moved on?",
-	createdAt: "12m",
+	body: "Small circle post: the review queue is finally empty. Taking the rest of the afternoon off.",
+	createdAt: "2026-08-17T06:30:00.000Z",
 	visibility: "circle" as const,
-	replyCount: 21,
-	repostCount: 2,
-	likeCount: 44,
+	replyCount: 2,
+	repostCount: 1,
+	likeCount: 18,
 	likedByViewer: false,
 };
 
-const post3Images = [
+const mioImages = [
 	{
-		url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
-		alt: "A pale studio wall lit from the left, half painted",
+		url: "https://images.example.com/mio/harbour-morning.jpg",
+		alt: "Empty harbour walkway just after sunrise",
 	},
 	{
-		url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800",
-		alt: "The finished wall at dusk, with the lamp switched on",
+		url: "https://images.example.com/mio/studio-window.jpg",
+		alt: "Studio window with the blinds half open",
 	},
 ];
 
 const trends = [
-	{ id: "t1", label: "#typesafety", postCount: 18400, category: "Technology" },
-	{ id: "t2", label: "Storybook 9", postCount: 9120, category: "Frontend" },
-	{ id: "t3", label: "#designsystems", postCount: 5340, category: "Design" },
+	{ id: "t-1", label: "#DesignSystems", postCount: 12400, category: "Technology" },
+	{ id: "t-2", label: "#TypeScript", postCount: 8320, category: "Technology" },
+	{ id: "t-3", label: "Morning walks", postCount: 2140 },
 ];
 
 const suggestions = [
 	{
 		author: {
-			id: "u-aoi",
-			displayName: "Aoi Nakamura",
-			handle: "aoi",
-			avatarUrl: "https://i.pravatar.cc/160?img=24",
-			verified: false,
+			id: "u-sora",
+			displayName: "Sora Nishi",
+			handle: "sora",
+			avatarUrl: "https://i.pravatar.cc/128?u=sora",
+			verified: true,
 		},
 		reason: "Followed by rin",
 	},
 	{
 		author: {
-			id: "u-sora",
-			displayName: "Sora Hayashi",
-			handle: "sora",
-			avatarUrl: "https://i.pravatar.cc/160?img=15",
-			verified: true,
+			id: "u-hana",
+			displayName: "Hana Kurose",
+			handle: "hana",
+			avatarUrl: "https://i.pravatar.cc/128?u=hana",
 		},
 		reason: "Followed by kai and 4 others",
 	},
 	{
 		author: {
-			id: "u-yuki",
-			displayName: "Yuki Mori",
-			handle: "yuki",
-			avatarUrl: "https://i.pravatar.cc/160?img=5",
-			verified: false,
+			id: "u-taku",
+			displayName: "Taku Morita",
+			handle: "taku",
+			avatarUrl: "https://i.pravatar.cc/128?u=taku",
 		},
-		reason: "New to your timeline",
+		reason: "New to the timeline",
 	},
 ];
 
-const meta: Meta<typeof AppShell> = {
-	title: "Screens/TimelineScreen",
+const meta = {
+	title: "Screens/Timeline",
 	component: AppShell,
 	parameters: {
 		layout: "fullscreen",
 	},
-};
+} satisfies Meta<typeof AppShell>;
 
 export default meta;
 
@@ -179,93 +175,99 @@ export const Timeline: Story = {
 				viewer={viewer}
 				onViewerPress={noop}
 				search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
-				notifications={<NotificationBell unreadCount={3} onBellPress={noop} tone="quiet" />}
+				notifications={<NotificationBell unreadCount={3} onBellPress={noop} />}
 			/>
 		),
 		main: (
 			<>
 				<FeedTabs activeFeed="for-you" onFeedChange={noop} />
+
 				<PostComposer
 					draft=""
 					onDraftChange={noop}
 					onSubmitPress={noop}
 					viewer={viewer}
 					visibility="public"
-					submitLabel="Post"
 					visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 				/>
+
+				{/* PostCard renders `post.body` itself and exposes no body slot,
+				    so the spec's PostBody node is covered by the card. */}
 				<PostCard
-					post={post1}
+					post={postRin}
 					authorLine={
 						<PostAuthorLine
 							author={rin}
 							label="2h"
-							visibility="public"
+							visibility={postRin.visibility}
 							avatar={<UserAvatar author={rin} />}
 						/>
 					}
 					actions={
 						<PostActionBar
-							post={post1}
+							post={postRin}
 							onReplyPress={noop}
 							onRepostPress={noop}
 							onLikePress={noop}
 						/>
 					}
 				/>
+
 				<PostCard
-					post={post2}
+					post={postKai}
 					authorLine={
 						<PostAuthorLine
 							author={kai}
-							label="1h"
-							visibility="followers"
+							label="3h"
+							visibility={postKai.visibility}
 							avatar={<UserAvatar author={kai} />}
 						/>
 					}
-					quoted={<QuotedPost post={post1} avatar={<UserAvatar author={rin} density="compact" />} />}
+					quoted={<QuotedPost post={postRin} avatar={<UserAvatar author={rin} density="compact" />} />}
 					actions={
 						<PostActionBar
-							post={post2}
+							post={postKai}
 							onReplyPress={noop}
 							onRepostPress={noop}
 							onLikePress={noop}
 						/>
 					}
 				/>
+
 				<PostCard
-					post={post3}
+					post={postMio}
 					authorLine={
 						<PostAuthorLine
 							author={mio}
-							label="38m"
-							visibility="public"
+							label="4h"
+							visibility={postMio.visibility}
 							avatar={<UserAvatar author={mio} />}
 						/>
 					}
-					media={<PostMedia images={post3Images} />}
+					media={<PostMedia images={mioImages} />}
 					actions={
 						<PostActionBar
-							post={post3}
+							post={postMio}
 							onReplyPress={noop}
 							onRepostPress={noop}
 							onLikePress={noop}
 						/>
 					}
 				/>
+
 				<PostCard
-					post={post4}
+					post={postJun}
 					authorLine={
 						<PostAuthorLine
 							author={jun}
-							label="12m"
-							visibility="circle"
+							label="6h"
+							visibility={postJun.visibility}
 							avatar={<UserAvatar author={jun} />}
 						/>
 					}
 					actions={
 						<PostActionBar
-							post={post4}
+							post={postJun}
 							onReplyPress={noop}
 							onRepostPress={noop}
 							onLikePress={noop}
@@ -286,6 +288,7 @@ export const Timeline: Story = {
 						</>
 					}
 				/>
+
 				<SuggestedUserPanel
 					heading="Who to follow"
 					rows={

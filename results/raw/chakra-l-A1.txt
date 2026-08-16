@@ -1,58 +1,54 @@
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(30,4): error TS2322: Type '{ children: Element[]; header: Element; sidebar: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.
-  Property 'children' does not exist on type 'IntrinsicAttributes & AppShellProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(39,6): error TS2322: Type '{ viewer: { id: string; displayName: string; handle: string; avatarUrl: string; }; searchValue: string; searchPlaceholder: string; onSearchChange: () => void; notificationCount: number; onNotificationClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
-  Property 'searchValue' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(48,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(35,5): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; searchPlaceholder: string; searchValue: string; notificationCount: number; }' is not assignable to type 'IntrinsicAttributes & TimelineHeaderProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & TimelineHeaderProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(45,6): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & TrendPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & TrendPanelProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(51,8): error TS2322: Type '{ rank: number; category: string; topic: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(47,7): error TS2322: Type '{ category: string; name: string; postCount: number; rank: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(58,8): error TS2322: Type '{ rank: number; category: string; topic: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(53,7): error TS2322: Type '{ category: string; name: string; postCount: number; rank: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(65,8): error TS2322: Type '{ rank: number; category: string; topic: string; postCount: number; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(59,7): error TS2322: Type '{ category: string; name: string; postCount: number; rank: number; }' is not assignable to type 'IntrinsicAttributes & TrendItemProps'.
   Property 'category' does not exist on type 'IntrinsicAttributes & TrendItemProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(71,7): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(65,6): error TS2322: Type '{ children: Element[]; title: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserPanelProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserPanelProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(72,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
-  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(81,40): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(83,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
-  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(92,40): error TS2322: Type '{ following: false; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(94,8): error TS2322: Type '{ children: Element; user: { id: string; displayName: string; handle: string; avatarUrl: string; }; bio: string; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
-  Property 'children' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(103,39): error TS2322: Type '{ following: true; onToggle: () => void; }' is not assignable to type 'IntrinsicAttributes & FollowButtonProps'.
-  Property 'onToggle' does not exist on type 'IntrinsicAttributes & FollowButtonProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(109,14): error TS2322: Type '{ value: string; onValueChange: () => void; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(67,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; bio: string; action: Element; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(71,16): error TS2741: Property 'onFollowToggle' is missing in type '{ following: false; }' but required in type 'FollowButtonProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(74,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; bio: string; action: Element; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(78,16): error TS2741: Property 'onFollowToggle' is missing in type '{ following: false; }' but required in type 'FollowButtonProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(81,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; bio: string; action: Element; }' is not assignable to type 'IntrinsicAttributes & SuggestedUserRowProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & SuggestedUserRowProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(85,16): error TS2741: Property 'onFollowToggle' is missing in type '{ following: true; }' but required in type 'FollowButtonProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(90,3): error TS2353: Object literal may only specify known properties, and 'children' does not exist in type 'Partial<{ header: ReactNode; main: ReactNode; sidebar: ReactNode; density?: Density | undefined; }> & { header?: ReactNode; main?: ReactNode; sidebar?: ReactNode; density?: Density | undefined; }'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(92,15): error TS2322: Type '{ value: string; }' is not assignable to type 'IntrinsicAttributes & FeedTabsProps'.
   Property 'value' does not exist on type 'IntrinsicAttributes & FeedTabsProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(112,5): error TS2322: Type '{ value: string; placeholder: string; visibility: "public"; onValueChange: () => void; onVisibilityChange: () => void; onSubmit: () => void; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(94,6): error TS2322: Type '{ value: string; visibility: "public"; placeholder: string; submitLabel: string; }' is not assignable to type 'IntrinsicAttributes & PostComposerProps'.
   Property 'value' does not exist on type 'IntrinsicAttributes & PostComposerProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(120,5): error TS2322: Type '{ children: Element[]; id: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(99,6): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(128,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(132,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(101,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(108,7): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(142,5): error TS2322: Type '{ children: Element[]; id: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(114,6): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(150,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(154,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; text: string; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
-  Property 'author' does not exist on type 'IntrinsicAttributes & QuotedPostProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(164,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(116,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(123,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; relativeTime: string; text: string; }' is not assignable to type 'IntrinsicAttributes & QuotedPostProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & QuotedPostProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(130,7): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(174,5): error TS2322: Type '{ children: Element[]; id: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(136,6): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(182,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(188,8): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(192,8): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(198,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(138,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(147,9): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(151,9): error TS2353: Object literal may only specify known properties, and 'src' does not exist in type '{ url: string; alt: string; }'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(157,7): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(208,5): error TS2322: Type '{ children: Element[]; id: string; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(163,6): error TS2322: Type '{ children: Element[]; visibility: string; }' is not assignable to type 'IntrinsicAttributes & PostCardProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & PostCardProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(216,6): error TS2322: Type '{ author: { id: string; displayName: string; handle: string; avatarUrl: string; }; timestamp: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
-  Property 'timestamp' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'.
-hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(220,6): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; onReply: () => void; onRepost: () => void; onLike: () => void; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(165,7): error TS2322: Type '{ avatarUrl: string; displayName: string; handle: string; relativeTime: string; }' is not assignable to type 'IntrinsicAttributes & PostAuthorLineProps'.
+  Property 'avatarUrl' does not exist on type 'IntrinsicAttributes & PostAuthorLineProps'. Did you mean 'avatar'?
+hosts/chakra-l/src/__score__/TimelineScreen.stories.tsx(172,7): error TS2322: Type '{ replyCount: number; repostCount: number; likeCount: number; liked: boolean; }' is not assignable to type 'IntrinsicAttributes & PostActionBarProps'.
   Property 'replyCount' does not exist on type 'IntrinsicAttributes & PostActionBarProps'.

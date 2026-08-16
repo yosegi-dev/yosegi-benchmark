@@ -20,17 +20,17 @@ import { VisibilityPicker } from "~/components/visibility-picker";
 
 const viewer = {
 	id: "u-viewer",
-	displayName: "Nao Kimura",
+	displayName: "Nao Kurata",
 	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/128?img=15",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/160?img=15",
+	verified: true,
 };
 
 const rin = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/128?img=1",
+	avatarUrl: "https://i.pravatar.cc/160?img=1",
 	verified: true,
 };
 
@@ -38,15 +38,14 @@ const kai = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/128?img=12",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/160?img=2",
 };
 
 const mio = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/128?img=5",
+	avatarUrl: "https://i.pravatar.cc/160?img=3",
 	verified: false,
 };
 
@@ -54,81 +53,56 @@ const jun = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/128?img=33",
-	verified: false,
-};
-
-const aoi = {
-	id: "u-aoi",
-	displayName: "Aoi Mori",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/128?img=20",
-	verified: false,
-};
-
-const haru = {
-	id: "u-haru",
-	displayName: "Haru Kondo",
-	handle: "haru",
-	avatarUrl: "https://i.pravatar.cc/128?img=24",
-	verified: true,
-};
-
-const sora = {
-	id: "u-sora",
-	displayName: "Sora Nishi",
-	handle: "sora",
-	avatarUrl: "https://i.pravatar.cc/128?img=28",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/160?img=4",
 };
 
 const post1 = {
 	id: "p-1",
 	author: rin,
-	body: "Rebuilt the timeline on top of the shared component set this week. Nothing bespoke left in the feed column.",
-	createdAt: "2026-08-14T09:12:00.000Z",
-	visibility: "public" as const,
+	body: "Shipped the new timeline layout this morning. Two columns, no surprises, and it finally survives a 1440px window without a single scrollbar in the wrong place.",
+	createdAt: "2026-08-17T07:10:00.000Z",
+	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
 	likeCount: 310,
 	likedByViewer: true,
-};
+} as const;
 
 const post2 = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part people underestimate: the hard work is deciding what the components own, not writing them.",
-	createdAt: "2026-08-14T08:40:00.000Z",
-	visibility: "followers" as const,
-	replyCount: 5,
-	repostCount: 21,
-	likeCount: 96,
+	body: "This matches what we measured last week. Sharing with the design channel before standup.",
+	createdAt: "2026-08-17T06:40:00.000Z",
+	visibility: "followers",
+	replyCount: 4,
+	repostCount: 9,
+	likeCount: 57,
 	likedByViewer: false,
-};
+} as const;
 
 const post3 = {
 	id: "p-3",
 	author: mio,
-	body: "Two shots from the studio wall this morning. The light only does this for about ten minutes.",
-	createdAt: "2026-08-14T07:55:00.000Z",
-	visibility: "public" as const,
-	replyCount: 8,
-	repostCount: 14,
-	likeCount: 187,
+	body: "Two shots from the studio session. Natural light only, no retouching.",
+	createdAt: "2026-08-17T05:25:00.000Z",
+	visibility: "public",
+	replyCount: 7,
+	repostCount: 21,
+	likeCount: 184,
 	likedByViewer: false,
-};
+} as const;
 
 const post4 = {
 	id: "p-4",
 	author: jun,
-	body: "Quiet week. Reading more than I am shipping, and that is fine for now.",
-	createdAt: "2026-08-14T06:30:00.000Z",
-	visibility: "circle" as const,
+	body: "Small circle question: does anyone still keep a paper notebook for release checklists?",
+	createdAt: "2026-08-17T04:05:00.000Z",
+	visibility: "circle",
 	replyCount: 2,
-	repostCount: 3,
-	likeCount: 41,
+	repostCount: 1,
+	likeCount: 33,
 	likedByViewer: false,
-};
+} as const;
 
 const noop = () => {};
 
@@ -140,15 +114,16 @@ export default meta;
 
 type Story = StoryObj;
 
-export const Timeline: Story = {
+export const Default: Story = {
 	render: () => (
 		<AppShell
+			density="cozy"
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					onViewerPress={noop}
-					search={<SearchField value="" onQueryChange={noop} />}
-					notifications={<NotificationBell unreadCount={3} onBellPress={noop} />}
+					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
+					notifications={<NotificationBell unreadCount={3} onBellPress={noop} tone="quiet" />}
 				/>
 			}
 			main={
@@ -160,6 +135,7 @@ export const Timeline: Story = {
 						onSubmitPress={noop}
 						viewer={viewer}
 						visibility="public"
+						submitLabel="Post"
 						visibilityPicker={
 							<VisibilityPicker visibility="public" onVisibilityChange={noop} />
 						}
@@ -170,7 +146,7 @@ export const Timeline: Story = {
 							<PostAuthorLine
 								author={rin}
 								label="2h"
-								visibility={post1.visibility}
+								visibility="public"
 								avatar={<UserAvatar author={rin} />}
 							/>
 						}
@@ -189,11 +165,11 @@ export const Timeline: Story = {
 							<PostAuthorLine
 								author={kai}
 								label="3h"
-								visibility={post2.visibility}
+								visibility="followers"
 								avatar={<UserAvatar author={kai} />}
 							/>
 						}
-						quoted={<QuotedPost post={post1} avatar={<UserAvatar author={rin} />} />}
+						quoted={<QuotedPost post={post1} avatar={<UserAvatar author={rin} density="compact" />} />}
 						actions={
 							<PostActionBar
 								post={post2}
@@ -209,7 +185,7 @@ export const Timeline: Story = {
 							<PostAuthorLine
 								author={mio}
 								label="4h"
-								visibility={post3.visibility}
+								visibility="public"
 								avatar={<UserAvatar author={mio} />}
 							/>
 						}
@@ -217,12 +193,12 @@ export const Timeline: Story = {
 							<PostMedia
 								images={[
 									{
-										url: "https://images.example.com/studio-wall-morning.jpg",
-										alt: "Morning light falling across a bare studio wall",
+										url: "https://picsum.photos/id/1015/800/600",
+										alt: "Studio table lit from a side window",
 									},
 									{
-										url: "https://images.example.com/studio-wall-detail.jpg",
-										alt: "Close detail of the same wall, showing the plaster texture",
+										url: "https://picsum.photos/id/1025/800/600",
+										alt: "Close-up of the same setup from above",
 									},
 								]}
 							/>
@@ -242,7 +218,7 @@ export const Timeline: Story = {
 							<PostAuthorLine
 								author={jun}
 								label="6h"
-								visibility={post4.visibility}
+								visibility="circle"
 								avatar={<UserAvatar author={jun} />}
 							/>
 						}
@@ -268,7 +244,7 @@ export const Timeline: Story = {
 									trend={{
 										id: "t-1",
 										label: "#DesignSystems",
-										postCount: 18420,
+										postCount: 12400,
 										category: "Technology",
 									}}
 									onTrendPress={noop}
@@ -277,20 +253,15 @@ export const Timeline: Story = {
 									rank={2}
 									trend={{
 										id: "t-2",
-										label: "#Storybook",
-										postCount: 9310,
-										category: "Technology",
+										label: "#TypeScript",
+										postCount: 8300,
+										category: "Programming",
 									}}
 									onTrendPress={noop}
 								/>
 								<TrendItem
 									rank={3}
-									trend={{
-										id: "t-3",
-										label: "#TypeScript",
-										postCount: 7645,
-										category: "Programming",
-									}}
+									trend={{ id: "t-3", label: "#StudioLight", postCount: 2150 }}
 									onTrendPress={noop}
 								/>
 							</>
@@ -301,22 +272,71 @@ export const Timeline: Story = {
 						rows={
 							<>
 								<SuggestedUserRow
-									author={aoi}
+									author={{
+										id: "u-aya",
+										displayName: "Aya Morita",
+										handle: "aya",
+										avatarUrl: "https://i.pravatar.cc/160?img=5",
+										verified: true,
+									}}
 									reason="Followed by Rin"
-									avatar={<UserAvatar author={aoi} />}
-									follow={<FollowButton following={false} onFollowToggle={noop} />}
+									avatar={
+										<UserAvatar
+											author={{
+												id: "u-aya",
+												displayName: "Aya Morita",
+												handle: "aya",
+												avatarUrl: "https://i.pravatar.cc/160?img=5",
+												verified: true,
+											}}
+											density="compact"
+										/>
+									}
+									follow={<FollowButton following={false} onFollowToggle={noop} density="compact" />}
 								/>
 								<SuggestedUserRow
-									author={haru}
-									reason="Followed by Kai and 4 others"
-									avatar={<UserAvatar author={haru} />}
-									follow={<FollowButton following={false} onFollowToggle={noop} />}
+									author={{
+										id: "u-sho",
+										displayName: "Sho Nakai",
+										handle: "sho",
+										avatarUrl: "https://i.pravatar.cc/160?img=6",
+									}}
+									reason="Followed by Kai and 3 others"
+									avatar={
+										<UserAvatar
+											author={{
+												id: "u-sho",
+												displayName: "Sho Nakai",
+												handle: "sho",
+												avatarUrl: "https://i.pravatar.cc/160?img=6",
+											}}
+											density="compact"
+										/>
+									}
+									follow={<FollowButton following={false} onFollowToggle={noop} density="compact" />}
 								/>
 								<SuggestedUserRow
-									author={sora}
-									reason="New to the timeline"
-									avatar={<UserAvatar author={sora} />}
-									follow={<FollowButton following={false} onFollowToggle={noop} />}
+									author={{
+										id: "u-emi",
+										displayName: "Emi Tachibana",
+										handle: "emi",
+										avatarUrl: "https://i.pravatar.cc/160?img=7",
+										verified: false,
+									}}
+									reason="New to the studio channel"
+									avatar={
+										<UserAvatar
+											author={{
+												id: "u-emi",
+												displayName: "Emi Tachibana",
+												handle: "emi",
+												avatarUrl: "https://i.pravatar.cc/160?img=7",
+												verified: false,
+											}}
+											density="compact"
+										/>
+									}
+									follow={<FollowButton following={true} onFollowToggle={noop} density="compact" />}
 								/>
 							</>
 						}

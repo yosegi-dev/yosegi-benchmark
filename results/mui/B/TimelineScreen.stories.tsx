@@ -22,10 +22,10 @@ import type { AuthorModel, PostModel, TrendModel } from "~/models";
 const noop = () => {};
 
 const viewer: AuthorModel = {
-	id: "u-sora",
-	displayName: "Sora Kimura",
-	handle: "@sora",
-	avatarUrl: "https://i.pravatar.cc/160?img=12",
+	id: "u-aoi",
+	displayName: "Aoi Mori",
+	handle: "@aoi",
+	avatarUrl: "https://i.pravatar.cc/160?img=15",
 	verified: true,
 };
 
@@ -41,7 +41,7 @@ const kai: AuthorModel = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "@kai",
-	avatarUrl: "https://i.pravatar.cc/160?img=15",
+	avatarUrl: "https://i.pravatar.cc/160?img=12",
 };
 
 const mio: AuthorModel = {
@@ -55,14 +55,14 @@ const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "@jun",
-	avatarUrl: "https://i.pravatar.cc/160?img=68",
+	avatarUrl: "https://i.pravatar.cc/160?img=8",
 };
 
-const postRin: PostModel = {
+const post1: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Rewrote the whole onboarding flow this morning and it finally reads like one screen instead of four.",
-	createdAt: "2026-08-13T07:10:00.000Z",
+	body: "Shipped the new timeline layout this morning. Two columns, sticky header, and it finally feels fast on a cold load.",
+	createdAt: "2026-08-15T08:10:00.000Z",
 	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
@@ -70,11 +70,11 @@ const postRin: PostModel = {
 	likedByViewer: true,
 };
 
-const postKai: PostModel = {
+const post2: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part people skip. Onboarding is where the product explains itself.",
-	createdAt: "2026-08-13T08:05:00.000Z",
+	body: "This is the part people underrate: the cold load is what everyone actually measures.",
+	createdAt: "2026-08-15T07:40:00.000Z",
 	visibility: "followers",
 	replyCount: 4,
 	repostCount: 9,
@@ -82,11 +82,11 @@ const postKai: PostModel = {
 	likedByViewer: false,
 };
 
-const postMio: PostModel = {
+const post3: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Two frames from the studio session. Same lens, ten minutes apart.",
-	createdAt: "2026-08-13T08:40:00.000Z",
+	body: "Two frames from the shoot in Onomichi. Late light, no edits.",
+	createdAt: "2026-08-15T06:55:00.000Z",
 	visibility: "public",
 	replyCount: 7,
 	repostCount: 21,
@@ -94,11 +94,11 @@ const postMio: PostModel = {
 	likedByViewer: false,
 };
 
-const postJun: PostModel = {
+const post4: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Quiet note for the circle: taking Friday off, back on Monday with the migration plan.",
-	createdAt: "2026-08-13T09:15:00.000Z",
+	body: "Quiet note for the circle: taking next week off, back on the 24th.",
+	createdAt: "2026-08-15T05:20:00.000Z",
 	visibility: "circle",
 	replyCount: 2,
 	repostCount: 1,
@@ -106,60 +106,69 @@ const postJun: PostModel = {
 	likedByViewer: false,
 };
 
-const postMioImages = [
-	{ url: "https://picsum.photos/seed/mio-a/800/600", alt: "Studio setup lit from the left" },
-	{ url: "https://picsum.photos/seed/mio-b/800/600", alt: "The same setup after the light was moved" },
+const post3Images: { url: string; alt: string }[] = [
+	{ url: "https://picsum.photos/seed/onomichi-1/800/600", alt: "Harbour at dusk, seen from a hillside" },
+	{ url: "https://picsum.photos/seed/onomichi-2/800/600", alt: "A narrow stairway between two houses" },
 ];
 
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#onboarding", postCount: 12400, category: "Design" },
-	{ id: "t-2", label: "#typescript", postCount: 8320, category: "Technology" },
-	{ id: "t-3", label: "#studiolight", postCount: 2140 },
+	{ id: "t-1", label: "#TimelineRedesign", postCount: 12400, category: "Technology" },
+	{ id: "t-2", label: "Onomichi", postCount: 8300, category: "Travel" },
+	{ id: "t-3", label: "#TypeSafeUI", postCount: 5120 },
 ];
 
 const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
 	{ author: rin, reason: "Followed by Kai", following: false },
-	{ author: mio, reason: "Posts about design", following: true },
-	{ author: jun, reason: "New to your circle", following: false },
+	{ author: mio, reason: "Followed by Rin", following: true },
+	{ author: jun, reason: "New to your area", following: false },
 ];
 
-function TimelineScreen() {
-	return (
+// Typed as `Meta<typeof AppShell>` rather than with `satisfies`: AppShell's slots are
+// required props, and the `StoryObj<typeof meta>` form would then demand `args` on a story
+// that supplies the whole tree through `render`.
+const meta: Meta<typeof AppShell> = {
+	title: "Screens/TimelineScreen",
+	component: AppShell,
+	parameters: { layout: "fullscreen" },
+};
+
+export default meta;
+
+export const Timeline: StoryObj<typeof AppShell> = {
+	render: () => (
 		<AppShell
-			density="cozy"
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					onViewerPress={noop}
-					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
-					notifications={<NotificationBell unreadCount={5} onBellPress={noop} tone="quiet" />}
+					search={<SearchField value="" onQueryChange={noop} />}
+					notifications={<NotificationBell unreadCount={3} onBellPress={noop} />}
 				/>
 			}
 			main={
-				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+				<>
 					<FeedTabs activeFeed="for-you" onFeedChange={noop} />
 					<PostComposer
+						viewer={viewer}
 						draft=""
+						visibility="public"
 						onDraftChange={noop}
 						onSubmitPress={noop}
-						viewer={viewer}
-						visibility="public"
-						submitLabel="Post"
 						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 					/>
 					<PostCard
-						post={postRin}
+						post={post1}
 						authorLine={
 							<PostAuthorLine
-								author={postRin.author}
+								author={post1.author}
 								label="2h"
-								visibility={postRin.visibility}
-								avatar={<UserAvatar author={postRin.author} />}
+								visibility={post1.visibility}
+								avatar={<UserAvatar author={post1.author} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postRin}
+								post={post1}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -167,19 +176,19 @@ function TimelineScreen() {
 						}
 					/>
 					<PostCard
-						post={postKai}
+						post={post2}
 						authorLine={
 							<PostAuthorLine
-								author={postKai.author}
-								label="1h"
-								visibility={postKai.visibility}
-								avatar={<UserAvatar author={postKai.author} />}
+								author={post2.author}
+								label="3h"
+								visibility={post2.visibility}
+								avatar={<UserAvatar author={post2.author} />}
 							/>
 						}
-						quoted={<QuotedPost post={postRin} avatar={<UserAvatar author={postRin.author} density="compact" />} />}
+						quoted={<QuotedPost post={post1} avatar={<UserAvatar author={post1.author} density="compact" />} />}
 						actions={
 							<PostActionBar
-								post={postKai}
+								post={post2}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -187,19 +196,19 @@ function TimelineScreen() {
 						}
 					/>
 					<PostCard
-						post={postMio}
+						post={post3}
 						authorLine={
 							<PostAuthorLine
-								author={postMio.author}
-								label="35m"
-								visibility={postMio.visibility}
-								avatar={<UserAvatar author={postMio.author} />}
+								author={post3.author}
+								label="4h"
+								visibility={post3.visibility}
+								avatar={<UserAvatar author={post3.author} />}
 							/>
 						}
-						media={<PostMedia images={postMioImages} />}
+						media={<PostMedia images={post3Images} />}
 						actions={
 							<PostActionBar
-								post={postMio}
+								post={post3}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -207,28 +216,28 @@ function TimelineScreen() {
 						}
 					/>
 					<PostCard
-						post={postJun}
+						post={post4}
 						authorLine={
 							<PostAuthorLine
-								author={postJun.author}
-								label="10m"
-								visibility={postJun.visibility}
-								avatar={<UserAvatar author={postJun.author} />}
+								author={post4.author}
+								label="6h"
+								visibility={post4.visibility}
+								avatar={<UserAvatar author={post4.author} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postJun}
+								post={post4}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
 							/>
 						}
 					/>
-				</div>
+				</>
 			}
 			sidebar={
-				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+				<>
 					<TrendPanel
 						heading="Trending now"
 						items={trends.map((trend, index) => (
@@ -247,20 +256,8 @@ function TimelineScreen() {
 							/>
 						))}
 					/>
-				</div>
+				</>
 			}
 		/>
-	);
-}
-
-const meta = {
-	title: "Screens/TimelineScreen",
-	component: TimelineScreen,
-	parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof TimelineScreen>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {};
+	),
+};

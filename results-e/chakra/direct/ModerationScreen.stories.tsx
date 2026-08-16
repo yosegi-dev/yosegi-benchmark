@@ -10,31 +10,31 @@ import { UserAvatar } from "~/components/user-avatar";
 import type { AuthorModel, PostModel, TrendModel } from "~/models";
 
 const rin: AuthorModel = {
-	id: "u-rin",
+	id: "author-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/96?img=47",
+	avatarUrl: "https://example.com/avatars/rin.png",
 	verified: true,
 };
 
 const kai: AuthorModel = {
-	id: "u-kai",
+	id: "author-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/96?img=12",
+	avatarUrl: "https://example.com/avatars/kai.png",
 };
 
 const mio: AuthorModel = {
-	id: "u-mio",
+	id: "author-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/96?img=32",
+	avatarUrl: "https://example.com/avatars/mio.png",
 };
 
-const postRin: PostModel = {
-	id: "p-1",
+const postOne: PostModel = {
+	id: "post-1",
 	author: rin,
-	body: "Shipping the new moderation queue today. Reports now land in one place instead of three separate inboxes.",
+	body: "Reminder that the moderation queue is triaged twice a day, not continuously.",
 	createdAt: "2h",
 	visibility: "public",
 	replyCount: 12,
@@ -43,10 +43,10 @@ const postRin: PostModel = {
 	likedByViewer: false,
 };
 
-const postKai: PostModel = {
-	id: "p-2",
+const postTwo: PostModel = {
+	id: "post-2",
 	author: kai,
-	body: "This is the part everyone underestimates: the queue is only useful if the triage rules are written down.",
+	body: "Quoting this because the twice-a-day cadence is exactly what the report backlog reflects.",
 	createdAt: "5h",
 	visibility: "followers",
 	replyCount: 3,
@@ -55,10 +55,10 @@ const postKai: PostModel = {
 	likedByViewer: false,
 };
 
-const postMio: PostModel = {
-	id: "p-3",
+const postThree: PostModel = {
+	id: "post-3",
 	author: mio,
-	body: "Two screenshots from the review tooling audit. Left is the old flow, right is the one we are testing.",
+	body: "Two screenshots from the review tool, attached for the record.",
 	createdAt: "1d",
 	visibility: "unlisted",
 	replyCount: 7,
@@ -67,87 +67,83 @@ const postMio: PostModel = {
 	likedByViewer: false,
 };
 
-const mioImages = [
-	{ url: "https://placehold.co/640x640/png?text=Old+flow", alt: "The previous review flow" },
-	{ url: "https://placehold.co/640x640/png?text=New+flow", alt: "The flow currently under test" },
+const postThreeImages: { url: string; alt: string }[] = [
+	{ url: "https://example.com/media/queue-overview.png", alt: "Review queue overview" },
+	{ url: "https://example.com/media/queue-detail.png", alt: "Review queue detail" },
 ];
 
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#typescript", postCount: 8320 },
-	{ id: "t-2", label: "#storybook", postCount: 6120 },
-	{ id: "t-3", label: "#designsystems", postCount: 3980 },
+	{ id: "trend-typescript", label: "#typescript", postCount: 8320 },
+	{ id: "trend-storybook", label: "#storybook", postCount: 6120 },
+	{ id: "trend-designsystems", label: "#designsystems", postCount: 3980 },
 ];
 
-const meta: Meta<typeof AppShell> = {
-	title: "Screens/Moderation review",
-	component: AppShell,
-	parameters: {
-		layout: "fullscreen",
-	},
+const meta: Meta = {
+	title: "Screens/ModerationScreen",
 };
 
 export default meta;
 
-type Story = StoryObj<typeof AppShell>;
-
-export const ModerationReview: Story = {
-	args: {
-		header: <h1>Moderation review</h1>,
-		main: (
-			<>
-				<PostCard
-					post={postRin}
-					authorLine={
-						<PostAuthorLine
-							author={rin}
-							label="2h"
-							visibility="public"
-							avatar={<UserAvatar author={rin} />}
-						/>
+export const Default: StoryObj = {
+	render: () => (
+		<AppShell
+			header={<h1>Moderation review</h1>}
+			main={
+				<div>
+					<PostCard
+						post={postOne}
+						authorLine={
+							<PostAuthorLine
+								author={postOne.author}
+								label="2h"
+								visibility="public"
+								avatar={<UserAvatar author={postOne.author} />}
+							/>
+						}
+						actions={<div>Reported 3 times</div>}
+					/>
+					<PostCard
+						post={postTwo}
+						authorLine={
+							<PostAuthorLine
+								author={postTwo.author}
+								label="5h"
+								visibility="followers"
+								avatar={<UserAvatar author={postTwo.author} />}
+							/>
+						}
+						quoted={
+							<QuotedPost post={postOne} avatar={<UserAvatar author={postOne.author} />} />
+						}
+						actions={<div>Reported once</div>}
+					/>
+					<PostCard
+						post={postThree}
+						authorLine={
+							<PostAuthorLine
+								author={postThree.author}
+								label="1d"
+								visibility="unlisted"
+								avatar={<UserAvatar author={postThree.author} />}
+							/>
+						}
+						media={<PostMedia images={postThreeImages} />}
+						actions={<div>Reported 5 times</div>}
+					/>
+				</div>
+			}
+			sidebar={
+				<TrendPanel
+					heading="Review queue trends"
+					items={
+						<>
+							{trends.map((trend, index) => (
+								<TrendItem key={trend.id} rank={index + 1} trend={trend} />
+							))}
+						</>
 					}
-					actions={<div>Reported 3 times</div>}
 				/>
-				<PostCard
-					post={postKai}
-					authorLine={
-						<PostAuthorLine
-							author={kai}
-							label="5h"
-							visibility="followers"
-							avatar={<UserAvatar author={kai} />}
-						/>
-					}
-					quoted={
-						<QuotedPost post={postRin} avatar={<UserAvatar author={rin} density="compact" />} />
-					}
-					actions={<div>Reported once</div>}
-				/>
-				<PostCard
-					post={postMio}
-					authorLine={
-						<PostAuthorLine
-							author={mio}
-							label="1d"
-							visibility="unlisted"
-							avatar={<UserAvatar author={mio} />}
-						/>
-					}
-					media={<PostMedia images={mioImages} />}
-					actions={<div>Reported 5 times</div>}
-				/>
-			</>
-		),
-		sidebar: (
-			<TrendPanel
-				heading="Review queue trends"
-				items={
-					<>
-						{trends.map((trend, index) => (
-							<TrendItem key={trend.id} rank={index + 1} trend={trend} />
-						))}
-					</>
-				}
-			/>
-		),
-	},
+			}
+		/>
+	),
 };

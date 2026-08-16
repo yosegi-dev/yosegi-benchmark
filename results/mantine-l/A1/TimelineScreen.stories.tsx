@@ -16,157 +16,144 @@ import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 
+const noop = () => {};
+
 const viewer = {
 	id: "u-viewer",
-	name: "Aoi Nakano",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/150?img=15",
-	verified: false,
-};
+	displayName: "You",
+	handle: "you",
+	avatarUrl: "https://i.pravatar.cc/150?img=68",
+} as const;
 
 const rin = {
 	id: "u-rin",
-	name: "Rin Amano",
+	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/150?img=32",
-	verified: true,
-};
+	avatarUrl: "https://i.pravatar.cc/150?img=5",
+} as const;
 
 const kai = {
 	id: "u-kai",
-	name: "Kai Doi",
+	displayName: "Kai Doi",
 	handle: "kai",
 	avatarUrl: "https://i.pravatar.cc/150?img=12",
-	verified: false,
-};
+} as const;
 
 const mio = {
 	id: "u-mio",
-	name: "Mio Sato",
+	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/150?img=45",
-	verified: false,
-};
+	avatarUrl: "https://i.pravatar.cc/150?img=32",
+} as const;
 
 const jun = {
 	id: "u-jun",
-	name: "Jun Ito",
+	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/150?img=52",
-	verified: false,
-};
+	avatarUrl: "https://i.pravatar.cc/150?img=45",
+} as const;
 
-const rinPost = {
-	id: "p-1",
+const quotedPost = {
+	id: "post-1",
 	author: rin,
-	text: "Shipped the new timeline rendering path today. Scroll feels twice as smooth on older phones.",
-	createdAt: "2026-08-13T09:20:00.000Z",
-	visibility: "public" as const,
+	text: "Shipped the new timeline today. It finally feels fast on a cold start.",
+	createdAt: "2026-08-15T09:00:00.000Z",
+	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
 	likeCount: 310,
 	liked: true,
-};
+} as const;
 
-const trendingNow = {
-	id: "t-1",
-	topic: "#TypeScript",
+const trendKeywords = {
+	id: "trend-1",
+	label: "Design systems",
 	category: "Technology",
-	postCount: 18400,
-	rank: 1,
-};
+	postCount: 12400,
+} as const;
 
-const trendingDesign = {
-	id: "t-2",
-	topic: "Design systems",
-	category: "Design",
-	postCount: 9120,
-	rank: 2,
-};
+const trendRelease = {
+	id: "trend-2",
+	label: "Mantine v9",
+	category: "Frontend",
+	postCount: 8300,
+} as const;
 
-const trendingCoffee = {
-	id: "t-3",
-	topic: "#MorningCoffee",
-	category: "Lifestyle",
-	postCount: 5230,
-	rank: 3,
-};
-
-const mioMedia = [
-	{
-		id: "m-1",
-		src: "https://picsum.photos/id/1015/800/600",
-		alt: "A river running through a canyon at sunrise",
-		width: 800,
-		height: 600,
-	},
-	{
-		id: "m-2",
-		src: "https://picsum.photos/id/1025/800/600",
-		alt: "A pug wrapped in a blanket",
-		width: 800,
-		height: 600,
-	},
-];
-
-const noop = () => {};
+const trendConf = {
+	id: "trend-3",
+	label: "TokyoConf",
+	category: "Events",
+	postCount: 5100,
+} as const;
 
 function TimelineScreen() {
 	return (
 		<AppShell
-			header={<TimelineHeader user={viewer} notificationCount={3} />}
+			header={
+				<TimelineHeader
+					user={viewer}
+					searchValue=""
+					onSearchChange={noop}
+					searchPlaceholder="Search"
+					notificationCount={3}
+					onNotificationClick={noop}
+				/>
+			}
 			sidebar={
 				<>
-					<TrendPanel>
-						<TrendItem trend={trendingNow} />
-						<TrendItem trend={trendingDesign} />
-						<TrendItem trend={trendingCoffee} />
+					<TrendPanel title="Trends for you">
+						<TrendItem trend={trendKeywords} rank={1} onClick={noop} />
+						<TrendItem trend={trendRelease} rank={2} onClick={noop} />
+						<TrendItem trend={trendConf} rank={3} onClick={noop} />
 					</TrendPanel>
-					<SuggestedUserPanel>
-						<SuggestedUserRow user={rin}>
+					<SuggestedUserPanel title="Who to follow">
+						<SuggestedUserRow user={rin} reason="Follows you">
 							<FollowButton following={false} onToggle={noop} />
 						</SuggestedUserRow>
-						<SuggestedUserRow user={mio}>
+						<SuggestedUserRow user={mio} reason="Popular in Design">
 							<FollowButton following={false} onToggle={noop} />
 						</SuggestedUserRow>
-						<SuggestedUserRow user={jun}>
-							<FollowButton following onToggle={noop} />
+						<SuggestedUserRow user={jun} reason="Based on your likes">
+							<FollowButton following={true} onToggle={noop} />
 						</SuggestedUserRow>
 					</SuggestedUserPanel>
 				</>
 			}
 		>
 			<FeedTabs value="for-you" onChange={noop} />
+
 			<PostComposer
 				value=""
 				onChange={noop}
 				visibility="public"
 				onVisibilityChange={noop}
 				onSubmit={noop}
+				placeholder="What's happening?"
+				author={viewer}
 			/>
 
-			<PostCard>
-				<PostAuthorLine author={rin} timestamp="2h" />
-				<PostBody text={rinPost.text} />
+			<PostCard visibility="public">
+				<PostAuthorLine author={rin} time="2h" />
+				<PostBody text="Shipped the new timeline today. It finally feels fast on a cold start." />
 				<PostActionBar
 					replyCount={12}
 					repostCount={48}
 					likeCount={310}
-					liked
+					liked={true}
 					onReply={noop}
 					onRepost={noop}
 					onLike={noop}
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={kai} timestamp="1h" />
-				<PostBody text="This matches what we measured on the mid-tier Android fleet last week." />
-				<QuotedPost post={rinPost} />
+			<PostCard visibility="followers">
+				<PostAuthorLine author={kai} time="1h" />
+				<PostBody text="This is the part everyone underestimates. Cold start is the whole product." />
+				<QuotedPost post={quotedPost} />
 				<PostActionBar
 					replyCount={4}
 					repostCount={9}
-					likeCount={72}
+					likeCount={57}
 					liked={false}
 					onReply={noop}
 					onRepost={noop}
@@ -174,14 +161,27 @@ function TimelineScreen() {
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={mio} timestamp="45m" />
-				<PostBody text="Two frames from this morning's walk before the fog lifted." />
-				<PostMedia images={mioMedia} />
+			<PostCard visibility="public">
+				<PostAuthorLine author={mio} time="45m" />
+				<PostBody text="Two shots from the studio wall this morning." />
+				<PostMedia
+					images={[
+						{
+							id: "media-1",
+							src: "https://picsum.photos/id/1015/800/600",
+							alt: "Studio wall, morning light",
+						},
+						{
+							id: "media-2",
+							src: "https://picsum.photos/id/1025/800/600",
+							alt: "Close-up of the pinned prints",
+						},
+					]}
+				/>
 				<PostActionBar
 					replyCount={7}
-					repostCount={15}
-					likeCount={128}
+					repostCount={21}
+					likeCount={143}
 					liked={false}
 					onReply={noop}
 					onRepost={noop}
@@ -189,9 +189,9 @@ function TimelineScreen() {
 				/>
 			</PostCard>
 
-			<PostCard>
-				<PostAuthorLine author={jun} timestamp="20m" />
-				<PostBody text="Keeping this one to the circle: the offsite notes are finally written up." />
+			<PostCard visibility="circle">
+				<PostAuthorLine author={jun} time="20m" />
+				<PostBody text="Small circle only: the migration plan is ready for review tomorrow." />
 				<PostActionBar
 					replyCount={2}
 					repostCount={1}
@@ -207,9 +207,11 @@ function TimelineScreen() {
 }
 
 const meta = {
-	title: "Screens/Timeline",
+	title: "Screens/TimelineScreen",
 	component: TimelineScreen,
-	parameters: { layout: "fullscreen" },
+	parameters: {
+		layout: "fullscreen",
+	},
 } satisfies Meta<typeof TimelineScreen>;
 
 export default meta;

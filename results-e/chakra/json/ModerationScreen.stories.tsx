@@ -8,6 +8,56 @@ import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 import { UserAvatar } from "~/components/user-avatar";
 
+const authorRin = {
+	"id": "author-rin",
+	"displayName": "Rin Amano",
+	"handle": "rin",
+	"avatarUrl": "https://images.example.com/avatars/rin.png",
+	"verified": true
+};
+const authorKai = {
+	"id": "author-kai",
+	"displayName": "Kai Doi",
+	"handle": "kai",
+	"avatarUrl": "https://images.example.com/avatars/kai.png",
+	"verified": false
+};
+const authorMio = {
+	"id": "author-mio",
+	"displayName": "Mio Sato",
+	"handle": "mio",
+	"avatarUrl": "https://images.example.com/avatars/mio.png",
+	"verified": false
+};
+const post3Images = [
+	{
+		"url": "https://images.example.com/moderation/queue-dashboard-morning.png",
+		"alt": "Moderation queue dashboard at 10:00, showing 42 open reports"
+	},
+	{
+		"url": "https://images.example.com/moderation/queue-dashboard-midday.png",
+		"alt": "The same dashboard an hour later, showing 58 open reports"
+	}
+];
+const trendTypescript = {
+	"id": "trend-typescript",
+	"label": "#typescript",
+	"postCount": 8320,
+	"category": "Technology"
+};
+const trendStorybook = {
+	"id": "trend-storybook",
+	"label": "#storybook",
+	"postCount": 6120,
+	"category": "Technology"
+};
+const trendDesignsystems = {
+	"id": "trend-designsystems",
+	"label": "#designsystems",
+	"postCount": 3980,
+	"category": "Design"
+};
+
 const meta: Meta = {
 	title: "Screens/Moderation review",
 };
@@ -21,9 +71,86 @@ export const Default: StoryObj = {
 			header={<h1 className="font-bold text-2xl tracking-tight">Moderation review</h1>}
 			main={
 				<>
-					<PostCard post={{"id":"p1","author":{"id":"u-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://i.pravatar.cc/96?u=rin","verified":true},"body":"Reminder: the moderation queue is triaged newest first, so please leave a note when you skip a report.","createdAt":"2024-05-01T09:00:00.000Z","visibility":"public","replyCount":12,"repostCount":4,"likeCount":38,"likedByViewer":false}} density="cozy" authorLine={<PostAuthorLine author={{"id":"u-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://i.pravatar.cc/96?u=rin","verified":true}} label="2h" visibility="public" avatar={<UserAvatar author={{"id":"u-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://i.pravatar.cc/96?u=rin","verified":true}} density="cozy" />} />} actions={<div className="post-report-tally">Reported 3 times</div>} />
-					<PostCard post={{"id":"p2","author":{"id":"u-kai","displayName":"Kai Doi","handle":"kai","avatarUrl":"https://i.pravatar.cc/96?u=kai","verified":false},"body":"Quoting the triage note so the weekend reviewers see it pinned at the top of the queue.","createdAt":"2024-05-01T06:00:00.000Z","visibility":"followers","replyCount":3,"repostCount":1,"likeCount":9,"likedByViewer":false}} density="cozy" authorLine={<PostAuthorLine author={{"id":"u-kai","displayName":"Kai Doi","handle":"kai","avatarUrl":"https://i.pravatar.cc/96?u=kai","verified":false}} label="5h" visibility="followers" avatar={<UserAvatar author={{"id":"u-kai","displayName":"Kai Doi","handle":"kai","avatarUrl":"https://i.pravatar.cc/96?u=kai","verified":false}} density="cozy" />} />} quoted={<QuotedPost post={{"id":"p1","author":{"id":"u-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://i.pravatar.cc/96?u=rin","verified":true},"body":"Reminder: the moderation queue is triaged newest first, so please leave a note when you skip a report.","createdAt":"2024-05-01T09:00:00.000Z","visibility":"public","replyCount":12,"repostCount":4,"likeCount":38,"likedByViewer":false}} avatar={<UserAvatar author={{"id":"u-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://i.pravatar.cc/96?u=rin","verified":true}} density="compact" />} />} actions={<div className="post-report-tally">Reported once</div>} />
-					<PostCard post={{"id":"p3","author":{"id":"u-mio","displayName":"Mio Sato","handle":"mio","avatarUrl":"https://i.pravatar.cc/96?u=mio","verified":false},"body":"Two screenshots from the report thread, attached so the queue does not lose the context.","createdAt":"2024-04-30T11:00:00.000Z","visibility":"unlisted","replyCount":6,"repostCount":0,"likeCount":14,"likedByViewer":false}} density="cozy" authorLine={<PostAuthorLine author={{"id":"u-mio","displayName":"Mio Sato","handle":"mio","avatarUrl":"https://i.pravatar.cc/96?u=mio","verified":false}} label="1d" visibility="unlisted" avatar={<UserAvatar author={{"id":"u-mio","displayName":"Mio Sato","handle":"mio","avatarUrl":"https://i.pravatar.cc/96?u=mio","verified":false}} density="cozy" />} />} media={<PostMedia images={[{"url":"https://picsum.photos/seed/report-a/640/360","alt":"Screenshot of the reported thread"},{"url":"https://picsum.photos/seed/report-b/640/360","alt":"Screenshot of the follow-up replies"}]} density="cozy" />} actions={<div className="post-report-tally">Reported 5 times</div>} />
+					<PostCard
+						density="cozy"
+						post={{"id":"post-1","author":{"id":"author-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://images.example.com/avatars/rin.png","verified":true},"body":"Reminder: the moderation queue is triaged twice a day, so a report filed this morning is looked at before the evening handover.","createdAt":"2024-05-02T09:00:00.000Z","visibility":"public","replyCount":12,"repostCount":4,"likeCount":38,"likedByViewer":false}}
+						authorLine={
+							<>
+								{/* TODO(yosegi): {"bindings":{"author":"authorRin"}} */}
+								<PostAuthorLine
+									label="2h"
+									visibility="public"
+									author={authorRin}
+									avatar={
+										<>
+											{/* TODO(yosegi): {"bindings":{"author":"authorRin"}} */}
+											<UserAvatar density="cozy" author={authorRin} />
+										</>
+									}
+								/>
+							</>
+						}
+						actions={<div className="text-sm text-muted">Reported 3 times</div>}
+					/>
+					<PostCard
+						density="cozy"
+						post={{"id":"post-2","author":{"id":"author-kai","displayName":"Kai Doi","handle":"kai","avatarUrl":"https://images.example.com/avatars/kai.png","verified":false},"body":"Quoting this because the twice-a-day cadence is not what the help centre page says. One of the two needs updating.","createdAt":"2024-05-02T06:00:00.000Z","visibility":"followers","replyCount":3,"repostCount":1,"likeCount":9,"likedByViewer":false}}
+						authorLine={
+							<>
+								{/* TODO(yosegi): {"bindings":{"author":"authorKai"}} */}
+								<PostAuthorLine
+									label="5h"
+									visibility="followers"
+									author={authorKai}
+									avatar={
+										<>
+											{/* TODO(yosegi): {"bindings":{"author":"authorKai"}} */}
+											<UserAvatar density="cozy" author={authorKai} />
+										</>
+									}
+								/>
+							</>
+						}
+						quoted={
+							<QuotedPost
+								post={{"id":"post-1","author":{"id":"author-rin","displayName":"Rin Amano","handle":"rin","avatarUrl":"https://images.example.com/avatars/rin.png","verified":true},"body":"Reminder: the moderation queue is triaged twice a day, so a report filed this morning is looked at before the evening handover.","createdAt":"2024-05-02T09:00:00.000Z","visibility":"public","replyCount":12,"repostCount":4,"likeCount":38,"likedByViewer":false}}
+								avatar={
+									<>
+										{/* TODO(yosegi): {"bindings":{"author":"authorRin"}} */}
+										<UserAvatar density="compact" author={authorRin} />
+									</>
+								}
+							/>
+						}
+						actions={<div className="text-sm text-muted">Reported once</div>}
+					/>
+					<PostCard
+						density="cozy"
+						post={{"id":"post-3","author":{"id":"author-mio","displayName":"Mio Sato","handle":"mio","avatarUrl":"https://images.example.com/avatars/mio.png","verified":false},"body":"Screenshots of the two queue dashboards, taken an hour apart. The counts disagree.","createdAt":"2024-05-01T11:00:00.000Z","visibility":"unlisted","replyCount":7,"repostCount":2,"likeCount":21,"likedByViewer":false}}
+						authorLine={
+							<>
+								{/* TODO(yosegi): {"bindings":{"author":"authorMio"}} */}
+								<PostAuthorLine
+									label="1d"
+									visibility="unlisted"
+									author={authorMio}
+									avatar={
+										<>
+											{/* TODO(yosegi): {"bindings":{"author":"authorMio"}} */}
+											<UserAvatar density="cozy" author={authorMio} />
+										</>
+									}
+								/>
+							</>
+						}
+						media={
+							<>
+								{/* TODO(yosegi): {"bindings":{"images":"post3Images"}} */}
+								<PostMedia density="cozy" images={post3Images} />
+							</>
+						}
+						actions={<div className="text-sm text-muted">Reported 5 times</div>}
+					/>
 				</>
 			}
 			sidebar={
@@ -32,9 +159,12 @@ export const Default: StoryObj = {
 					density="cozy"
 					items={
 						<>
-							<TrendItem rank={1} trend={{"id":"t1","label":"#typescript","postCount":8320,"category":"Technology"}} />
-							<TrendItem rank={2} trend={{"id":"t2","label":"#storybook","postCount":6120,"category":"Technology"}} />
-							<TrendItem rank={3} trend={{"id":"t3","label":"#designsystems","postCount":3980,"category":"Design"}} />
+							{/* TODO(yosegi): {"bindings":{"trend":"trendTypescript"}} */}
+							<TrendItem rank={1} trend={trendTypescript} />
+							{/* TODO(yosegi): {"bindings":{"trend":"trendStorybook"}} */}
+							<TrendItem rank={2} trend={trendStorybook} />
+							{/* TODO(yosegi): {"bindings":{"trend":"trendDesignsystems"}} */}
+							<TrendItem rank={3} trend={trendDesignsystems} />
 						</>
 					}
 				/>

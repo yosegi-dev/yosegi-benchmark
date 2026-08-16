@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
@@ -18,23 +19,26 @@ import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 import { UserAvatar } from "~/components/user-avatar";
 import { VisibilityPicker } from "~/components/visibility-picker";
-import type { AuthorModel, PostModel, TrendModel } from "~/models";
-
-const noop = () => {};
+import type {
+	AuthorModel,
+	FeedKind,
+	PostModel,
+	TrendModel,
+	Visibility,
+} from "~/models";
 
 const viewer: AuthorModel = {
 	id: "u-viewer",
-	displayName: "Nao Kubo",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/160?u=nao",
-	verified: true,
+	displayName: "Aoi Nakamura",
+	handle: "aoi",
+	avatarUrl: "https://i.pravatar.cc/128?img=12",
 };
 
 const rin: AuthorModel = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/160?u=rin",
+	avatarUrl: "https://i.pravatar.cc/128?img=32",
 	verified: true,
 };
 
@@ -42,28 +46,29 @@ const kai: AuthorModel = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/160?u=kai",
+	avatarUrl: "https://i.pravatar.cc/128?img=15",
 };
 
 const mio: AuthorModel = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/160?u=mio",
+	avatarUrl: "https://i.pravatar.cc/128?img=45",
+	verified: true,
 };
 
 const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/160?u=jun",
+	avatarUrl: "https://i.pravatar.cc/128?img=8",
 };
 
-const post1: PostModel = {
+const postOne: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Shipped the new density scale today. Everything from the avatar to the tab strip now reads from one table, so a screen can be tuned in a single prop.",
-	createdAt: "2026-08-13T09:12:00.000Z",
+	body: "Shipped the new timeline today. Two columns, one shell, and every row is a\nslot — it finally reads the way the spec always described it.",
+	createdAt: "2024-05-06T09:12:00.000Z",
 	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
@@ -71,222 +76,258 @@ const post1: PostModel = {
 	likedByViewer: true,
 };
 
-const post2: PostModel = {
+const postTwo: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part people underrate: one table beats twenty one-off spacing decisions.",
-	createdAt: "2026-08-13T08:40:00.000Z",
+	body: "This is the part people underestimate: the layout was never the hard bit.",
+	createdAt: "2024-05-06T08:40:00.000Z",
 	visibility: "followers",
 	replyCount: 4,
 	repostCount: 9,
-	likeCount: 63,
+	likeCount: 76,
 	likedByViewer: false,
 };
 
-const post3: PostModel = {
+const postThree: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Two shots from the studio wall we rebuilt this week. Same paint, very different light.",
-	createdAt: "2026-08-13T07:55:00.000Z",
+	body: "Morning walk before the release review. Two photos, no filter.",
+	createdAt: "2024-05-06T07:05:00.000Z",
 	visibility: "public",
 	replyCount: 7,
 	repostCount: 21,
-	likeCount: 154,
+	likeCount: 145,
 	likedByViewer: false,
 };
 
-const post4: PostModel = {
+const postFour: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Quiet morning, long walk, no notifications. Recommended.",
-	createdAt: "2026-08-13T06:20:00.000Z",
+	body: "Quiet note for the circle: the migration is done, and nothing broke.",
+	createdAt: "2024-05-06T06:20:00.000Z",
 	visibility: "circle",
 	replyCount: 2,
 	repostCount: 3,
-	likeCount: 27,
+	likeCount: 18,
 	likedByViewer: false,
 };
 
+const postThreeImages: { url: string; alt: string }[] = [
+	{
+		url: "https://images.example.com/walk-riverside.jpg",
+		alt: "A riverside path at sunrise, lined with cherry trees",
+	},
+	{
+		url: "https://images.example.com/walk-bridge.jpg",
+		alt: "A steel footbridge crossing the river, seen from below",
+	},
+];
+
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
-	{ id: "t-2", label: "Storybook 9", postCount: 6120, category: "Frontend" },
-	{ id: "t-3", label: "#TypeSafety", postCount: 2980 },
+	{
+		id: "t-1",
+		label: "#DesignSystems",
+		postCount: 12400,
+		category: "Technology",
+	},
+	{ id: "t-2", label: "Storybook 8", postCount: 5320, category: "Technology" },
+	{ id: "t-3", label: "#MorningWalk", postCount: 890 },
 ];
 
-const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
-	{ author: rin, reason: "Followed by kai", following: false },
-	{ author: mio, reason: "Followed by rin and 4 others", following: false },
-	{ author: jun, reason: "Based on your recent likes", following: true },
+const suggestions: { author: AuthorModel; reason: string }[] = [
+	{ author: rin, reason: "Followed by kai" },
+	{ author: mio, reason: "Followed by rin and 12 others" },
+	{ author: jun, reason: "New to your network" },
 ];
 
-const header = (
-	<TimelineHeader
-		viewer={viewer}
-		search={<SearchField value="" placeholder="Search Yosegi" density="cozy" onQueryChange={noop} />}
-		notifications={<NotificationBell unreadCount={3} tone="quiet" onBellPress={noop} />}
-		onViewerPress={noop}
-	/>
-);
+const noop = (): void => {};
 
-const main = (
-	<>
-		<FeedTabs activeFeed="for-you" onFeedChange={noop} density="cozy" />
-		<PostComposer
+function TimelineScreen() {
+	const [query, setQuery] = useState("");
+	const [activeFeed, setActiveFeed] = useState<FeedKind>("for-you");
+	const [draft, setDraft] = useState("");
+	const [visibility, setVisibility] = useState<Visibility>("public");
+	const [followed, setFollowed] = useState<Record<string, boolean>>({});
+
+	const header = (
+		<TimelineHeader
 			viewer={viewer}
-			draft=""
-			visibility="public"
-			visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} density="cozy" />}
-			onDraftChange={noop}
-			onSubmitPress={noop}
-			submitLabel="Post"
+			search={
+				<SearchField
+					value={query}
+					placeholder="Search"
+					onQueryChange={setQuery}
+				/>
+			}
+			notifications={<NotificationBell unreadCount={3} tone="quiet" />}
+			onViewerPress={noop}
 		/>
-		<PostCard
-			post={post1}
-			density="cozy"
-			authorLine={
-				<PostAuthorLine
-					author={post1.author}
-					label="2h"
-					avatar={<UserAvatar author={post1.author} density="cozy" />}
-					visibility={post1.visibility}
-				/>
-			}
-			actions={
-				<PostActionBar
-					post={post1}
-					onReplyPress={noop}
-					onRepostPress={noop}
-					onLikePress={noop}
-					density="cozy"
-				/>
-			}
-		/>
-		<PostCard
-			post={post2}
-			density="cozy"
-			authorLine={
-				<PostAuthorLine
-					author={post2.author}
-					label="3h"
-					avatar={<UserAvatar author={post2.author} density="cozy" />}
-					visibility={post2.visibility}
-				/>
-			}
-			quoted={<QuotedPost post={post1} avatar={<UserAvatar author={post1.author} density="compact" />} />}
-			actions={
-				<PostActionBar
-					post={post2}
-					onReplyPress={noop}
-					onRepostPress={noop}
-					onLikePress={noop}
-					density="cozy"
-				/>
-			}
-		/>
-		<PostCard
-			post={post3}
-			density="cozy"
-			authorLine={
-				<PostAuthorLine
-					author={post3.author}
-					label="4h"
-					avatar={<UserAvatar author={post3.author} density="cozy" />}
-					visibility={post3.visibility}
-				/>
-			}
-			media={
-				<PostMedia
-					images={[
-						{ url: "https://picsum.photos/seed/studio-north/640/420", alt: "Studio wall lit from the north window" },
-						{ url: "https://picsum.photos/seed/studio-dusk/640/420", alt: "The same wall at dusk, lit by a single lamp" },
-					]}
-					density="cozy"
-				/>
-			}
-			actions={
-				<PostActionBar
-					post={post3}
-					onReplyPress={noop}
-					onRepostPress={noop}
-					onLikePress={noop}
-					density="cozy"
-				/>
-			}
-		/>
-		<PostCard
-			post={post4}
-			density="cozy"
-			authorLine={
-				<PostAuthorLine
-					author={post4.author}
-					label="6h"
-					avatar={<UserAvatar author={post4.author} density="cozy" />}
-					visibility={post4.visibility}
-				/>
-			}
-			actions={
-				<PostActionBar
-					post={post4}
-					onReplyPress={noop}
-					onRepostPress={noop}
-					onLikePress={noop}
-					density="cozy"
-				/>
-			}
-		/>
-	</>
-);
+	);
 
-const sidebar = (
-	<>
-		<TrendPanel
-			heading="Trends for you"
-			density="cozy"
-			items={
-				<>
-					{trends.map((trend, index) => (
-						<TrendItem key={trend.id} trend={trend} rank={index + 1} onTrendPress={noop} />
-					))}
-				</>
-			}
-		/>
-		<SuggestedUserPanel
-			heading="Who to follow"
-			density="cozy"
-			rows={
-				<>
-					{suggestions.map((suggestion) => (
-						<SuggestedUserRow
-							key={suggestion.author.id}
-							author={suggestion.author}
-							avatar={<UserAvatar author={suggestion.author} density="cozy" />}
-							follow={<FollowButton following={suggestion.following} onFollowToggle={noop} density="cozy" />}
-							reason={suggestion.reason}
-						/>
-					))}
-				</>
-			}
-		/>
-	</>
-);
+	const main = (
+		<>
+			<FeedTabs activeFeed={activeFeed} onFeedChange={setActiveFeed} />
+			<PostComposer
+				viewer={viewer}
+				draft={draft}
+				visibility={visibility}
+				visibilityPicker={
+					<VisibilityPicker
+						visibility={visibility}
+						onVisibilityChange={setVisibility}
+					/>
+				}
+				onDraftChange={setDraft}
+				onSubmitPress={noop}
+				submitLabel="Post"
+			/>
+			<PostCard
+				post={postOne}
+				authorLine={
+					<PostAuthorLine
+						author={postOne.author}
+						label="2h"
+						avatar={<UserAvatar author={postOne.author} />}
+						visibility={postOne.visibility}
+					/>
+				}
+				actions={
+					<PostActionBar
+						post={postOne}
+						onReplyPress={noop}
+						onRepostPress={noop}
+						onLikePress={noop}
+					/>
+				}
+			/>
+			<PostCard
+				post={postTwo}
+				authorLine={
+					<PostAuthorLine
+						author={postTwo.author}
+						label="3h"
+						avatar={<UserAvatar author={postTwo.author} />}
+						visibility={postTwo.visibility}
+					/>
+				}
+				actions={
+					<PostActionBar
+						post={postTwo}
+						onReplyPress={noop}
+						onRepostPress={noop}
+						onLikePress={noop}
+					/>
+				}
+				quoted={
+					<QuotedPost
+						post={postOne}
+						avatar={<UserAvatar author={postOne.author} density="compact" />}
+					/>
+				}
+			/>
+			<PostCard
+				post={postThree}
+				authorLine={
+					<PostAuthorLine
+						author={postThree.author}
+						label="5h"
+						avatar={<UserAvatar author={postThree.author} />}
+						visibility={postThree.visibility}
+					/>
+				}
+				actions={
+					<PostActionBar
+						post={postThree}
+						onReplyPress={noop}
+						onRepostPress={noop}
+						onLikePress={noop}
+					/>
+				}
+				media={<PostMedia images={postThreeImages} />}
+			/>
+			<PostCard
+				post={postFour}
+				authorLine={
+					<PostAuthorLine
+						author={postFour.author}
+						label="7h"
+						avatar={<UserAvatar author={postFour.author} />}
+						visibility={postFour.visibility}
+					/>
+				}
+				actions={
+					<PostActionBar
+						post={postFour}
+						onReplyPress={noop}
+						onRepostPress={noop}
+						onLikePress={noop}
+					/>
+				}
+			/>
+		</>
+	);
 
-const meta = {
+	const sidebar = (
+		<>
+			<TrendPanel
+				heading="Trends for you"
+				items={
+					<>
+						{trends.map((trend, index) => (
+							<TrendItem
+								key={trend.id}
+								trend={trend}
+								rank={index + 1}
+								onTrendPress={noop}
+							/>
+						))}
+					</>
+				}
+			/>
+			<SuggestedUserPanel
+				heading="Who to follow"
+				rows={
+					<>
+						{suggestions.map(({ author, reason }) => (
+							<SuggestedUserRow
+								key={author.id}
+								author={author}
+								avatar={<UserAvatar author={author} density="compact" />}
+								follow={
+									<FollowButton
+										following={followed[author.id] ?? false}
+										onFollowToggle={(next) => {
+											setFollowed((current) => ({
+												...current,
+												[author.id]: next,
+											}));
+										}}
+									/>
+								}
+								reason={reason}
+							/>
+						))}
+					</>
+				}
+			/>
+		</>
+	);
+
+	return (
+		<AppShell header={header} main={main} sidebar={sidebar} density="cozy" />
+	);
+}
+
+const meta: Meta<typeof TimelineScreen> = {
 	title: "Screens/TimelineScreen",
-	component: AppShell,
+	component: TimelineScreen,
 	parameters: {
 		layout: "fullscreen",
 	},
-} satisfies Meta<typeof AppShell>;
+};
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Timeline: Story = {
-	args: {
-		header,
-		main,
-		sidebar,
-		density: "cozy",
-	},
-};
+export const Default: Story = {};

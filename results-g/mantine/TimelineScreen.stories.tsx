@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -19,156 +18,139 @@ import { TrendPanel } from "~/components/trend-panel";
 import { UserAvatar } from "~/components/user-avatar";
 import { VisibilityPicker } from "~/components/visibility-picker";
 
-/**
- * Declared locally so the fixture literals below carry the union type rather
- * than widening to `string`; structurally identical to the host's `Visibility`.
- */
-type Visibility = "public" | "followers" | "circle" | "unlisted";
-
-const noop = (): void => {};
+const noop = () => {};
 
 const viewer = {
-	id: "u-sora",
-	displayName: "Sora Kishi",
+	id: "u_sora",
+	displayName: "Sora Kimura",
 	handle: "sora",
-	avatarUrl: "https://i.pravatar.cc/160?img=12",
+	avatarUrl: "https://images.example.com/avatars/sora.png",
 	verified: false,
 };
 
 const rin = {
-	id: "u-rin",
+	id: "u_rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/160?img=32",
+	avatarUrl: "https://images.example.com/avatars/rin.png",
 	verified: true,
 };
 
 const kai = {
-	id: "u-kai",
+	id: "u_kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/160?img=15",
+	avatarUrl: "https://images.example.com/avatars/kai.png",
 	verified: false,
 };
 
 const mio = {
-	id: "u-mio",
+	id: "u_mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/160?img=45",
+	avatarUrl: "https://images.example.com/avatars/mio.png",
 	verified: false,
 };
 
 const jun = {
-	id: "u-jun",
+	id: "u_jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/160?img=51",
+	avatarUrl: "https://images.example.com/avatars/jun.png",
 	verified: true,
 };
 
-const nao = {
-	id: "u-nao",
-	displayName: "Nao Fujita",
-	handle: "nao",
-	avatarUrl: "https://i.pravatar.cc/160?img=5",
+const aoi = {
+	id: "u_aoi",
+	displayName: "Aoi Mori",
+	handle: "aoi",
+	avatarUrl: "https://images.example.com/avatars/aoi.png",
 	verified: false,
 };
 
 const haru = {
-	id: "u-haru",
-	displayName: "Haru Okada",
+	id: "u_haru",
+	displayName: "Haru Kondo",
 	handle: "haru",
-	avatarUrl: "https://i.pravatar.cc/160?img=68",
+	avatarUrl: "https://images.example.com/avatars/haru.png",
 	verified: true,
 };
 
-const emi = {
-	id: "u-emi",
-	displayName: "Emi Nakagawa",
-	handle: "emi",
-	avatarUrl: "https://i.pravatar.cc/160?img=25",
+const nao = {
+	id: "u_nao",
+	displayName: "Nao Ueda",
+	handle: "nao",
+	avatarUrl: "https://images.example.com/avatars/nao.png",
 	verified: false,
 };
 
-const postOne = {
-	id: "p-1",
+const postRin = {
+	id: "p_1",
 	author: rin,
-	body: "Spent the morning rewriting the onboarding copy. Turns out most of it was explaining a screen nobody looks at twice.",
-	createdAt: "2026-08-13T07:10:00.000Z",
-	visibility: "public" as Visibility,
+	body: "Spent the morning re-reading the design tokens doc and finally understood why the spacing scale is what it is. Small units, consistent rhythm.",
+	createdAt: "2026-08-17T07:10:00.000Z",
+	visibility: "public" as const,
 	replyCount: 12,
 	repostCount: 48,
 	likeCount: 310,
 	likedByViewer: true,
 };
 
-const postTwo = {
-	id: "p-2",
+const postKai = {
+	id: "p_2",
 	author: kai,
-	body: "This is the part everyone skips, and then wonders why the funnel drops off in week two.",
-	createdAt: "2026-08-13T08:25:00.000Z",
-	visibility: "followers" as Visibility,
-	replyCount: 3,
+	body: "This is the clearest explanation of the spacing scale I have seen. Pinning it for the next design review.",
+	createdAt: "2026-08-17T08:02:00.000Z",
+	visibility: "followers" as const,
+	replyCount: 4,
 	repostCount: 9,
-	likeCount: 61,
+	likeCount: 63,
 	likedByViewer: false,
 };
 
-const postThree = {
-	id: "p-3",
+const postMio = {
+	id: "p_3",
 	author: mio,
-	body: "Two from the walk home. The light only does this for about ten minutes.",
-	createdAt: "2026-08-13T08:40:00.000Z",
-	visibility: "public" as Visibility,
-	replyCount: 5,
-	repostCount: 17,
-	likeCount: 128,
+	body: "Two shots from the studio this week. Natural light only, no retouching.",
+	createdAt: "2026-08-17T08:41:00.000Z",
+	visibility: "public" as const,
+	replyCount: 7,
+	repostCount: 21,
+	likeCount: 154,
 	likedByViewer: false,
 };
 
-const postFour = {
-	id: "p-4",
+const postJun = {
+	id: "p_4",
 	author: jun,
-	body: "Notes from tonight's reading group, mostly so I remember them tomorrow: three chapters, one very long argument about a footnote.",
-	createdAt: "2026-08-13T09:05:00.000Z",
-	visibility: "circle" as Visibility,
+	body: "Quiet note for the close friends list: the migration is done and nothing broke. Sleeping for twelve hours now.",
+	createdAt: "2026-08-17T09:05:00.000Z",
+	visibility: "circle" as const,
 	replyCount: 2,
-	repostCount: 4,
-	likeCount: 33,
+	repostCount: 1,
+	likeCount: 27,
 	likedByViewer: false,
 };
 
-const postThreeImages = [
-	{
-		url: "https://picsum.photos/seed/yosegi-walk-1/800/600",
-		alt: "A narrow street at dusk, lit from one side",
-	},
-	{
-		url: "https://picsum.photos/seed/yosegi-walk-2/800/600",
-		alt: "Low sun behind a row of power lines",
-	},
-];
+const trendFrontend = {
+	id: "t_1",
+	label: "#designtokens",
+	postCount: 18400,
+	category: "Technology",
+};
 
-const trends = [
-	{
-		id: "t-1",
-		label: "#TypeSafeUI",
-		postCount: 18400,
-		category: "Technology",
-	},
-	{
-		id: "t-2",
-		label: "Design tokens",
-		postCount: 9210,
-		category: "Design",
-	},
-	{
-		id: "t-3",
-		label: "Reading group",
-		postCount: 3480,
-	},
-];
+const trendFilm = {
+	id: "t_2",
+	label: "Studio light",
+	postCount: 9200,
+	category: "Photography",
+};
+
+const trendRelease = {
+	id: "t_3",
+	label: "Release week",
+	postCount: 3100,
+};
 
 const meta: Meta = {
 	title: "Screens/TimelineScreen",
@@ -179,17 +161,16 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj;
-
-export const Timeline: Story = {
+export const Timeline: StoryObj = {
 	render: () => (
 		<AppShell
+			density="cozy"
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					onViewerPress={noop}
 					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
-					notifications={<NotificationBell unreadCount={4} onBellPress={noop} />}
+					notifications={<NotificationBell unreadCount={5} onBellPress={noop} tone="quiet" />}
 				/>
 			}
 			main={
@@ -205,18 +186,18 @@ export const Timeline: Story = {
 						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 					/>
 					<PostCard
-						post={postOne}
+						post={postRin}
 						authorLine={
 							<PostAuthorLine
-								author={postOne.author}
+								author={rin}
 								label="2h"
-								visibility={postOne.visibility}
-								avatar={<UserAvatar author={postOne.author} />}
+								visibility="public"
+								avatar={<UserAvatar author={rin} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postOne}
+								post={postRin}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -224,21 +205,21 @@ export const Timeline: Story = {
 						}
 					/>
 					<PostCard
-						post={postTwo}
+						post={postKai}
 						authorLine={
 							<PostAuthorLine
-								author={postTwo.author}
-								label="45m"
-								visibility={postTwo.visibility}
-								avatar={<UserAvatar author={postTwo.author} />}
+								author={kai}
+								label="1h"
+								visibility="followers"
+								avatar={<UserAvatar author={kai} />}
 							/>
 						}
 						quoted={
-							<QuotedPost post={postOne} avatar={<UserAvatar author={postOne.author} />} />
+							<QuotedPost post={postRin} avatar={<UserAvatar author={rin} density="compact" />} />
 						}
 						actions={
 							<PostActionBar
-								post={postTwo}
+								post={postKai}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -246,19 +227,32 @@ export const Timeline: Story = {
 						}
 					/>
 					<PostCard
-						post={postThree}
+						post={postMio}
 						authorLine={
 							<PostAuthorLine
-								author={postThree.author}
-								label="30m"
-								visibility={postThree.visibility}
-								avatar={<UserAvatar author={postThree.author} />}
+								author={mio}
+								label="45m"
+								visibility="public"
+								avatar={<UserAvatar author={mio} />}
 							/>
 						}
-						media={<PostMedia images={postThreeImages} />}
+						media={
+							<PostMedia
+								images={[
+									{
+										url: "https://images.example.com/posts/studio-window.jpg",
+										alt: "A window seat lit by late afternoon sun",
+									},
+									{
+										url: "https://images.example.com/posts/studio-desk.jpg",
+										alt: "A wooden desk with a camera and contact sheets",
+									},
+								]}
+							/>
+						}
 						actions={
 							<PostActionBar
-								post={postThree}
+								post={postMio}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -266,18 +260,18 @@ export const Timeline: Story = {
 						}
 					/>
 					<PostCard
-						post={postFour}
+						post={postJun}
 						authorLine={
 							<PostAuthorLine
-								author={postFour.author}
-								label="8m"
-								visibility={postFour.visibility}
-								avatar={<UserAvatar author={postFour.author} />}
+								author={jun}
+								label="20m"
+								visibility="circle"
+								avatar={<UserAvatar author={jun} />}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postFour}
+								post={postJun}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -292,9 +286,9 @@ export const Timeline: Story = {
 						heading="Trending now"
 						items={
 							<>
-								<TrendItem rank={1} trend={trends[0]} onTrendPress={noop} />
-								<TrendItem rank={2} trend={trends[1]} onTrendPress={noop} />
-								<TrendItem rank={3} trend={trends[2]} onTrendPress={noop} />
+								<TrendItem rank={1} trend={trendFrontend} onTrendPress={noop} />
+								<TrendItem rank={2} trend={trendFilm} onTrendPress={noop} />
+								<TrendItem rank={3} trend={trendRelease} onTrendPress={noop} />
 							</>
 						}
 					/>
@@ -303,21 +297,21 @@ export const Timeline: Story = {
 						rows={
 							<>
 								<SuggestedUserRow
-									author={nao}
+									author={aoi}
 									reason="Followed by @rin"
-									avatar={<UserAvatar author={nao} />}
+									avatar={<UserAvatar author={aoi} density="compact" />}
 									follow={<FollowButton following={false} onFollowToggle={noop} />}
 								/>
 								<SuggestedUserRow
 									author={haru}
 									reason="Followed by @kai and 3 others"
-									avatar={<UserAvatar author={haru} />}
+									avatar={<UserAvatar author={haru} density="compact" />}
 									follow={<FollowButton following={false} onFollowToggle={noop} />}
 								/>
 								<SuggestedUserRow
-									author={emi}
-									reason="Based on your recent likes"
-									avatar={<UserAvatar author={emi} />}
+									author={nao}
+									reason="New to the timeline"
+									avatar={<UserAvatar author={nao} density="compact" />}
 									follow={<FollowButton following={true} onFollowToggle={noop} />}
 								/>
 							</>

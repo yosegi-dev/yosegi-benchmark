@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -18,13 +17,15 @@ import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 import { UserAvatar } from "~/components/user-avatar";
 import { VisibilityPicker } from "~/components/visibility-picker";
-import type { AuthorModel, FeedKind, PostModel, TrendModel, Visibility } from "~/models";
+import type { AuthorModel, PostModel, TrendModel } from "~/models";
+
+const noop = () => {};
 
 const viewer: AuthorModel = {
 	id: "u-viewer",
 	displayName: "Aoi Nakamura",
 	handle: "@aoi",
-	avatarUrl: "https://i.pravatar.cc/150?img=47",
+	avatarUrl: "https://i.pravatar.cc/160?img=15",
 	verified: true,
 };
 
@@ -32,7 +33,7 @@ const rin: AuthorModel = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "@rin",
-	avatarUrl: "https://i.pravatar.cc/150?img=5",
+	avatarUrl: "https://i.pravatar.cc/160?img=32",
 	verified: true,
 };
 
@@ -40,28 +41,28 @@ const kai: AuthorModel = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "@kai",
-	avatarUrl: "https://i.pravatar.cc/150?img=12",
+	avatarUrl: "https://i.pravatar.cc/160?img=12",
 };
 
 const mio: AuthorModel = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "@mio",
-	avatarUrl: "https://i.pravatar.cc/150?img=32",
+	avatarUrl: "https://i.pravatar.cc/160?img=45",
 };
 
 const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "@jun",
-	avatarUrl: "https://i.pravatar.cc/150?img=68",
+	avatarUrl: "https://i.pravatar.cc/160?img=68",
 };
 
 const postOne: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Shipped the new timeline today. Two columns, no jank, and it finally feels like one screen instead of three stapled together.",
-	createdAt: "2026-08-13T09:12:00.000Z",
+	body: "Shipped the new timeline renderer this morning. Scroll jank is finally gone on long threads.",
+	createdAt: "2026-08-15T09:12:00.000Z",
 	visibility: "public",
 	replyCount: 12,
 	repostCount: 48,
@@ -72,111 +73,71 @@ const postOne: PostModel = {
 const postTwo: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part people underrate: the layout work is what makes the rest of the product readable.",
-	createdAt: "2026-08-13T08:40:00.000Z",
+	body: "This matches what we measured on the staging build. Nice work.",
+	createdAt: "2026-08-15T08:40:00.000Z",
 	visibility: "followers",
-	replyCount: 4,
+	replyCount: 3,
 	repostCount: 9,
-	likeCount: 63,
+	likeCount: 64,
 	likedByViewer: false,
 };
 
 const postThree: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Morning walk before the standup. The light on the river was worth the early alarm.",
-	createdAt: "2026-08-13T07:05:00.000Z",
+	body: "Two frames from the offsite. The light on the second morning was unreal.",
+	createdAt: "2026-08-15T07:55:00.000Z",
 	visibility: "public",
 	replyCount: 7,
-	repostCount: 15,
-	likeCount: 128,
+	repostCount: 21,
+	likeCount: 188,
 	likedByViewer: false,
 };
 
 const postFour: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Quiet note for the people who were there: we got the migration done with zero downtime. Thanks for the late night.",
-	createdAt: "2026-08-13T06:20:00.000Z",
+	body: "Quiet note for the close circle: taking Friday off to finish the reading list.",
+	createdAt: "2026-08-15T06:20:00.000Z",
 	visibility: "circle",
-	replyCount: 2,
-	repostCount: 3,
-	likeCount: 41,
+	replyCount: 1,
+	repostCount: 0,
+	likeCount: 15,
 	likedByViewer: false,
 };
 
-const postThreeImages: { url: string; alt: string }[] = [
-	{ url: "https://picsum.photos/seed/river-morning/800/600", alt: "Sunrise over a wide river" },
-	{ url: "https://picsum.photos/seed/riverside-path/800/600", alt: "A gravel path along the riverbank" },
-];
-
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
-	{ id: "t-2", label: "Storybook 9", postCount: 9120, category: "Frontend" },
-	{ id: "t-3", label: "#MorningWalk", postCount: 3260 },
+	{ id: "t-1", label: "#TimelineRewrite", postCount: 18420, category: "Technology" },
+	{ id: "t-2", label: "Offsite photos", postCount: 6310, category: "Photography" },
+	{ id: "t-3", label: "#FridayReading", postCount: 2145 },
 ];
 
-const suggestions: { author: AuthorModel; reason: string }[] = [
-	{
-		author: {
-			id: "u-hana",
-			displayName: "Hana Kurosawa",
-			handle: "@hana",
-			avatarUrl: "https://i.pravatar.cc/150?img=24",
-			verified: true,
-		},
-		reason: "Followed by Rin",
-	},
-	{
-		author: {
-			id: "u-sora",
-			displayName: "Sora Miyake",
-			handle: "@sora",
-			avatarUrl: "https://i.pravatar.cc/150?img=15",
-		},
-		reason: "Followed by Kai and 3 others",
-	},
-	{
-		author: {
-			id: "u-yuki",
-			displayName: "Yuki Tanabe",
-			handle: "@yuki",
-			avatarUrl: "https://i.pravatar.cc/150?img=56",
-		},
-		reason: "New to the timeline",
-	},
+const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
+	{ author: rin, reason: "Followed by Kai", following: false },
+	{ author: mio, reason: "Posts about photography", following: true },
+	{ author: jun, reason: "New to your network", following: false },
 ];
-
-const noop = () => {};
 
 function TimelineScreen() {
-	const [activeFeed, setActiveFeed] = useState<FeedKind>("for-you");
-	const [query, setQuery] = useState("");
-	const [draft, setDraft] = useState("");
-	const [visibility, setVisibility] = useState<Visibility>("public");
-	const [following, setFollowing] = useState<Record<string, boolean>>({});
-
 	return (
 		<AppShell
 			header={
 				<TimelineHeader
 					viewer={viewer}
-					search={<SearchField value={query} onQueryChange={setQuery} />}
-					notifications={<NotificationBell unreadCount={5} />}
+					search={<SearchField value="" placeholder="Search posts" onQueryChange={noop} />}
+					notifications={<NotificationBell unreadCount={5} tone="quiet" onBellPress={noop} />}
 					onViewerPress={noop}
 				/>
 			}
 			main={
-				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-					<FeedTabs activeFeed={activeFeed} onFeedChange={setActiveFeed} />
+				<div style={{ display: "grid", gap: 16 }}>
+					<FeedTabs activeFeed="for-you" onFeedChange={noop} />
 					<PostComposer
 						viewer={viewer}
-						draft={draft}
-						visibility={visibility}
-						visibilityPicker={
-							<VisibilityPicker visibility={visibility} onVisibilityChange={setVisibility} />
-						}
-						onDraftChange={setDraft}
+						draft=""
+						visibility="public"
+						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
+						onDraftChange={noop}
 						onSubmitPress={noop}
 					/>
 					<PostCard
@@ -225,12 +186,19 @@ function TimelineScreen() {
 						authorLine={
 							<PostAuthorLine
 								author={postThree.author}
-								label="5h"
+								label="4h"
 								avatar={<UserAvatar author={postThree.author} />}
 								visibility={postThree.visibility}
 							/>
 						}
-						media={<PostMedia images={postThreeImages} />}
+						media={
+							<PostMedia
+								images={[
+									{ url: "https://picsum.photos/seed/offsite-1/800/600", alt: "Sunrise over the offsite venue" },
+									{ url: "https://picsum.photos/seed/offsite-2/800/600", alt: "The team walking along the shoreline" },
+								]}
+							/>
+						}
 						actions={
 							<PostActionBar
 								post={postThree}
@@ -245,7 +213,7 @@ function TimelineScreen() {
 						authorLine={
 							<PostAuthorLine
 								author={postFour.author}
-								label="7h"
+								label="6h"
 								avatar={<UserAvatar author={postFour.author} />}
 								visibility={postFour.visibility}
 							/>
@@ -262,7 +230,7 @@ function TimelineScreen() {
 				</div>
 			}
 			sidebar={
-				<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+				<div style={{ display: "grid", gap: 16 }}>
 					<TrendPanel
 						heading="Trending now"
 						items={trends.map((trend, index) => (
@@ -277,15 +245,7 @@ function TimelineScreen() {
 								author={suggestion.author}
 								avatar={<UserAvatar author={suggestion.author} density="compact" />}
 								reason={suggestion.reason}
-								follow={
-									<FollowButton
-										following={following[suggestion.author.id] ?? false}
-										onFollowToggle={(next) =>
-											setFollowing((current) => ({ ...current, [suggestion.author.id]: next }))
-										}
-										density="compact"
-									/>
-								}
+								follow={<FollowButton following={suggestion.following} onFollowToggle={noop} />}
 							/>
 						))}
 					/>
@@ -295,16 +255,12 @@ function TimelineScreen() {
 	);
 }
 
-const meta: Meta<typeof TimelineScreen> = {
+const meta = {
 	title: "Screens/TimelineScreen",
 	component: TimelineScreen,
-	parameters: {
-		layout: "fullscreen",
-	},
-};
+	parameters: { layout: "fullscreen" },
+} satisfies Meta<typeof TimelineScreen>;
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {};
+export const Default: StoryObj<typeof meta> = {};

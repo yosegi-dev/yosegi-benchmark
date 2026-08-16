@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -16,182 +15,216 @@ import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
 
+const viewer = {
+	id: "u-viewer",
+	displayName: "Aoi Nakamura",
+	handle: "aoi",
+	avatarUrl: "https://i.pravatar.cc/96?img=64",
+};
+
+const rin = {
+	id: "u-rin",
+	displayName: "Rin Amano",
+	handle: "rin",
+	avatarUrl: "https://i.pravatar.cc/96?img=1",
+};
+
+const kai = {
+	id: "u-kai",
+	displayName: "Kai Doi",
+	handle: "kai",
+	avatarUrl: "https://i.pravatar.cc/96?img=12",
+};
+
+const mio = {
+	id: "u-mio",
+	displayName: "Mio Sato",
+	handle: "mio",
+	avatarUrl: "https://i.pravatar.cc/96?img=23",
+};
+
+const jun = {
+	id: "u-jun",
+	displayName: "Jun Ito",
+	handle: "jun",
+	avatarUrl: "https://i.pravatar.cc/96?img=33",
+};
+
+const haru = {
+	id: "u-haru",
+	displayName: "Haru Kobayashi",
+	handle: "haru",
+	avatarUrl: "https://i.pravatar.cc/96?img=45",
+};
+
+const nao = {
+	id: "u-nao",
+	displayName: "Nao Fujii",
+	handle: "nao",
+	avatarUrl: "https://i.pravatar.cc/96?img=52",
+};
+
+const sora = {
+	id: "u-sora",
+	displayName: "Sora Yamada",
+	handle: "sora",
+	avatarUrl: "https://i.pravatar.cc/96?img=58",
+};
+
+const postMedia = [
+	{
+		id: "m-1",
+		src: "https://placehold.co/640x420/1d4ed8/ffffff.png",
+		alt: "Morning light over the harbour",
+		width: 640,
+		height: 420,
+	},
+	{
+		id: "m-2",
+		src: "https://placehold.co/640x420/be123c/ffffff.png",
+		alt: "A tray of freshly baked bread",
+		width: 640,
+		height: 420,
+	},
+];
+
 const noop = () => {};
 
-const TimelineScreen = () => (
-	<AppShell
-		header={
-			<TimelineHeader
-				avatarSrc="https://i.pravatar.cc/80?img=15"
-				displayName="Rin Amano"
-				searchValue=""
-				onSearchChange={noop}
-				notificationCount={3}
-				onNotificationClick={noop}
+function TimelineScreen() {
+	return (
+		<AppShell
+			header={
+				<TimelineHeader
+					user={viewer}
+					searchValue=""
+					onSearchChange={noop}
+					notificationCount={3}
+					onNotificationClick={noop}
+				/>
+			}
+			sidebar={
+				<>
+					<TrendPanel title="Trends for you">
+						<TrendItem
+							category="Technology"
+							name="#TypeScript"
+							postCount={12400}
+							onClick={noop}
+						/>
+						<TrendItem
+							category="Design"
+							name="#DesignSystems"
+							postCount={8300}
+							onClick={noop}
+						/>
+						<TrendItem
+							category="Tokyo"
+							name="#朝ごはん"
+							postCount={4100}
+							onClick={noop}
+						/>
+					</TrendPanel>
+					<SuggestedUserPanel title="Who to follow">
+						<SuggestedUserRow user={haru} reason="Follows you">
+							<FollowButton
+								userId={haru.id}
+								following={false}
+								onToggle={noop}
+							/>
+						</SuggestedUserRow>
+						<SuggestedUserRow user={nao} reason="Popular in Design">
+							<FollowButton userId={nao.id} following={false} onToggle={noop} />
+						</SuggestedUserRow>
+						<SuggestedUserRow user={sora} reason="Based on your likes">
+							<FollowButton
+								userId={sora.id}
+								following={true}
+								onToggle={noop}
+							/>
+						</SuggestedUserRow>
+					</SuggestedUserPanel>
+				</>
+			}
+		>
+			<FeedTabs value="for-you" onChange={noop} />
+			<PostComposer
+				author={viewer}
+				value=""
+				onChange={noop}
+				visibility="public"
+				onVisibilityChange={noop}
+				onSubmit={noop}
+				placeholder="What's happening?"
 			/>
-		}
-		sidebar={
-			<>
-				<TrendPanel title="Trends for you">
-					<TrendItem
-						rank={1}
-						category="Technology"
-						label="#TypeScript"
-						postCount={12800}
-						onClick={noop}
-					/>
-					<TrendItem
-						rank={2}
-						category="Design"
-						label="#DesignSystems"
-						postCount={8400}
-						onClick={noop}
-					/>
-					<TrendItem
-						rank={3}
-						category="Trending in Japan"
-						label="#Storybook"
-						postCount={3120}
-						onClick={noop}
-					/>
-				</TrendPanel>
-				<SuggestedUserPanel title="Who to follow">
-					<SuggestedUserRow
-						avatarSrc="https://i.pravatar.cc/80?img=31"
-						displayName="Aoi Nakamura"
-						handle="@aoi"
-						bio="Frontend engineer. Building design systems."
-					>
-						<FollowButton following={false} onToggle={noop} />
-					</SuggestedUserRow>
-					<SuggestedUserRow
-						avatarSrc="https://i.pravatar.cc/80?img=32"
-						displayName="Haru Kimura"
-						handle="@haru"
-						bio="Product designer, tea drinker."
-					>
-						<FollowButton following={false} onToggle={noop} />
-					</SuggestedUserRow>
-					<SuggestedUserRow
-						avatarSrc="https://i.pravatar.cc/80?img=33"
-						displayName="Sora Tanaka"
-						handle="@sora"
-						bio="Writes about accessibility."
-					>
-						<FollowButton following onToggle={noop} />
-					</SuggestedUserRow>
-				</SuggestedUserPanel>
-			</>
-		}
-	>
-		<FeedTabs value="for-you" onChange={noop} />
 
-		<PostComposer
-			value=""
-			onChange={noop}
-			visibility="public"
-			onVisibilityChange={noop}
-			onSubmit={noop}
-			avatarSrc="https://i.pravatar.cc/80?img=15"
-			placeholder="What's happening?"
-		/>
+			<PostCard postId="p-1" visibility="public">
+				<PostAuthorLine author={rin} relativeTime="2h" />
+				<PostBody text="Rewrote the whole layout pass this morning and it finally fits on one screen. Small win, big relief." />
+				<PostActionBar
+					replyCount={12}
+					repostCount={48}
+					likeCount={310}
+					liked={true}
+					reposted={false}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
+				/>
+			</PostCard>
 
-		<PostCard visibility="public">
-			<PostAuthorLine
-				avatarSrc="https://i.pravatar.cc/80?img=5"
-				displayName="Rin Amano"
-				handle="@rin"
-				timestamp="2h"
-			/>
-			<PostBody text="Spent the morning pruning props off our shared components. Half of them existed because one screen needed a one-off spacing tweak." />
-			<PostActionBar
-				replyCount={12}
-				repostCount={48}
-				likeCount={310}
-				liked
-				onReply={noop}
-				onRepost={noop}
-				onLike={noop}
-			/>
-		</PostCard>
+			<PostCard postId="p-2" visibility="followers">
+				<PostAuthorLine author={kai} relativeTime="1h" />
+				<PostBody text="This is exactly the kind of cleanup that never shows up in a changelog." />
+				<QuotedPost
+					author={rin}
+					text="Rewrote the whole layout pass this morning and it finally fits on one screen. Small win, big relief."
+					relativeTime="2h"
+				/>
+				<PostActionBar
+					replyCount={3}
+					repostCount={9}
+					likeCount={64}
+					liked={false}
+					reposted={false}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
+				/>
+			</PostCard>
 
-		<PostCard visibility="followers">
-			<PostAuthorLine
-				avatarSrc="https://i.pravatar.cc/80?img=12"
-				displayName="Kai Doi"
-				handle="@kai"
-				timestamp="1h"
-			/>
-			<PostBody text="This is the whole argument for a component registry in one paragraph." />
-			<QuotedPost
-				avatarSrc="https://i.pravatar.cc/80?img=5"
-				displayName="Rin Amano"
-				handle="@rin"
-				timestamp="2h"
-				text="Spent the morning pruning props off our shared components. Half of them existed because one screen needed a one-off spacing tweak."
-			/>
-			<PostActionBar
-				replyCount={4}
-				repostCount={19}
-				likeCount={86}
-				liked={false}
-				onReply={noop}
-				onRepost={noop}
-				onLike={noop}
-			/>
-		</PostCard>
+			<PostCard postId="p-3" visibility="public">
+				<PostAuthorLine author={mio} relativeTime="42m" />
+				<PostBody text="Two photos from the walk back. The light was doing something strange today." />
+				<PostMedia images={postMedia} />
+				<PostActionBar
+					replyCount={7}
+					repostCount={21}
+					likeCount={188}
+					liked={false}
+					reposted={false}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
+				/>
+			</PostCard>
 
-		<PostCard visibility="public">
-			<PostAuthorLine
-				avatarSrc="https://i.pravatar.cc/80?img=20"
-				displayName="Mio Sato"
-				handle="@mio"
-				timestamp="45m"
-			/>
-			<PostBody text="Two shots from the studio wall today. Same palette, very different mood." />
-			<PostMedia
-				images={[
-					{
-						src: "https://picsum.photos/id/1015/800/600",
-						alt: "Studio wall in morning light",
-					},
-					{
-						src: "https://picsum.photos/id/1025/800/600",
-						alt: "The same wall after sunset",
-					},
-				]}
-			/>
-			<PostActionBar
-				replyCount={7}
-				repostCount={33}
-				likeCount={204}
-				liked={false}
-				onReply={noop}
-				onRepost={noop}
-				onLike={noop}
-			/>
-		</PostCard>
-
-		<PostCard visibility="circle">
-			<PostAuthorLine
-				avatarSrc="https://i.pravatar.cc/80?img=8"
-				displayName="Jun Ito"
-				handle="@jun"
-				timestamp="12m"
-			/>
-			<PostBody text="Small circle post: the migration is going better than I told everyone it would." />
-			<PostActionBar
-				replyCount={2}
-				repostCount={3}
-				likeCount={21}
-				liked={false}
-				onReply={noop}
-				onRepost={noop}
-				onLike={noop}
-			/>
-		</PostCard>
-	</AppShell>
-);
+			<PostCard postId="p-4" visibility="circle">
+				<PostAuthorLine author={jun} relativeTime="15m" />
+				<PostBody text="Keeping this one to the circle: the migration is done, and nobody noticed. Best possible outcome." />
+				<PostActionBar
+					replyCount={2}
+					repostCount={4}
+					likeCount={27}
+					liked={false}
+					reposted={false}
+					onReply={noop}
+					onRepost={noop}
+					onLike={noop}
+				/>
+			</PostCard>
+		</AppShell>
+	);
+}
 
 const meta = {
 	title: "Screens/TimelineScreen",

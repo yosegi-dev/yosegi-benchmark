@@ -1,37 +1,37 @@
 host	arm	errors	codes
-chakra-l	A1	30	TS2322×28 TS2353×2 
+chakra-l	A1	30	TS2322×24 TS2741×3 TS2353×3 
 chakra-l	A2	0	-
 chakra-l	B	0	-
-chakra-m	A1	35	TS2322×21 TS2353×13 TS2741×1 
+chakra-m	A1	30	TS2322×21 TS2739×4 TS2741×3 TS2353×2 
 chakra-m	A2	0	-
 chakra-m	B	0	-
-chakra	A1	26	TS2322×20 TS2353×3 TS2741×2 TS2339×1 
+chakra	A1	35	TS2322×29 TS2741×3 TS2353×2 TS2739×1 
 chakra	A2	0	-
 chakra	B	0	-
-mantine-l	A1	29	TS2322×15 TS2741×7 TS2739×7 
+mantine-l	A1	30	TS2322×27 TS2353×2 TS2739×1 
 mantine-l	A2	0	-
 mantine-l	B	0	-
-mantine-m	A1	25	TS2322×23 TS2353×2 
+mantine-m	A1	30	TS2322×28 TS2353×2 
 mantine-m	A2	0	-
 mantine-m	B	0	-
-mantine	A1	24	TS2322×20 TS2739×3 TS2741×1 
+mantine	A1	23	TS2322×21 TS2741×2 
 mantine	A2	0	-
 mantine	B	0	-
-mui-l	A1	30	TS2322×28 TS2353×2 
+mui-l	A1	29	TS2322×29 
 mui-l	A2	0	-
 mui-l	B	0	-
-mui-m	A1	24	TS2322×21 TS2353×2 TS2740×1 
+mui-m	A1	30	TS2322×28 TS2353×2 
 mui-m	A2	0	-
 mui-m	B	0	-
-mui	A1	33	TS2322×28 TS2741×3 TS2353×2 
+mui	A1	33	TS2322×31 TS2353×2 
 mui	A2	0	-
 mui	B	0	-
-shadcn-l	A1	24	TS2322×19 TS2741×5 
+shadcn-l	A1	30	TS2322×20 TS2741×4 TS2739×4 TS2353×2 
 shadcn-l	A2	0	-
 shadcn-l	B	0	-
-shadcn-m	A1	30	TS2322×21 TS2353×5 TS2741×4 
+shadcn-m	A1	30	TS2322×24 TS2741×4 TS2353×2 
 shadcn-m	A2	0	-
 shadcn-m	B	0	-
-shadcn	A1	36	TS2322×16 TS2353×14 TS2739×4 TS2741×2 
+shadcn	A1	23	TS2322×16 TS2741×5 TS2353×2 
 shadcn	A2	0	-
 shadcn	B	0	-

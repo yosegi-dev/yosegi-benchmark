@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
@@ -22,50 +21,47 @@ import { VisibilityPicker } from "~/components/visibility-picker";
 const noop = () => {};
 
 const viewer = {
-	id: "u_aoi",
-	displayName: "Aoi Nakamura",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/128?img=12",
-	verified: false,
+	id: "u-viewer",
+	displayName: "Nao Kuroda",
+	handle: "nao",
+	avatarUrl: "https://i.pravatar.cc/128?img=15",
+	verified: true,
 };
 
 const rin = {
-	id: "u_rin",
+	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/128?img=47",
+	avatarUrl: "https://i.pravatar.cc/128?img=32",
 	verified: true,
 };
 
 const kai = {
-	id: "u_kai",
+	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/128?img=33",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/128?img=12",
 };
 
 const mio = {
-	id: "u_mio",
+	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/128?img=26",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/128?img=45",
 };
 
 const jun = {
-	id: "u_jun",
+	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/128?img=59",
-	verified: false,
+	avatarUrl: "https://i.pravatar.cc/128?img=8",
 };
 
 const post1 = {
-	id: "p_1",
+	id: "p-1",
 	author: rin,
-	body: "Shipped the new type registry today. Turns out the hardest part was never the parsing — it was deciding what not to expose.",
-	createdAt: "2026-08-13T07:40:00.000Z",
+	body: "Shipped the new timeline today. The whole thing is one component tree now, and it finally reads the way it looks.",
+	createdAt: "2026-08-17T08:10:00.000Z",
 	visibility: "public" as const,
 	replyCount: 12,
 	repostCount: 48,
@@ -74,10 +70,10 @@ const post1 = {
 };
 
 const post2 = {
-	id: "p_2",
+	id: "p-2",
 	author: kai,
-	body: "This matches what we found last quarter. A smaller surface made the migration boring, which is exactly what you want.",
-	createdAt: "2026-08-13T08:05:00.000Z",
+	body: "This is the part nobody talks about: the tree is the design. Congrats Rin.",
+	createdAt: "2026-08-17T07:40:00.000Z",
 	visibility: "followers" as const,
 	replyCount: 4,
 	repostCount: 9,
@@ -86,87 +82,61 @@ const post2 = {
 };
 
 const post3 = {
-	id: "p_3",
+	id: "p-3",
 	author: mio,
-	body: "Two frames from this morning's walk along the canal. The light only does this for about ten minutes.",
-	createdAt: "2026-08-13T08:52:00.000Z",
+	body: "Two shots from this morning's walk before the office. The light was doing something unusual.",
+	createdAt: "2026-08-17T06:55:00.000Z",
 	visibility: "public" as const,
 	replyCount: 7,
-	repostCount: 21,
-	likeCount: 184,
+	repostCount: 15,
+	likeCount: 128,
 	likedByViewer: false,
 };
 
 const post4 = {
-	id: "p_4",
+	id: "p-4",
 	author: jun,
-	body: "Small circle question: does anyone still run their own mail server, or have we all quietly given up?",
-	createdAt: "2026-08-13T09:18:00.000Z",
+	body: "Small circle post: I am rewriting my notes app for the fourth time and I regret nothing.",
+	createdAt: "2026-08-17T05:20:00.000Z",
 	visibility: "circle" as const,
-	replyCount: 3,
+	replyCount: 2,
 	repostCount: 1,
-	likeCount: 27,
+	likeCount: 23,
 	likedByViewer: false,
 };
 
 const post3Images = [
 	{
-		url: "https://picsum.photos/seed/canal-a/640/480",
-		alt: "Morning light on a canal, seen from a low bridge",
+		url: "https://picsum.photos/id/1015/640/480",
+		alt: "A river running through a canyon at sunrise",
 	},
 	{
-		url: "https://picsum.photos/seed/canal-b/640/480",
-		alt: "A row of moored boats with mist above the water",
+		url: "https://picsum.photos/id/1016/640/480",
+		alt: "Low mist over a ridge of pine trees",
 	},
 ];
 
 const trends = [
-	{
-		id: "t_1",
-		label: "#TypeRegistry",
-		postCount: 18400,
-		category: "Technology",
-	},
-	{
-		id: "t_2",
-		label: "Canal Walk",
-		postCount: 6120,
-		category: "Photography",
-	},
-	{
-		id: "t_3",
-		label: "#SelfHosting",
-		postCount: 3480,
-		category: "Trending in your area",
-	},
+	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
+	{ id: "t-2", label: "Storybook 9", postCount: 9120, category: "Trending" },
+	{ id: "t-3", label: "#TypeScript", postCount: 42300, category: "Technology" },
 ];
 
 const suggestions = [
 	{ author: rin, reason: "Followed by kai" },
-	{ author: mio, reason: "Followed by rin and 3 others" },
-	{ author: jun, reason: "New to your timeline" },
+	{ author: mio, reason: "Followed by rin" },
+	{ author: jun, reason: "New to your area" },
 ];
 
-const meta: Meta = {
-	title: "Screens/TimelineScreen",
-	parameters: {
-		layout: "fullscreen",
-	},
-};
-
-export default meta;
-
-type Story = StoryObj;
-
-export const Default: Story = {
-	render: () => (
+function TimelineScreen() {
+	return (
 		<AppShell
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					onViewerPress={noop}
-					search={<SearchField value="" onQueryChange={noop} />}
-					notifications={<NotificationBell unreadCount={5} onBellPress={noop} />}
+					search={<SearchField value="" onQueryChange={noop} placeholder="Search" />}
+					notifications={<NotificationBell unreadCount={3} onBellPress={noop} tone="quiet" />}
 				/>
 			}
 			main={
@@ -178,9 +148,8 @@ export const Default: Story = {
 						onSubmitPress={noop}
 						viewer={viewer}
 						visibility="public"
-						visibilityPicker={
-							<VisibilityPicker visibility="public" onVisibilityChange={noop} />
-						}
+						submitLabel="Post"
+						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
 					/>
 					<PostCard
 						post={post1}
@@ -206,7 +175,7 @@ export const Default: Story = {
 						authorLine={
 							<PostAuthorLine
 								author={post2.author}
-								label="1h"
+								label="3h"
 								visibility={post2.visibility}
 								avatar={<UserAvatar author={post2.author} />}
 							/>
@@ -231,7 +200,7 @@ export const Default: Story = {
 						authorLine={
 							<PostAuthorLine
 								author={post3.author}
-								label="34m"
+								label="4h"
 								visibility={post3.visibility}
 								avatar={<UserAvatar author={post3.author} />}
 							/>
@@ -251,7 +220,7 @@ export const Default: Story = {
 						authorLine={
 							<PostAuthorLine
 								author={post4.author}
-								label="8m"
+								label="6h"
 								visibility={post4.visibility}
 								avatar={<UserAvatar author={post4.author} />}
 							/>
@@ -276,8 +245,8 @@ export const Default: Story = {
 								{trends.map((trend, index) => (
 									<TrendItem
 										key={trend.id}
-										rank={index + 1}
 										trend={trend}
+										rank={index + 1}
 										onTrendPress={noop}
 									/>
 								))}
@@ -293,12 +262,8 @@ export const Default: Story = {
 										key={suggestion.author.id}
 										author={suggestion.author}
 										reason={suggestion.reason}
-										avatar={
-											<UserAvatar author={suggestion.author} density="compact" />
-										}
-										follow={
-											<FollowButton following={false} onFollowToggle={noop} />
-										}
+										avatar={<UserAvatar author={suggestion.author} density="compact" />}
+										follow={<FollowButton following={false} onFollowToggle={noop} />}
 									/>
 								))}
 							</>
@@ -307,5 +272,21 @@ export const Default: Story = {
 				</>
 			}
 		/>
-	),
+	);
+}
+
+const meta: Meta<typeof AppShell> = {
+	title: "Screens/TimelineScreen",
+	component: AppShell,
+	parameters: {
+		layout: "fullscreen",
+	},
+};
+
+export default meta;
+
+type Story = StoryObj<typeof AppShell>;
+
+export const Default: Story = {
+	render: () => <TimelineScreen />,
 };

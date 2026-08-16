@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AppShell } from "~/components/app-shell";
 import { FeedTabs } from "~/components/feed-tabs";
 import { FollowButton } from "~/components/follow-button";
+import { NotificationBell } from "~/components/notification-bell";
 import { PostActionBar } from "~/components/post-action-bar";
 import { PostAuthorLine } from "~/components/post-author-line";
 import { PostBody } from "~/components/post-body";
@@ -10,93 +11,66 @@ import { PostCard } from "~/components/post-card";
 import { PostComposer } from "~/components/post-composer";
 import { PostMedia } from "~/components/post-media";
 import { QuotedPost } from "~/components/quoted-post";
+import { SearchField } from "~/components/search-field";
 import { SuggestedUserPanel } from "~/components/suggested-user-panel";
 import { SuggestedUserRow } from "~/components/suggested-user-row";
 import { TimelineHeader } from "~/components/timeline-header";
 import { TrendItem } from "~/components/trend-item";
 import { TrendPanel } from "~/components/trend-panel";
-import type { AuthorModel, PostModel, TrendModel } from "~/models";
+import { UserAvatar } from "~/components/user-avatar";
 
-const rin: AuthorModel = {
+const rin = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/96?img=5",
+	avatarUrl: "https://i.pravatar.cc/96?img=1",
 };
 
-const kai: AuthorModel = {
+const kai = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/96?img=12",
+	avatarUrl: "https://i.pravatar.cc/96?img=2",
 };
 
-const mio: AuthorModel = {
+const mio = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/96?img=32",
+	avatarUrl: "https://i.pravatar.cc/96?img=3",
 };
 
-const jun: AuthorModel = {
+const jun = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/96?img=48",
+	avatarUrl: "https://i.pravatar.cc/96?img=4",
 };
 
-const viewer: AuthorModel = {
+const viewer = {
 	id: "u-viewer",
-	displayName: "Aoi Nakamura",
-	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/96?img=20",
+	displayName: "You",
+	handle: "you",
+	avatarUrl: "https://i.pravatar.cc/96?img=5",
 };
 
-const post1: PostModel = {
+const quotedPost = {
 	id: "p-1",
 	author: rin,
-	text: "Shipped the new timeline renderer today. Scroll jank on long threads is finally gone.",
-	visibility: "public",
-	createdAt: "2h",
-	replyCount: 12,
-	repostCount: 48,
-	likeCount: 310,
-	liked: true,
+	text: "Shipped the new indexer this morning. It reads the whole registry in one pass now.",
+	visibility: "public" as const,
+	createdAt: "2026-08-15T09:12:00.000Z",
+	relativeTime: "2h",
 };
-
-const trends: TrendModel[] = [
-	{ id: "t-1", category: "Technology", label: "#TypeScript", postCount: 18400 },
-	{ id: "t-2", category: "Design", label: "#DesignSystems", postCount: 9120 },
-	{ id: "t-3", category: "Trending in Japan", label: "#Storybook", postCount: 4380 },
-];
-
-const suggested: AuthorModel[] = [
-	{
-		id: "u-nao",
-		displayName: "Nao Kimura",
-		handle: "nao",
-		avatarUrl: "https://i.pravatar.cc/96?img=15",
-	},
-	{
-		id: "u-haru",
-		displayName: "Haru Tanaka",
-		handle: "haru",
-		avatarUrl: "https://i.pravatar.cc/96?img=25",
-	},
-	{
-		id: "u-sora",
-		displayName: "Sora Fujii",
-		handle: "sora",
-		avatarUrl: "https://i.pravatar.cc/96?img=36",
-	},
-];
 
 const meta = {
 	title: "Screens/TimelineScreen",
+	component: AppShell,
 	parameters: {
 		layout: "fullscreen",
+		viewport: { defaultViewport: "desktop" },
 	},
-} satisfies Meta;
+} satisfies Meta<typeof AppShell>;
 
 export default meta;
 
@@ -105,88 +79,131 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	render: () => (
 		<AppShell
-			header={<TimelineHeader user={viewer} notificationCount={3} />}
+			header={
+				<TimelineHeader
+					avatar={<UserAvatar name={viewer.displayName} src={viewer.avatarUrl} size="sm" />}
+					search={<SearchField value="" placeholder="Search" onChange={() => {}} />}
+					notifications={<NotificationBell count={3} onClick={() => {}} />}
+				/>
+			}
 			sidebar={
 				<>
 					<TrendPanel title="Trends for you">
-						{trends.map((trend) => (
-							<TrendItem key={trend.id} trend={trend} />
-						))}
+						<TrendItem
+							trend={{
+								id: "t-1",
+								category: "Technology",
+								label: "#TypeScript",
+								postCount: 12400,
+							}}
+						/>
+						<TrendItem
+							trend={{
+								id: "t-2",
+								category: "Design",
+								label: "#DesignSystems",
+								postCount: 8210,
+							}}
+						/>
+						<TrendItem
+							trend={{
+								id: "t-3",
+								category: "Trending in Japan",
+								label: "#Storybook",
+								postCount: 3450,
+							}}
+						/>
 					</TrendPanel>
 					<SuggestedUserPanel title="Who to follow">
-						{suggested.map((user) => (
-							<SuggestedUserRow key={user.id} user={user}>
-								<FollowButton following={false} onClick={() => {}} />
-							</SuggestedUserRow>
-						))}
+						<SuggestedUserRow
+							user={rin}
+							action={<FollowButton following={false} onToggle={() => {}} />}
+						/>
+						<SuggestedUserRow
+							user={mio}
+							action={<FollowButton following={true} onToggle={() => {}} />}
+						/>
+						<SuggestedUserRow
+							user={jun}
+							action={<FollowButton following={false} onToggle={() => {}} />}
+						/>
 					</SuggestedUserPanel>
 				</>
 			}
 		>
 			<FeedTabs value="for-you" onChange={() => {}} />
-
 			<PostComposer
 				value=""
-				onChange={() => {}}
+				placeholder="What's happening?"
 				visibility="public"
+				avatar={<UserAvatar name={viewer.displayName} src={viewer.avatarUrl} size="sm" />}
+				onChange={() => {}}
 				onVisibilityChange={() => {}}
 				onSubmit={() => {}}
 			/>
-
 			<PostCard visibility="public">
-				<PostAuthorLine author={rin} timestamp="2h" />
-				<PostBody text={post1.text} />
+				<PostAuthorLine author={rin} relativeTime="2h" />
+				<PostBody text="Shipped the new indexer this morning. It reads the whole registry in one pass now." />
 				<PostActionBar
 					replyCount={12}
 					repostCount={48}
 					likeCount={310}
 					liked={true}
+					onReply={() => {}}
+					onRepost={() => {}}
+					onLike={() => {}}
 				/>
 			</PostCard>
-
 			<PostCard visibility="followers">
-				<PostAuthorLine author={kai} timestamp="1h" />
-				<PostBody text="This matches what we saw in profiling last week. Worth reading the whole thread." />
-				<QuotedPost post={post1} />
+				<PostAuthorLine author={kai} relativeTime="1h" />
+				<PostBody text="One pass is the part that matters. The old one walked it three times." />
+				<QuotedPost post={quotedPost} />
 				<PostActionBar
 					replyCount={4}
 					repostCount={9}
 					likeCount={57}
 					liked={false}
+					onReply={() => {}}
+					onRepost={() => {}}
+					onLike={() => {}}
 				/>
 			</PostCard>
-
 			<PostCard visibility="public">
-				<PostAuthorLine author={mio} timestamp="35m" />
-				<PostBody text="Two shots from the studio wall we repainted this morning." />
+				<PostAuthorLine author={mio} relativeTime="35m" />
+				<PostBody text="Two shots from the studio wall today. Same paint, different light." />
 				<PostMedia
 					images={[
 						{
-							src: "https://picsum.photos/seed/timeline-a/640/420",
-							alt: "Freshly painted studio wall in warm beige",
+							src: "https://picsum.photos/seed/mio-a/640/480",
+							alt: "A studio wall in morning light",
 						},
 						{
-							src: "https://picsum.photos/seed/timeline-b/640/420",
-							alt: "Paint cans and rollers on a drop cloth",
+							src: "https://picsum.photos/seed/mio-b/640/480",
+							alt: "The same wall in the afternoon",
 						},
 					]}
 				/>
 				<PostActionBar
 					replyCount={7}
-					repostCount={15}
-					likeCount={128}
+					repostCount={21}
+					likeCount={188}
 					liked={false}
+					onReply={() => {}}
+					onRepost={() => {}}
+					onLike={() => {}}
 				/>
 			</PostCard>
-
 			<PostCard visibility="circle">
-				<PostAuthorLine author={jun} timestamp="12m" />
-				<PostBody text="Small circle only: the offsite is moving to the second week of March." />
+				<PostAuthorLine author={jun} relativeTime="12m" />
+				<PostBody text="Keeping this one to the circle: the migration lands Friday, not Wednesday." />
 				<PostActionBar
 					replyCount={2}
 					repostCount={0}
-					likeCount={19}
+					likeCount={16}
 					liked={false}
+					onReply={() => {}}
+					onRepost={() => {}}
+					onLike={() => {}}
 				/>
 			</PostCard>
 		</AppShell>

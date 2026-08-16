@@ -19,13 +19,11 @@ import { UserAvatar } from "~/components/user-avatar";
 import { VisibilityPicker } from "~/components/visibility-picker";
 import type { AuthorModel, PostModel, TrendModel } from "~/models";
 
-const noop = () => {};
-
 const viewer: AuthorModel = {
 	id: "u-viewer",
 	displayName: "Aoi Nakamura",
 	handle: "aoi",
-	avatarUrl: "https://i.pravatar.cc/128?img=47",
+	avatarUrl: "https://i.pravatar.cc/128?img=15",
 	verified: true,
 };
 
@@ -33,7 +31,7 @@ const rin: AuthorModel = {
 	id: "u-rin",
 	displayName: "Rin Amano",
 	handle: "rin",
-	avatarUrl: "https://i.pravatar.cc/128?img=32",
+	avatarUrl: "https://i.pravatar.cc/128?img=1",
 	verified: true,
 };
 
@@ -41,30 +39,27 @@ const kai: AuthorModel = {
 	id: "u-kai",
 	displayName: "Kai Doi",
 	handle: "kai",
-	avatarUrl: "https://i.pravatar.cc/128?img=12",
+	avatarUrl: "https://i.pravatar.cc/128?img=2",
 };
 
 const mio: AuthorModel = {
 	id: "u-mio",
 	displayName: "Mio Sato",
 	handle: "mio",
-	avatarUrl: "https://i.pravatar.cc/128?img=25",
-	verified: true,
+	avatarUrl: "https://i.pravatar.cc/128?img=3",
 };
 
 const jun: AuthorModel = {
 	id: "u-jun",
 	displayName: "Jun Ito",
 	handle: "jun",
-	avatarUrl: "https://i.pravatar.cc/128?img=68",
+	avatarUrl: "https://i.pravatar.cc/128?img=4",
 };
 
-// `createdAt` is rendered verbatim by QuotedPost, so it holds an already-formatted
-// relative label rather than an ISO timestamp.
-const postRin: PostModel = {
+const post1: PostModel = {
 	id: "p-1",
 	author: rin,
-	body: "Rebuilt the timeline on top of the design tokens today. Every card now picks up density from one prop instead of five.",
+	body: "Shipped the new timeline layout today. Two columns, sticky header, and a composer that finally feels quick.",
 	createdAt: "2h",
 	visibility: "public",
 	replyCount: 12,
@@ -73,106 +68,98 @@ const postRin: PostModel = {
 	likedByViewer: true,
 };
 
-const postKai: PostModel = {
+const post2: PostModel = {
 	id: "p-2",
 	author: kai,
-	body: "This is the part everyone underestimates. Density as a prop sounds small until you delete the third copy of the spacing table.",
+	body: "This is the part people underestimate — the sticky header is what makes the whole thing feel fast.",
 	createdAt: "1h",
 	visibility: "followers",
-	replyCount: 5,
+	replyCount: 4,
 	repostCount: 9,
-	likeCount: 64,
+	likeCount: 63,
 	likedByViewer: false,
 };
 
-const postMio: PostModel = {
+const post3: PostModel = {
 	id: "p-3",
 	author: mio,
-	body: "Shot the studio again now that the light is back. Two frames from this morning.",
-	createdAt: "38m",
+	body: "Two shots from this morning's walk before the studio opened.",
+	createdAt: "45m",
 	visibility: "public",
-	replyCount: 3,
-	repostCount: 17,
+	replyCount: 7,
+	repostCount: 15,
 	likeCount: 128,
 	likedByViewer: false,
 };
 
-const postJun: PostModel = {
+const post4: PostModel = {
 	id: "p-4",
 	author: jun,
-	body: "Quiet note for the circle: the migration is done and nothing broke. Sleeping properly tonight.",
-	createdAt: "12m",
+	body: "Small circle question: what do you actually keep in your read-later list for more than a week?",
+	createdAt: "20m",
 	visibility: "circle",
-	replyCount: 1,
+	replyCount: 21,
 	repostCount: 2,
-	likeCount: 21,
+	likeCount: 44,
 	likedByViewer: false,
 };
 
-const mioMedia: { url: string; alt: string }[] = [
-	{ url: "https://picsum.photos/id/1015/800/800", alt: "Morning light across the studio desk" },
-	{ url: "https://picsum.photos/id/1025/800/800", alt: "Close-up of the camera on the windowsill" },
+const post3Images: { url: string; alt: string }[] = [
+	{ url: "https://picsum.photos/seed/timeline-a/800/800", alt: "Empty street at sunrise" },
+	{ url: "https://picsum.photos/seed/timeline-b/800/800", alt: "Coffee cup on a studio desk" },
 ];
 
 const trends: TrendModel[] = [
-	{ id: "t-1", label: "#DesignTokens", postCount: 18420, category: "Design" },
-	{ id: "t-2", label: "Storybook 9", postCount: 9310, category: "Trending in Tech" },
-	{ id: "t-3", label: "#TypeScript", postCount: 42875 },
+	{ id: "t-1", label: "#DesignSystems", postCount: 18400, category: "Technology" },
+	{ id: "t-2", label: "Storybook 9", postCount: 9120, category: "Frontend" },
+	{ id: "t-3", label: "#MorningWalk", postCount: 3260 },
 ];
 
 const suggestions: { author: AuthorModel; reason: string; following: boolean }[] = [
 	{ author: rin, reason: "Followed by kai", following: false },
-	{ author: mio, reason: "Followed by rin and 12 others", following: false },
-	{ author: jun, reason: "Based on your recent likes", following: true },
+	{ author: mio, reason: "Followed by rin and 3 others", following: false },
+	{ author: jun, reason: "New to your circle", following: true },
 ];
 
-const meta: Meta<typeof AppShell> = {
-	title: "Screens/TimelineScreen",
-	component: AppShell,
-	parameters: {
-		layout: "fullscreen",
-	},
-};
+const noop = () => {};
 
-export default meta;
-
-type Story = StoryObj<typeof AppShell>;
-
-export const Default: Story = {
-	render: () => (
+function TimelineScreen() {
+	return (
 		<AppShell
 			header={
 				<TimelineHeader
 					viewer={viewer}
 					search={<SearchField value="" onQueryChange={noop} />}
-					notifications={<NotificationBell unreadCount={7} tone="reply" onBellPress={noop} />}
+					notifications={<NotificationBell unreadCount={5} tone="reply" onBellPress={noop} />}
 					onViewerPress={noop}
 				/>
 			}
 			main={
-				<>
+				<div style={{ display: "grid", gap: "1rem" }}>
 					<FeedTabs activeFeed="for-you" onFeedChange={noop} />
 					<PostComposer
 						viewer={viewer}
 						draft=""
 						visibility="public"
-						visibilityPicker={<VisibilityPicker visibility="public" onVisibilityChange={noop} />}
+						visibilityPicker={
+							<VisibilityPicker visibility="public" onVisibilityChange={noop} />
+						}
 						onDraftChange={noop}
 						onSubmitPress={noop}
 					/>
 					<PostCard
-						post={postRin}
+						post={post1}
 						authorLine={
 							<PostAuthorLine
-								author={postRin.author}
-								label={postRin.createdAt}
-								avatar={<UserAvatar author={postRin.author} />}
-								visibility={postRin.visibility}
+								author={post1.author}
+								label={post1.createdAt}
+								avatar={<UserAvatar author={post1.author} />}
+								visibility={post1.visibility}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postRin}
+								post={post1}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -180,24 +167,19 @@ export const Default: Story = {
 						}
 					/>
 					<PostCard
-						post={postKai}
+						post={post2}
 						authorLine={
 							<PostAuthorLine
-								author={postKai.author}
-								label={postKai.createdAt}
-								avatar={<UserAvatar author={postKai.author} />}
-								visibility={postKai.visibility}
+								author={post2.author}
+								label={post2.createdAt}
+								avatar={<UserAvatar author={post2.author} />}
+								visibility={post2.visibility}
 							/>
 						}
-						quoted={
-							<QuotedPost
-								post={postRin}
-								avatar={<UserAvatar author={postRin.author} density="compact" />}
-							/>
-						}
+						quoted={<QuotedPost post={post1} avatar={<UserAvatar author={post1.author} density="compact" />} />}
 						actions={
 							<PostActionBar
-								post={postKai}
+								post={post2}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -205,19 +187,19 @@ export const Default: Story = {
 						}
 					/>
 					<PostCard
-						post={postMio}
+						post={post3}
 						authorLine={
 							<PostAuthorLine
-								author={postMio.author}
-								label={postMio.createdAt}
-								avatar={<UserAvatar author={postMio.author} />}
-								visibility={postMio.visibility}
+								author={post3.author}
+								label={post3.createdAt}
+								avatar={<UserAvatar author={post3.author} />}
+								visibility={post3.visibility}
 							/>
 						}
-						media={<PostMedia images={mioMedia} />}
+						media={<PostMedia images={post3Images} />}
 						actions={
 							<PostActionBar
-								post={postMio}
+								post={post3}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
@@ -225,66 +207,60 @@ export const Default: Story = {
 						}
 					/>
 					<PostCard
-						post={postJun}
+						post={post4}
 						authorLine={
 							<PostAuthorLine
-								author={postJun.author}
-								label={postJun.createdAt}
-								avatar={<UserAvatar author={postJun.author} />}
-								visibility={postJun.visibility}
+								author={post4.author}
+								label={post4.createdAt}
+								avatar={<UserAvatar author={post4.author} />}
+								visibility={post4.visibility}
 							/>
 						}
 						actions={
 							<PostActionBar
-								post={postJun}
+								post={post4}
 								onReplyPress={noop}
 								onRepostPress={noop}
 								onLikePress={noop}
 							/>
 						}
 					/>
-				</>
+				</div>
 			}
 			sidebar={
-				<>
+				<div>
 					<TrendPanel
 						heading="Trends for you"
-						items={
-							<>
-								{trends.map((trend, index) => (
-									<TrendItem
-										key={trend.id}
-										trend={trend}
-										rank={index + 1}
-										onTrendPress={noop}
-									/>
-								))}
-							</>
-						}
+						items={trends.map((trend, index) => (
+							<TrendItem key={trend.id} trend={trend} rank={index + 1} onTrendPress={noop} />
+						))}
 					/>
 					<SuggestedUserPanel
 						heading="Who to follow"
-						rows={
-							<>
-								{suggestions.map((suggestion) => (
-									<SuggestedUserRow
-										key={suggestion.author.id}
-										author={suggestion.author}
-										reason={suggestion.reason}
-										avatar={<UserAvatar author={suggestion.author} />}
-										follow={
-											<FollowButton
-												following={suggestion.following}
-												onFollowToggle={noop}
-											/>
-										}
-									/>
-								))}
-							</>
-						}
+						rows={suggestions.map((suggestion) => (
+							<SuggestedUserRow
+								key={suggestion.author.id}
+								author={suggestion.author}
+								avatar={<UserAvatar author={suggestion.author} />}
+								reason={suggestion.reason}
+								follow={<FollowButton following={suggestion.following} onFollowToggle={noop} />}
+							/>
+						))}
 					/>
-				</>
+				</div>
 			}
 		/>
-	),
-};
+	);
+}
+
+const meta = {
+	title: "Screens/TimelineScreen",
+	component: TimelineScreen,
+	parameters: { layout: "fullscreen" },
+} satisfies Meta<typeof TimelineScreen>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
