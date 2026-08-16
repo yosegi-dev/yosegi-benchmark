@@ -5,13 +5,24 @@ one variable per arm: what the agent is allowed to see. 68 implementations acros
 below and the two side experiments — `RESULTS.md` is the record of what was actually run, and it is
 authoritative wherever it and this file disagree.
 
+The matrix is re-run in full on each Yosegi minor release, against the published package,
+and tagged with that version. `RESULTS.md` keeps one section per round; the rounds so far
+are listed at the top of it. What the Yosegi version under test is has to be recorded —
+round 1 did not record one, and round 2 found an artifact that only an unreleased build
+could have produced (`RESULTS.md`, Provenance).
+
 ## Arms
 
 Each arm is a fresh agent with no memory of the others and no access to `CONTRACT.md`.
 All of them are given `SPEC-SCREEN.md` and told which UI library the host is built on.
 The verbatim prompt for each of them is in `prompts/`, along with the two asymmetries the
-audit turned up. The two side experiments below ran from prompts that were not kept; their
-working directories are, and `setup-efg.sh` rebuilds them.
+audit turned up.
+
+Round 1's two side experiments ran from prompts that were not kept; their working
+directories are, and `setup-efg.sh` rebuilds them. `prompts/E-direct.md`, `E-json.md`,
+`F1.md`, and `F2.md` were written for round 2 from this file, the SPEC files, and round 1's
+artifacts. E and F are therefore the two experiments whose round-over-round comparison is
+not prompt-controlled.
 
 ### A1 — library knowledge only
 
