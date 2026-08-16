@@ -3,7 +3,8 @@
 At 20 components, reading the source is as good as querying a registry — both arms scored
 zero. `docs/registry.md` in the Yosegi repository claims the payoff scales with divergence;
 the first run covered divergence and held size fixed, so it could not see the other axis.
-This spec adds it.
+This spec adds it. It states what was built and why, in the future tense it was written in;
+what the sizes then produced is in `RESULTS.md`.
 
 ## The variable
 
@@ -65,4 +66,6 @@ directory, no comment. They live in `src/components/` with everything else.
 - The screen spec and the 20 contract components, byte for byte
 - The library and its version
 - The toolchain: one TypeScript, one React, one `@storybook/react`, from the workspace root
-- The three arms and their isolation
+- The arms and the isolation rule they run under. A1, A2, B, and G ran at all three sizes,
+  H at 20 and 240 (`MEASURE.md`). The prompts vary across sizes in two disclosed places:
+  M and L name the host's component count, and add the near-miss warning (`prompts/`).
